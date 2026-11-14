@@ -1,0 +1,398 @@
+[
+  {
+    "name": "AI & Machine Learning",
+    "group": "Create",
+    "description": "Find AI tools by the work you need to do.",
+    "subcategories": [
+      "Chat & Assistants",
+      "Image Generation",
+      "Video Generation",
+      "Writing & Editing",
+      "Coding Assistants",
+      "Voice & Audio",
+      "Research & Search",
+      "AI Agents",
+      "Local Models",
+      "ML Frameworks",
+      "Model Training",
+      "Other AI Resources"
+    ]
+  },
+  {
+    "name": "Automation & Workflows",
+    "group": "Work",
+    "description": "Connect apps, schedule tasks, and automate repeatable work.",
+    "subcategories": [
+      "No-code Workflows",
+      "Browser Automation",
+      "Data Pipelines",
+      "Web Scraping",
+      "Task Scheduling",
+      "RPA & Testing",
+      "CI/CD & DevOps",
+      "Other Automation"
+    ]
+  },
+  {
+    "name": "Design & UI",
+    "group": "Create",
+    "description": "Components, visual references, and tools for better interfaces.",
+    "subcategories": [
+      "UI Components",
+      "Design Inspiration",
+      "Prototyping",
+      "Graphic Design",
+      "Design Systems",
+      "Color Tools",
+      "Other Design Resources"
+    ]
+  },
+  {
+    "name": "Web Development",
+    "group": "Build",
+    "description": "Build interfaces, servers, and websites.",
+    "subcategories": [
+      "React & Frontend",
+      "Backend & APIs",
+      "CSS & Styling",
+      "Web Frameworks",
+      "Testing & Quality",
+      "Other Web Resources"
+    ]
+  },
+  {
+    "name": "Developer Tools",
+    "group": "Build",
+    "description": "Useful repositories, libraries, command-line tools, and code.",
+    "subcategories": [
+      "GitHub Projects",
+      "Python",
+      "Go",
+      "Rust",
+      "C & C++",
+      "Java & JVM",
+      "Command-line Tools",
+      "Algorithms",
+      "Other Developer Tools"
+    ]
+  },
+  {
+    "name": "Domains & Hosting",
+    "group": "Build",
+    "description": "Hosting services, subdomains, and eligibility-based domain offers.",
+    "subcategories": [
+      "Free Hosting",
+      "Domains & Subdomains",
+      "Cloud & Servers",
+      "Databases & Storage",
+      "Deployment",
+      "Other Hosting Resources"
+    ]
+  },
+  {
+    "name": "Video & Film",
+    "group": "Create",
+    "description": "Edit, record, encode, and source footage.",
+    "subcategories": [
+      "Video Editing",
+      "Screen Recording",
+      "Video Conversion",
+      "Stock Footage",
+      "Motion Templates",
+      "Other Video Resources"
+    ]
+  },
+  {
+    "name": "3D & Animation",
+    "group": "Create",
+    "description": "Model, render, and animate in three dimensions.",
+    "subcategories": [
+      "3D Modeling",
+      "Animation",
+      "Rendering",
+      "WebGL & Shaders",
+      "3D Assets",
+      "Other 3D Resources"
+    ]
+  },
+  {
+    "name": "Photos & Assets",
+    "group": "Create",
+    "description": "Find images and edit visual assets.",
+    "subcategories": [
+      "Stock Photos",
+      "Photo Editing",
+      "Illustrations",
+      "Mockups & Templates",
+      "Other Image Resources"
+    ]
+  },
+  {
+    "name": "Fonts & Icons",
+    "group": "Create",
+    "description": "Typography, icon sets, and symbol libraries.",
+    "subcategories": [
+      "Fonts",
+      "SVG Icons",
+      "Icon Fonts",
+      "Typography Tools",
+      "Other Font Resources"
+    ]
+  },
+  {
+    "name": "Audio & Music",
+    "group": "Create",
+    "description": "Record, edit, compose, and find audio.",
+    "subcategories": [
+      "Audio Editing",
+      "Music Production",
+      "Sound Effects",
+      "Music Libraries",
+      "Notation",
+      "Other Audio Resources"
+    ]
+  },
+  {
+    "name": "Business & Operations",
+    "group": "Work",
+    "description": "Run projects, manage customers, and organize a small business.",
+    "subcategories": [
+      "CRM & Sales",
+      "Invoicing & Accounting",
+      "Project Management",
+      "Customer Support",
+      "Ecommerce",
+      "HR & Recruiting",
+      "Scheduling & Bookings",
+      "Other Business Resources"
+    ]
+  },
+  {
+    "name": "Finance & Budgeting",
+    "group": "Life",
+    "description": "Track money and learn finance. Tools do not provide financial advice.",
+    "subcategories": [
+      "Budgeting",
+      "Expense Tracking",
+      "Financial Data",
+      "Portfolio Tracking",
+      "Accounting & Learning",
+      "Other Finance Resources"
+    ]
+  },
+  {
+    "name": "Fitness & Wellbeing",
+    "group": "Life",
+    "description": "Track activity and discover exercise learning resources.",
+    "subcategories": [
+      "Workout Planning",
+      "Exercise Libraries",
+      "Activity Tracking",
+      "Nutrition Tracking",
+      "Habit Building",
+      "Other Fitness Resources"
+    ]
+  },
+  {
+    "name": "Courses & Learning",
+    "group": "Learn",
+    "description": "Courses, tutorials, and hands-on learning materials.",
+    "subcategories": [
+      "Programming Courses",
+      "Computer Science",
+      "Math & Statistics",
+      "Data & AI Courses",
+      "Practice & Challenges",
+      "Other Learning Resources"
+    ]
+  },
+  {
+    "name": "Books & Reading",
+    "group": "Learn",
+    "description": "Freely accessible books and reading materials from source collections.",
+    "subcategories": [
+      "Programming Books",
+      "Computer Science Books",
+      "Math & Science Books",
+      "Language Editions",
+      "Other Reading"
+    ]
+  },
+  {
+    "name": "Cybersecurity",
+    "group": "Build",
+    "description": "Learn security and practice in authorized environments.",
+    "subcategories": [
+      "Security Learning",
+      "Practice Labs",
+      "Application Security",
+      "Incident Response",
+      "Security Utilities",
+      "Other Security Resources"
+    ]
+  },
+  {
+    "name": "Data & Science",
+    "group": "Learn",
+    "description": "Explore data, analysis, scientific computing, and research.",
+    "subcategories": [
+      "Data Analysis",
+      "Datasets",
+      "Visualization",
+      "Scientific Computing",
+      "Machine Learning Data",
+      "Other Data Resources"
+    ]
+  },
+  {
+    "name": "Productivity",
+    "group": "Work",
+    "description": "Notes, tasks, documents, and daily organization.",
+    "subcategories": [
+      "Notes & Knowledge",
+      "Task Management",
+      "Office & Documents",
+      "Time Management",
+      "Bookmarks & Reading",
+      "Other Productivity Resources"
+    ]
+  },
+  {
+    "name": "Mobile Development",
+    "group": "Build",
+    "description": "Tools, frameworks, and examples for mobile applications.",
+    "subcategories": [
+      "Android",
+      "iOS",
+      "Flutter",
+      "React Native",
+      "Mobile UI",
+      "Other Mobile Resources"
+    ]
+  },
+  {
+    "name": "Game Development",
+    "group": "Create",
+    "description": "Engines, game assets, and development learning resources.",
+    "subcategories": [
+      "Game Engines",
+      "Game Assets",
+      "Game Design",
+      "Game Programming",
+      "Other Game Resources"
+    ]
+  },
+  {
+    "name": "Writing & Research",
+    "group": "Learn",
+    "description": "Write, cite, publish, and organize ideas.",
+    "subcategories": [
+      "Writing Tools",
+      "Grammar & Editing",
+      "Citations & Research",
+      "Publishing",
+      "Markdown",
+      "Other Writing Resources"
+    ]
+  },
+  {
+    "name": "Marketing & SEO",
+    "group": "Work",
+    "description": "Research search demand, understand traffic, and publish content.",
+    "subcategories": [
+      "SEO Tools",
+      "Analytics",
+      "Email Marketing",
+      "Social Media",
+      "Content Marketing",
+      "Other Marketing Resources"
+    ]
+  },
+  {
+    "name": "Accessibility",
+    "group": "Build",
+    "description": "Build and test more accessible digital experiences.",
+    "subcategories": [
+      "Accessibility Testing",
+      "Screen Readers",
+      "Inclusive Design",
+      "Accessibility Learning",
+      "Other Accessibility Resources"
+    ]
+  },
+  {
+    "name": "Privacy & Communication",
+    "group": "Life",
+    "description": "Private communication, collaboration, and personal data tools.",
+    "subcategories": [
+      "Messaging",
+      "Email",
+      "Password Managers",
+      "Privacy Tools",
+      "Video Meetings",
+      "Other Communication Resources"
+    ]
+  },
+  {
+    "name": "Education & Teaching",
+    "group": "Learn",
+    "description": "Materials for teaching, studying, and sharing knowledge.",
+    "subcategories": [
+      "Teaching Materials",
+      "Learning Platforms",
+      "Study Tools",
+      "Open Textbooks",
+      "Other Education Resources"
+    ]
+  },
+  {
+    "name": "Languages & Culture",
+    "group": "Learn",
+    "description": "Language learning, dictionaries, translation, and cultural archives.",
+    "subcategories": [
+      "Language Learning",
+      "Dictionaries",
+      "Translation",
+      "Cultural Archives",
+      "Other Language Resources"
+    ]
+  },
+  {
+    "name": "Travel & Maps",
+    "group": "Life",
+    "description": "Explore maps, transport information, and travel planning tools.",
+    "subcategories": [
+      "Maps & Navigation",
+      "Travel Planning",
+      "Open Geodata",
+      "Transport",
+      "Other Map Resources"
+    ]
+  },
+  {
+    "name": "Science & Engineering",
+    "group": "Learn",
+    "description": "Open scientific references, simulations, and engineering software.",
+    "subcategories": [
+      "Physics",
+      "Biology",
+      "Robotics",
+      "Electronics",
+      "Engineering Software",
+      "Healthcare Software",
+      "Other Science Resources"
+    ]
+  },
+  {
+    "name": "Social & Community",
+    "group": "Life",
+    "description": "Find communities, forums, and collaboration platforms.",
+    "subcategories": [
+      "Forums",
+      "Community Platforms",
+      "Meetups & Events",
+      "Social Networks",
+      "Other Community Resources"
+    ]
+  }
+]

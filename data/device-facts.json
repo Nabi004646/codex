@@ -1,0 +1,243 @@
+{
+  "dc30a88746cc9553": {
+    "id": "dc30a88746cc9553",
+    "url": "https://www.gimp.org",
+    "minimum_ram_gb": null,
+    "recommended_ram_gb": null,
+    "ram_scope": "No current numeric RAM minimum established from reviewed official sources. Unknown must not be interpreted as low-memory suitability.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "No dedicated-GPU minimum established from reviewed official sources.",
+    "offline": "Unknown",
+    "offline_note": "Local desktop installers and offline manual installation are documented. A blanket offline guarantee for all features was not established.",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "GIMP Downloads",
+        "url": "https://www.gimp.org/downloads/"
+      },
+      {
+        "title": "GIMP FAQ",
+        "url": "https://www.gimp.org/docs/userfaq.html"
+      },
+      {
+        "title": "GIMP Offline Manual",
+        "url": "https://docs.gimp.org/download.html"
+      }
+    ],
+    "source_urls": [
+      "https://www.gimp.org/downloads/",
+      "https://www.gimp.org/docs/userfaq.html",
+      "https://docs.gimp.org/download.html"
+    ]
+  },
+  "fc67adb46ee2acfc": {
+    "id": "fc67adb46ee2acfc",
+    "url": "https://krita.org",
+    "minimum_ram_gb": 4,
+    "recommended_ram_gb": 16,
+    "ram_scope": "4 GB minimum; 16 GB recommended by the official download page. Larger canvases/animation can need more.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "OpenGL 3.0 or higher, or Direct3D 11. The documentation does not explicitly require a dedicated graphics card.",
+    "offline": "Unknown",
+    "offline_note": "",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "Krita Download and Requirements",
+        "url": "https://krita.org/en/download/"
+      }
+    ],
+    "source_urls": [
+      "https://krita.org/en/download/"
+    ]
+  },
+  "f485b12bdf463b17": {
+    "id": "f485b12bdf463b17",
+    "url": "https://www.photopea.com",
+    "minimum_ram_gb": null,
+    "recommended_ram_gb": null,
+    "ram_scope": "No numeric RAM minimum established in the official introduction.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "",
+    "offline": "Limited",
+    "offline_note": "After the site has loaded, the official introduction says editing can continue disconnected. This does not guarantee cold-start offline access or offline cloud/AI services.",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "Photopea Introduction",
+        "url": "https://www.photopea.com/learn/"
+      }
+    ],
+    "source_urls": [
+      "https://www.photopea.com/learn/"
+    ]
+  },
+  "1ce8b5f83e945d5c": {
+    "id": "1ce8b5f83e945d5c",
+    "url": "https://shotcut.org",
+    "minimum_ram_gb": 4,
+    "recommended_ram_gb": null,
+    "ram_scope": "Minimum RAM is workload-specific: 4 GB SD, 8 GB HD, 16 GB 4K. A 4 GB match is only an SD-workload match.",
+    "workload_ram_gb": {
+      "SD": 4,
+      "HD": 8,
+      "4K": 16
+    },
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "Compatible OpenGL 2.0 on Linux, Direct3D 11 on Windows. Other GPU-processing modes have additional requirements. No explicit dedicated-card requirement was established.",
+    "offline": "Yes",
+    "offline_note": "The FAQ states no network connection is needed for desktop activation or subscription checks. Download software/media first; web help and external services still need a connection.",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "Shotcut FAQ",
+        "url": "https://shotcut.org/FAQ/"
+      }
+    ],
+    "source_urls": [
+      "https://shotcut.org/FAQ/"
+    ]
+  },
+  "8574bd6427903d67": {
+    "id": "8574bd6427903d67",
+    "url": "https://kdenlive.org",
+    "minimum_ram_gb": 4,
+    "recommended_ram_gb": null,
+    "ram_scope": "Minimum RAM is workload-specific: 4 GB SD, 8 GB HD, 16 GB 4K. Lower-end systems should examine proxy/preview controls.",
+    "workload_ram_gb": {
+      "SD": 4,
+      "HD": 8,
+      "4K": 16
+    },
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "Compatible OpenGL 2.0; compatible DirectX 9 or 11 also documented on Windows. Timeline playback remains CPU-dependent. Dedicated-card requirement not explicitly established.",
+    "offline": "Unknown",
+    "offline_note": "",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "Kdenlive Installation and Requirements",
+        "url": "https://docs.kdenlive.org/en/getting_started/installation.html"
+      },
+      {
+        "title": "Kdenlive Proxy Settings",
+        "url": "https://docs.kdenlive.org/en/project_and_asset_management/project_settings/proxy_settings.html"
+      }
+    ],
+    "source_urls": [
+      "https://docs.kdenlive.org/en/getting_started/installation.html",
+      "https://docs.kdenlive.org/en/project_and_asset_management/project_settings/proxy_settings.html"
+    ]
+  },
+  "7bb1a141364876aa": {
+    "id": "7bb1a141364876aa",
+    "url": "https://github.com/OpenShot/openshot-qt",
+    "minimum_ram_gb": 4,
+    "recommended_ram_gb": 16,
+    "ram_scope": "4 GB minimum; 16 GB or more recommended. CPU, OS, storage, footage and preview requirements still apply.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "No dedicated-GPU minimum appears in the reviewed minimum list. Standard software encoding is documented; optional hardware acceleration depends on hardware/drivers.",
+    "offline": "Unknown",
+    "offline_note": "",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "OpenShot Introduction and Requirements",
+        "url": "https://www.openshot.org/files/user-guide/introduction.html"
+      },
+      {
+        "title": "OpenShot Export",
+        "url": "https://www.openshot.org/files/user-guide/export.html"
+      }
+    ],
+    "source_urls": [
+      "https://www.openshot.org/files/user-guide/introduction.html",
+      "https://www.openshot.org/files/user-guide/export.html"
+    ]
+  },
+  "f144db3dea58c42a": {
+    "id": "f144db3dea58c42a",
+    "url": "https://joplinapp.org",
+    "minimum_ram_gb": null,
+    "recommended_ram_gb": null,
+    "ram_scope": "No current numeric RAM minimum established from reviewed official overview.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "",
+    "offline": "Yes",
+    "offline_note": "Officially offline-first for locally stored notes. Sync, remote services and attachments not already available locally have separate network requirements.",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "What is Joplin?",
+        "url": "https://joplinapp.org/help/"
+      },
+      {
+        "title": "Joplin Synchronisation",
+        "url": "https://joplinapp.org/help/dev/spec/sync/"
+      }
+    ],
+    "source_urls": [
+      "https://joplinapp.org/help/",
+      "https://joplinapp.org/help/dev/spec/sync/"
+    ]
+  },
+  "0154820e0d55e5db": {
+    "id": "0154820e0d55e5db",
+    "url": "https://obsidian.md",
+    "minimum_ram_gb": null,
+    "recommended_ram_gb": null,
+    "ram_scope": "No current numeric RAM minimum established from reviewed official pages.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "",
+    "offline": "Yes",
+    "offline_note": "Local Markdown vaults and offline operation are documented. Sync, Publish, remote content and plugins may need a connection.",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "Obsidian Data Storage",
+        "url": "https://obsidian.md/help/data-storage"
+      },
+      {
+        "title": "Obsidian Deployment and Offline Operation",
+        "url": "https://obsidian.md/help/teams/deploy"
+      }
+    ],
+    "source_urls": [
+      "https://obsidian.md/help/data-storage",
+      "https://obsidian.md/help/teams/deploy"
+    ]
+  },
+  "088d9f730a82927a": {
+    "id": "088d9f730a82927a",
+    "url": "https://appflowy.io",
+    "minimum_ram_gb": null,
+    "recommended_ram_gb": null,
+    "ram_scope": "No current desktop RAM minimum established. Local AI and a self-hosted server are separate workloads.",
+    "workload_ram_gb": {},
+    "dedicated_gpu": "Unknown",
+    "graphics_requirement": "",
+    "offline": "Limited",
+    "offline_note": "Official overview documents an offline mode for the local app; hosted collaboration, remote content and external AI need separate review.",
+    "reviewed_on": "2026-11-08",
+    "sources": [
+      {
+        "title": "AppFlowy Start Here",
+        "url": "https://docs.appflowy.io/docs/appflowy"
+      },
+      {
+        "title": "AppFlowy Local Host Deployment",
+        "url": "https://appflowy.com/docs/Local-Host-Deployment"
+      }
+    ],
+    "source_urls": [
+      "https://docs.appflowy.io/docs/appflowy",
+      "https://appflowy.com/docs/Local-Host-Deployment"
+    ]
+  }
+}

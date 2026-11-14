@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "freeresourceatlas",
+  "pages_build_output_dir": "./dist/pages",
+  "compatibility_date": "2026-11-14",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {"ATLAS_MODE": "staging"}
+}

@@ -1,0 +1,22 @@
+import {templateData} from './templates.mjs';
+import {articles,kits,policies} from './public-content.mjs';
+import {catalog} from './catalog.mjs';
+const summaries=articles.map(({slug,title,description,category,resourceNames,created_at})=>({slug,title,description,category,resourceNames,created_at}));
+const resources=names=>names.map(n=>catalog.find(r=>r.name===n)).filter(Boolean);
+export function publicData(path,params={}){
+ if(path==='/templates'||path.startsWith('/templates/'))return templateData(path,params);
+ const p=path.replace(/\/$/,''),parts=p.split('/').filter(Boolean),page={path:p,articleCards:summaries};
+ if(parts[0]==='blog'&&parts[1])return {...page,type:'article',article:articles.find(a=>a.slug===parts[1]),resources:resources(articles.find(a=>a.slug===parts[1])?.resourceNames||[])};
+ if(p==='/blog')return {...page,type:'blog'};
+ if(p==='/guides'||p==='/guides/free-tools-open-source-resources')return {...page,type:'guides'};
+ if(parts[0]==='kits'){const kit=kits.find(k=>k.slug===parts[1]);return {...page,type:kit?'kit':'kits',kits,kit,resources:kit?resources(kit.names):[]};}
+ if(p==='/finder')return {...page,type:'finder'};
+ if(p==='/toolkits')return {...page,type:'toolkits'};
+ if(p==='/compare'){const ids=[...new Set(String(params.ids||'').split(',').filter(x=>/^[A-Za-z0-9_-]{1,80}$/.test(x)))].slice(0,4);return {...page,type:'compare',resources:ids.map(id=>catalog.find(r=>r.id===id)).filter(Boolean),hasIds:!!ids.length};}
+ if(p==='/alternatives')return {...page,type:'alternatives',resources:resources(['GIMP','Krita','Penpot','Shotcut','Kdenlive','LibreOffice','Node-RED','Activepieces'])};
+ if(p==='/low-spec-tools')return {...page,type:'low-spec',resources:catalog.filter(r=>r.device_details?.minimum_ram_gb)};
+ if(p==='/contact'||p==='/submit')return {...page,type:'draft-form',suggestion:p==='/submit'};
+ if(p==='/authors/nabin-kunwar')return {...page,type:'author'};
+ const policy=policies[parts[0]];return {...page,type:'policy',policy,storage:parts[0]==='cookies'||parts[0]==='privacy'};
+}
+export {summaries};

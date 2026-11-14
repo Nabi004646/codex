@@ -1,0 +1,3 @@
+import type {FreeDetails,ResourceHealth,DeviceDetails} from './feature-types';
+export type Resource={id:string;name:string;url:string;description:string;category:string;pricing:string;tags:string[];status:string;featured:boolean;source:string;subcategory?:string;kind?:string;updated_at?:string;image_url?:string;image_alt?:string;getting_started?:string;use_cases?:string[];moderation_reason?:string;free_details?:FreeDetails;device_details?:DeviceDetails;health?:ResourceHealth};
+export type Results={resources:Resource[];total:number;totalCatalog:number;page:number;pages:number;categories:{name:string;count:number;subcategories?:{name:string;count:number}[]}[];offline?:boolean;suggestions?:string[];correctedQuery?:string};

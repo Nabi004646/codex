@@ -1,0 +1,4 @@
+import {useEffect,useRef,useState} from 'react';
+import {resourceImage} from './resource-images';
+import {illustrationDataUrl} from '../source-baseline/nepocore-library/lib/illustrations';
+export default function ResourcePreview({resource:r,eager=false,caption=false}:any){const [failed,setFailed]=useState(false),ref=useRef<HTMLImageElement|null>(null),image=resourceImage(r);useEffect(()=>{setFailed(false);if(ref.current?.complete&&!ref.current.naturalWidth)setFailed(true);},[image.src]);return <><div className={'resource-preview screenshot-preview preview-'+(failed?'illustrated':image.kind)}><img ref={ref} src={failed?illustrationDataUrl(r):image.src} alt={failed?'Concept illustration for '+r.name:image.alt} width={1000} height={420} loading={eager?'eager':'lazy'} decoding="async" onError={()=>setFailed(true)}/></div>{caption&&<figcaption>{failed?'Concept illustration · not a provider screenshot':image.label}</figcaption>}</>;}

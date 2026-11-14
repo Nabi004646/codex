@@ -1,0 +1,33 @@
+{
+  "name": "freeresourceatlas-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --use-env-proxy node_modules/vite/bin/vite.js --host 0.0.0.0",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir .atlas-ssr && node scripts/prerender.mjs",
+    "prebuild": "npm run prepare:preview",
+    "postbuild": "node scripts/check-build.mjs",
+    "prepare:preview": "node scripts/prepare-preview-assets.mjs",
+    "build:pages": "npm run build && node scripts/build-pages.mjs && node scripts/check-pages.mjs",
+    "check": "node scripts/check-model.mjs && node scripts/check-public.mjs && node scripts/check-runtime-http.mjs",
+    "check:pages": "node scripts/check-pages.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.16",
+    "@vitejs/plugin-react": "6.0.2",
+    "supabase": "3.1.0",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.119.0",
+    "lucide-react": "1.31.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "zod": "3.25.76"
+  }
+}

@@ -1,0 +1,291 @@
+[
+  {
+    "id": "0522e8689e47e6d2",
+    "name": "ComfyUI",
+    "url": "https://github.com/Comfy-Org/ComfyUI",
+    "description": "Build node-based workflows for local image-generation models. Hardware and individual model licenses apply.",
+    "category": "AI & Machine Learning",
+    "pricing": "Open source",
+    "tags": [
+      "Stable Diffusion resources"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Image Generation",
+    "kind": "GitHub repository"
+  },
+  {
+    "id": "52c0fdeaeecb210e",
+    "name": "Activepieces",
+    "url": "https://github.com/activepieces/activepieces",
+    "description": "Build app-to-app workflows with a visual builder. Check the community license, self-hosting requirements, and hosted plan limits.",
+    "category": "Automation & Workflows",
+    "pricing": "Check terms",
+    "tags": [
+      "Full fledged product"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "No-code Workflows",
+    "kind": "GitHub repository"
+  },
+  {
+    "id": "a1047f5c1d3715cf",
+    "name": "Actual",
+    "url": "https://github.com/actualbudget/actual",
+    "description": "A local-first envelope budgeting app. Self-hosting and optional bank integrations have separate requirements.",
+    "category": "Finance & Budgeting",
+    "pricing": "Open source",
+    "tags": [
+      "Finance"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Budgeting",
+    "kind": "GitHub repository"
+  },
+  {
+    "id": "5b5aa7987133f8d4",
+    "name": "Blender",
+    "url": "https://www.blender.org",
+    "description": "Create 3D models, animations, visual effects, and rendered scenes.",
+    "category": "3D & Animation",
+    "pricing": "Open source",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": true,
+    "subcategory": "3D Modeling",
+    "kind": "Website"
+  },
+  {
+    "id": "ebb5f6d88c1072f7",
+    "name": "wger",
+    "url": "https://github.com/wger-project/wger",
+    "description": "Plan workouts and keep exercise, body-weight, and nutrition records. This tool does not replace professional health advice.",
+    "category": "Fitness & Wellbeing",
+    "pricing": "Open source",
+    "tags": [
+      "Workout Planning"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": true,
+    "subcategory": "Workout Planning",
+    "kind": "GitHub repository"
+  },
+  {
+    "id": "07846c15f56ca9a3",
+    "name": "React Bits",
+    "url": "https://reactbits.dev",
+    "description": "Free React animation components for use in applications. The MIT + Commons Clause license restricts reselling or redistributing the components themselves.",
+    "category": "Design & UI",
+    "pricing": "Free",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": true,
+    "subcategory": "UI Components",
+    "kind": "Website"
+  },
+  {
+    "id": "1ce8b5f83e945d5c",
+    "name": "Shotcut",
+    "url": "https://shotcut.org",
+    "description": "Cross-platform video editing with broad format support.",
+    "category": "Video & Film",
+    "pricing": "Open source",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Video Editing",
+    "kind": "Website"
+  },
+  {
+    "id": "fc67adb46ee2acfc",
+    "name": "Krita",
+    "url": "https://krita.org",
+    "description": "Digital painting and illustration software for creative work.",
+    "category": "Design & UI",
+    "pricing": "Open source",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Graphic Design",
+    "kind": "Website"
+  },
+  {
+    "id": "7bb1a141364876aa",
+    "name": "OpenShot",
+    "url": "https://github.com/OpenShot/openshot-qt",
+    "description": "OpenShot is indexed under adobe premiere pro in the source collection. Check current access, licensing, and free-use limits at the original provider.",
+    "category": "Business & Operations",
+    "pricing": "Check terms",
+    "tags": [
+      "Adobe Premiere Pro"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "https://github.com/Anil-matcha/awesome-open-source-saas-alternatives",
+    "featured": false,
+    "subcategory": "Other Business Resources",
+    "kind": "GitHub repository"
+  },
+  {
+    "id": "8574bd6427903d67",
+    "name": "Kdenlive",
+    "url": "https://kdenlive.org",
+    "description": "An open source video editor with a multitrack timeline, effects, and transitions.",
+    "category": "Video & Film",
+    "pricing": "Open source",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Video Editing",
+    "kind": "Website"
+  },
+  {
+    "id": "f144db3dea58c42a",
+    "name": "Joplin",
+    "url": "https://joplinapp.org",
+    "description": "Open source notes and to-do management. Hosted cloud services are optional.",
+    "category": "Productivity",
+    "pricing": "Open source",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Notes & Knowledge",
+    "kind": "Website"
+  },
+  {
+    "id": "0154820e0d55e5db",
+    "name": "Obsidian",
+    "url": "https://obsidian.md",
+    "description": "A local-first knowledge base for linked notes. Optional sync and publishing are paid.",
+    "category": "Productivity",
+    "pricing": "Free plan",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Notes & Knowledge",
+    "kind": "Website"
+  },
+  {
+    "id": "f66b2d636a3c73cf",
+    "name": "Audacity",
+    "url": "https://www.audacityteam.org",
+    "description": "Record, edit, and clean up audio on your computer.",
+    "category": "Audio & Music",
+    "pricing": "Open source",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "Audio Editing",
+    "kind": "Website"
+  },
+  {
+    "id": "47b33cc30a5ccd96",
+    "name": "Node-RED",
+    "url": "https://github.com/node-red/node-red",
+    "description": "Connect APIs, devices, and services using a flow-based programming editor.",
+    "category": "Automation & Workflows",
+    "pricing": "Open source",
+    "tags": [
+      "No-code / low-code workflow builders"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": false,
+    "subcategory": "No-code Workflows",
+    "kind": "GitHub repository"
+  },
+  {
+    "id": "3bcc7ddeeba46976",
+    "name": "freeCodeCamp",
+    "url": "https://www.freecodecamp.org",
+    "description": "Learn programming through lessons, projects, and coding challenges.",
+    "category": "Courses & Learning",
+    "pricing": "Free",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": true,
+    "subcategory": "Programming Courses",
+    "kind": "Learning resource"
+  },
+  {
+    "id": "ae1f45a5b387e18d",
+    "name": "Hugging Face",
+    "url": "https://huggingface.co",
+    "description": "Discover open models, datasets, and community machine-learning demos. Hosting usage varies.",
+    "category": "AI & Machine Learning",
+    "pricing": "Free plan",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": true,
+    "subcategory": "Other AI Resources",
+    "kind": "Website"
+  },
+  {
+    "id": "a8b1cdfb36d0335c",
+    "name": "PortSwigger Web Security Academy",
+    "url": "https://portswigger.net/web-security",
+    "description": "Learn web application security in authorized, purpose-built practice labs.",
+    "category": "Cybersecurity",
+    "pricing": "Free",
+    "tags": [
+      "Starter collection"
+    ],
+    "status": "published",
+    "moderation_reason": "",
+    "source": "Editorial starter · provider website",
+    "featured": true,
+    "subcategory": "Application Security",
+    "kind": "Website"
+  }
+]

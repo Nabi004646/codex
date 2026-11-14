@@ -1,0 +1,114 @@
+{
+  "1ce8b5f83e945d5c": {
+    "url": "https://shotcut.org",
+    "access_model": "Fully free",
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "signup": "Not required",
+    "credit_card": "Not required",
+    "limits": "The desktop editor is free, including commercial use. Your media and third-party assets have their own rights.",
+    "requirements": "A supported 64-bit operating system. The FAQ lists 4 GB RAM for SD, 8 GB for HD, and 16 GB for 4K; check current CPU and graphics requirements before installing.",
+    "cost_notes": "Your computer, storage, licensed media, and optional external services can cost money.",
+    "reviewed_on": "2026-11-08",
+    "source_urls": [
+      "https://shotcut.org/FAQ/",
+      "https://shotcut.org/download/"
+    ]
+  },
+  "f66b2d636a3c73cf": {
+    "url": "https://www.audacityteam.org",
+    "access_model": "Fully free",
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "signup": "Unknown",
+    "credit_card": "Unknown",
+    "limits": "The desktop audio editor is free and open source. This label does not include optional cloud storage or third-party services.",
+    "requirements": "A desktop or laptop with an operating system supported by the current release; review the download page before installing.",
+    "cost_notes": "Optional Audacity Cloud storage, audio hardware, and third-party plugins can have separate costs.",
+    "reviewed_on": "2026-11-08",
+    "source_urls": [
+      "https://www.audacityteam.org/faq/",
+      "https://www.audacityteam.org/download/"
+    ]
+  },
+  "47b33cc30a5ccd96": {
+    "url": "https://github.com/node-red/node-red",
+    "access_model": "Self-hosted",
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS",
+      "Self-hosted"
+    ],
+    "signup": "Unknown",
+    "credit_card": "Unknown",
+    "limits": "The local workflow runtime runs on infrastructure you control. Connected cloud services and third-party APIs have independent terms and quotas.",
+    "requirements": "A supported Node.js version and a running local machine, device, container, or server. Review installation and editor security documentation.",
+    "cost_notes": "Always-on hosting, electricity, external APIs, email delivery, and paid workflow integrations may cost money.",
+    "reviewed_on": "2026-11-08",
+    "source_urls": [
+      "https://nodered.org/docs/getting-started/local",
+      "https://github.com/node-red/node-red"
+    ]
+  },
+  "fc67adb46ee2acfc": {
+    "url": "https://krita.org",
+    "access_model": "Unknown",
+    "signup": "Unknown",
+    "credit_card": "Unknown",
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "limits": "",
+    "requirements": "Platform availability is sourced from the provider download page. Check the exact operating-system version, CPU architecture, graphics drivers, and installer requirements.",
+    "cost_notes": "",
+    "reviewed_on": "2026-11-12",
+    "source_urls": [
+      "https://krita.org/en/download/"
+    ]
+  },
+  "8574bd6427903d67": {
+    "url": "https://kdenlive.org",
+    "access_model": "Unknown",
+    "signup": "Unknown",
+    "credit_card": "Unknown",
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "limits": "",
+    "requirements": "Platform availability is sourced from the provider download page. Check the exact operating-system version, CPU architecture, graphics drivers, and installer requirements.",
+    "cost_notes": "",
+    "reviewed_on": "2026-11-12",
+    "source_urls": [
+      "https://kdenlive.org/en/download/"
+    ]
+  },
+  "7bb1a141364876aa": {
+    "url": "https://github.com/OpenShot/openshot-qt",
+    "access_model": "Unknown",
+    "signup": "Unknown",
+    "credit_card": "Unknown",
+    "platforms": [
+      "Linux",
+      "Windows",
+      "macOS"
+    ],
+    "limits": "",
+    "requirements": "Platform availability is sourced from the provider download page. Check the exact operating-system version, CPU architecture, graphics drivers, and installer requirements.",
+    "cost_notes": "",
+    "reviewed_on": "2026-11-12",
+    "source_urls": [
+      "https://www.openshot.org/download/"
+    ]
+  }
+}
