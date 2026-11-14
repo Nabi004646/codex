@@ -13,8 +13,9 @@
     "postbuild": "node scripts/check-build.mjs",
     "prepare:preview": "node scripts/prepare-preview-assets.mjs",
     "build:pages": "npm run build && node scripts/build-pages.mjs && node scripts/check-pages.mjs",
-    "check": "node scripts/check-model.mjs && node scripts/check-public.mjs && node scripts/check-runtime-http.mjs",
-    "check:pages": "node scripts/check-pages.mjs"
+    "check": "node scripts/check-model.mjs && node scripts/check-public.mjs && node scripts/check-runtime-http.mjs && npm run check:interactions",
+    "check:pages": "node scripts/check-pages.mjs",
+    "check:interactions": "node --test scripts/check-interactions.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.16",

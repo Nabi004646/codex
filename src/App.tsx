@@ -6,13 +6,22 @@ import Library from './Library';
 import SiteFooter from './SiteFooter';
 import {CompareTray} from '../source-baseline/nepocore-library/components/ResourceTools';
 import {LOCALES} from './model.mjs';
+import {observeSidebarPosition} from './sidebar-position.mjs';
 const AdminPanel=lazy(()=>import('./AdminPanel'));
+function AdminRoute(){
+ const [mounted,setMounted]=useState(false);
+ useEffect(()=>setMounted(true),[]);
+ const fallback=<main className="admin-gate" aria-busy="true"><h1>Admin sign in</h1><p role="status">Loading secure sign-in…</p></main>;
+ // renderToString cannot await a lazy component. Match the server shell on
+ // hydration, then load the private UI after mount without aborting hydration.
+ return mounted?<Suspense fallback={fallback}><AdminPanel/></Suspense>:fallback;
+}
 export default function App({page}:any){
  const [country,setCountry]=useState(page.params.country||'');
  useEffect(()=>{try{if(!Object.hasOwn(page.params,'country')){const saved=localStorage.getItem('atlas-country');if(saved!==null&&['','US','GB','CA','AU'].includes(saved))setCountry(saved);}}catch{}},[]);
- useEffect(()=>{const update=()=>{const header=document.querySelector('.site-header');if(header)document.documentElement.style.setProperty('--atlas-side-top',header.getBoundingClientRect().bottom+'px');};update();window.addEventListener('scroll',update,{passive:true});window.addEventListener('resize',update);const observer=new ResizeObserver(update);for(const el of document.querySelectorAll('.site-header,.atlas-preferences'))observer.observe(el);return()=>{observer.disconnect();window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};},[country,page.path]);
+ useEffect(()=>observeSidebarPosition(window,document),[country,page.path]);
  let content;
- if(page.kind==='admin')content=<Suspense fallback={<main className="admin-gate"><h1>Admin sign in</h1><p>Loading secure sign-in…</p></main>}><AdminPanel/></Suspense>;
+ if(page.kind==='admin')content=<AdminRoute/>;
  else if(page.liveResource)content=<ResourceDetail resource={page.liveResource} related={page.related}/>;
  else if(page.document)content=<PublicPages doc={page.document}/>;
  else if(page.kind==='missing'||page.kind==='pending')content=<><main className="atlas-control document"><a href="/">← Back to directory</a><h1>{page.kind==='missing'?'Page not found':'This resource is temporarily unavailable'}</h1><p>{page.kind==='missing'?'This address is not available. Browse the library or choose a guide to continue.':'The catalog could not answer this request. Retry later; no unpublished resource has been substituted.'}</p><a href="/guides">Explore practical guides →</a></main><SiteFooter/></>;

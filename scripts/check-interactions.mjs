@@ -1,0 +1,69 @@
+import assert from 'node:assert/strict';
+import {test} from 'node:test';
+import {boundedFetch,RequestTimeoutError,assertCurrentSession,safeAuthError} from '../src/network.mjs';
+import {observeSidebarPosition} from '../src/sidebar-position.mjs';
+
+test('a stalled request times out once without repeating a submission',async()=>{
+ let calls=0;
+ await assert.rejects(boundedFetch('https://test.invalid',{method:'POST',body:'fictional'},{timeout:15,fetcher:(_input,{signal})=>{calls++;return new Promise((_,reject)=>signal.addEventListener('abort',()=>reject(signal.reason),{once:true}));}}),RequestTimeoutError);
+ assert.equal(calls,1);
+});
+test('locking the session cancels a pending request',async()=>{
+ const owner=new AbortController();let signal;
+ const pending=boundedFetch('https://test.invalid',{}, {signal:owner.signal,fetcher:(_input,options)=>{signal=options.signal;return new Promise((_,reject)=>signal.addEventListener('abort',()=>reject(signal.reason),{once:true}));}});
+ owner.abort();await assert.rejects(pending,{name:'AbortError'});assert.equal(signal.aborted,true);
+});
+test('an already locked session cannot send a new request',async()=>{
+ const owner=new AbortController();owner.abort();let calls=0;
+ await assert.rejects(boundedFetch('https://test.invalid',{}, {signal:owner.signal,fetcher:async()=>{calls++;return Response.json({});}}),{name:'AbortError'});
+ assert.equal(calls,0);
+});
+test('caller cancellation remains connected to the fetch',async()=>{
+ const request=new AbortController();let fetched;
+ const pending=boundedFetch('https://test.invalid',{signal:request.signal},{fetcher:(_input,{signal})=>{fetched=signal;return new Promise((_,reject)=>signal.addEventListener('abort',()=>reject(signal.reason),{once:true}));}});
+ request.abort();await assert.rejects(pending,{name:'AbortError'});assert.equal(fetched.aborted,true);
+});
+test('successful JSON responses remain readable',async()=>{
+ const response=await boundedFetch('https://test.invalid',{}, {fetcher:async()=>Response.json({ok:true})});
+ assert.deepEqual(await response.json(),{ok:true});
+});
+test('receiving headers does not disable the deadline for a stalled response body',async()=>{
+ await assert.rejects(boundedFetch('https://test.invalid',{}, {timeout:15,fetcher:async(_input,{signal})=>new Response(new ReadableStream({start(stream){signal.addEventListener('abort',()=>stream.error(signal.reason),{once:true});}}))}),RequestTimeoutError);
+});
+test('late authentication results cannot restore a locked or replaced client',()=>{
+ const old={},next={};
+ assert.doesNotThrow(()=>assertCurrentSession(old,old,1,1));
+ assert.throws(()=>assertCurrentSession(old,null,1,2),{name:'AbortError'});
+ assert.throws(()=>assertCurrentSession(old,next,1,1),{name:'AbortError'});
+ assert.throws(()=>assertCurrentSession(old,old,1,2),{name:'AbortError'});
+});
+test('a network failure is not mislabeled as a wrong password',()=>{
+ assert.match(safeAuthError(new TypeError('Failed to fetch')),/connection/);
+ assert.match(safeAuthError(new RequestTimeoutError()),/too long/);
+ assert.doesNotMatch(safeAuthError(new TypeError('Failed to fetch')),/password/);
+});
+
+function viewport({resizeObserver=true}={}){
+ const listeners=new Map(),frames=new Map(),writes=[];let id=0,bottom=150,reads=0,disconnected=false;
+ const header={getBoundingClientRect(){reads++;return {bottom};}};
+ const doc={querySelector:()=>header,querySelectorAll:()=>[header],documentElement:{style:{setProperty:(...args)=>writes.push(args)}}};
+ const win={requestAnimationFrame:fn=>{frames.set(++id,fn);return id;},cancelAnimationFrame:id=>frames.delete(id),addEventListener:(name,fn)=>listeners.set(name,fn),removeEventListener:name=>listeners.delete(name)};
+ if(resizeObserver)win.ResizeObserver=class{observe(){}disconnect(){disconnected=true;}};
+ return {doc,win,writes,listeners,frames,scroll:()=>listeners.get('scroll')?.(),setBottom:value=>bottom=value,readCount:()=>reads,disconnected:()=>disconnected,flush:()=>{const pending=[...frames.values()];frames.clear();pending.forEach(fn=>fn());}};
+}
+test('scroll bursts share a frame and unchanged geometry causes no extra style write',()=>{
+ const v=viewport(),stop=observeSidebarPosition(v.win,v.doc);v.flush();
+ assert.equal(v.writes.length,1);
+ for(let i=0;i<200;i++)v.scroll();
+ assert.equal(v.frames.size,1);v.flush();assert.equal(v.readCount(),2);assert.equal(v.writes.length,1);
+ v.setBottom(89);v.scroll();v.flush();assert.deepEqual(v.writes[1],['--atlas-side-top','89px']);
+ stop();assert.equal(v.listeners.size,0);assert.equal(v.disconnected(),true);
+});
+test('missing ResizeObserver does not crash the page and cleanup cancels pending work',()=>{
+ const v=viewport({resizeObserver:false});const stop=observeSidebarPosition(v.win,v.doc);assert.equal(v.frames.size,1);
+ stop();v.flush();assert.equal(v.readCount(),0);assert.equal(v.writes.length,0);
+});
+test('pages without directory headers do not register scroll work',()=>{
+ const v=viewport();v.doc.querySelector=()=>null;const stop=observeSidebarPosition(v.win,v.doc);
+ assert.equal(v.listeners.size,0);assert.equal(v.frames.size,0);stop();
+});

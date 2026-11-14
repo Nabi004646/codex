@@ -19,7 +19,7 @@ try{
  const detail=await worker.fetch(request('/templates/'+templates[0].slug),env);assert.equal(detail.status,200);const body=await detail.text();assert.ok(body.includes('Downloads will open after file review'));assert.ok(!body.includes('href="/api/template-draft-download'));
  const live=await worker.fetch(request('/api/live/resources?q=SEO'),env);assert.equal(live.status,200);assert.deepEqual((await live.json()).resources,[]);assert.ok(calls.includes('/rest/v1/rpc/resource_search_v2'));
  const state=JSON.parse(html.match(/window\.__ATLAS_PAGE__=(.*?);<\/script>/s)[1]);assert.ok(state.hosted);
- const admin=await worker.fetch(request('/admin'),env);assert.equal(admin.status,200);assert.equal(admin.headers.get('Cache-Control'),'private, no-store');assert.match(admin.headers.get('X-Robots-Tag'),/noindex/);
+ const admin=await worker.fetch(request('/admin'),env);assert.equal(admin.status,200);assert.equal(admin.headers.get('Cache-Control'),'private, no-store');assert.match(admin.headers.get('X-Robots-Tag'),/noindex/);const adminHtml=await admin.text();assert.ok(adminHtml.includes('Loading secure sign-in'));assert.ok(!adminHtml.includes('data-msg='));assert.ok(!adminHtml.includes('Switched to client rendering'));assert.ok(!adminHtml.includes('renderToString'));
  assert.equal((await worker.fetch(request('/brand/favicon.ico'),env)).status,200);
  assert.equal((await worker.fetch(request('/_worker.js'),env)).status,404);
  assert.equal((await worker.fetch(request('/api/resources',{method:'POST'}),env)).status,405);
