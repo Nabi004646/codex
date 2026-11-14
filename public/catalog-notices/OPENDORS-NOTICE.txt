@@ -1,0 +1,20 @@
+OpenDORS v2025-11 metadata attribution
+
+Creator: Stephan Druskat, German Aerospace Center (DLR).
+Copyright (C)2025 German Aerospace Center (DLR).
+Source: https://zenodo.org/records/17560612
+DOI: 10.5281/zenodo.17560612
+Metadata license: Creative Commons Attribution4.0 International (CC BY4.0).
+License: https://creativecommons.org/licenses/by/4.0/
+
+FreeResourceAtlas adaptations: select whole GitHub project records with a
+recorded accessible main repository, a recognized open-source license at
+confidence95 or greater, recorded programming languages and a repository
+update since2010. Normalize canonical URLs, deduplicate against existing
+entries, retain names, language tags and small historical provenance facts.
+No source code or publications are redistributed.
+
+The dataset snapshot is historical. Current license terms, maintenance,
+security, installation requirements and provider availability are unreviewed.
+Each linked project retains its own license; the metadata license does not
+license the linked software. Inclusion is not an endorsement.

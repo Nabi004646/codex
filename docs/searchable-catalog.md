@@ -1,3 +1,7 @@
+# Current release
+
+Superseded by [catalog and language release notes](catalog-language-release.md):92,614 listings, pinned rebuildable source data,11 interface languages and private diagnostics. Historical implementation details below describe the earlier38,237-listing release.
+
 # Searchable catalog delivery
 
 The homepage previously used a 42-entry preview, independent of database imports. The directory now exposes **38,237 unique-URL listings** in the existing staging experience. The 90,000-resource goal has not been reached.

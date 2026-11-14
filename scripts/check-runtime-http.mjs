@@ -13,7 +13,7 @@ const fetcher=async(raw,options={})=>{const u=new URL(raw),body=options.body?JSO
 const memory=new Map();let puts=0;const cache={match:async k=>memory.get(k.url)?.clone(),put:async(k,v)=>{puts++;memory.set(k.url,v);}};
 const runtime=createRuntime({render,template,fetcher,cache});
 const request=(path,init={})=>new Request('https://freeresourceatlas.com'+path,init);
-const stage=await runtime(request('/'));assert.equal(stage.status,200);assert.match(stage.headers.get('X-Robots-Tag'),/noindex/);assert.ok((await stage.text()).includes('STAGING'));
+const stage=await runtime(request('/'));assert.equal(stage.status,200);assert.match(stage.headers.get('X-Robots-Tag'),/noindex/);const stageHtml=await stage.text();assert.ok(stageHtml.includes('Free Resources'));assert.ok(!stageHtml.includes('staging-notice'));assert.ok(!stageHtml.includes('Indexing report'));
 const api=await runtime(request('/api/resources?q=SEO'));assert.equal(api.status,200);assert.ok((await api.json()).resources.some(r=>r.name==='Lighthouse'));
 const finder=await findTask('I need video editing on Linux without an account',p=>queryPreview(p));assert.equal(finder.filters.platform,'Linux');assert.equal(finder.filters.signup,'Not required');assert.ok(finder.matches.some(r=>r.name==='Shotcut'));
 const prod={ATLAS_MODE:'production'},waits=[],ctx={waitUntil:p=>waits.push(p)};

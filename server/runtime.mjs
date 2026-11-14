@@ -1,3 +1,4 @@
+import {preferredUiLocale} from '../src/locale-config.mjs';
 import {discoverySnapshot} from './discovery-snapshots.mjs';
 import {findTask} from './finder.mjs';
 import {queryLive} from './live.mjs';
@@ -12,6 +13,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
   const readAsset=async path=>{if(!env.ASSETS)throw Error('Catalog assets unavailable');const response=await env.ASSETS.fetch(new Request(url.origin+path));if(!response.ok)throw Error('Catalog asset unavailable');return response.json();};
   const search=params=>production?publishedSearch(params,fetcher):discovery?discoverySnapshot(params,readAsset):queryPreview(params);
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET, HEAD','Cache-Control':'no-store'}});
+  if(/^\/preview(?:\/|$)/.test(url.pathname))return new Response('Not found',{status:404,headers:{...security,'X-Robots-Tag':'noindex','Cache-Control':'private, no-store'}});
   if(url.pathname==='/robots.txt')return new Response(production?'User-agent: *\nDisallow: /admin\nDisallow: /api/\nDisallow: /search\nDisallow: /preview/\nSitemap: https://freeresourceatlas.com/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{...security,'Content-Type':'text/plain','Cache-Control':'public, max-age=60'}});
   try{
    if(url.pathname==='/sitemap.xml'||url.pathname.startsWith('/sitemaps/')){
@@ -34,10 +36,11 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    }
    const cacheable=request.method==='GET'&&production&&!privatePath&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname);
    if(cacheable&&cache){const hit=await cache.match(key);if(hit)return hit;}
-   const page=await render(url.pathname+url.search,{production,fetcher,hosted:true,discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
+   const page=await render(url.pathname+url.search,{production,fetcher,hosted:true,uiLocale:preferredUiLocale(request.headers.get('Cookie'),url.searchParams.get('ui')),countryHint:request.cf?.country||'',discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
    const nonce=crypto.randomUUID().replaceAll('-','');
    let html=template.replace('<!--ATLAS_HEAD-->',page.head).replace('<!--ATLAS_HTML-->',page.html).replace('/*ATLAS_STATE*/null',page.state);
    if(production)html=html.replace('<meta name="robots" content="noindex,nofollow">','<meta name="robots" content="'+page.metadata.robots+'">');
+   html=html.replace(/<html[^>]*>/,'<html lang="'+(page.uiLocale||'en')+'" dir="'+(page.uiLocale==='ar'?'rtl':'ltr')+'">');
    html=html.replace(/<script(?=\s|>)/g,'<script nonce="'+nonce+'"');
    const policy="default-src 'self'; script-src 'self' 'nonce-"+nonce+"'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://jawldxxtolppeccxcihh.supabase.co; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'";
    const response=new Response(request.method==='HEAD'?null:html,{status:page.status,headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':policy,'X-Robots-Tag':page.metadata.robots,'Cache-Control':cacheable&&page.status===200?'public, max-age=30, s-maxage=30':'private, no-store'}});

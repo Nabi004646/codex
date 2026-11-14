@@ -20,3 +20,6 @@ private-setup/
 reports/
 outputs/
 CHECKSUMS.sha256
+
+# Derived search shards; regenerated from the pinned compressed seed at build time.
+public/catalog/

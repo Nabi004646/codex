@@ -1,12 +1,14 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
-for (const file of ['dist/index.html','dist/free/video-editing-tools/index.html','dist/preview/seo/index.html']) {
+for (const file of ['dist/index.html','dist/free/video-editing-tools/index.html','dist/low-spec-tools/index.html']) {
   const html=fs.readFileSync(file,'utf8');
   assert.match(html,/<meta name="robots" content="noindex,nofollow"/);
   assert.match(html,/FreeResourceAtlas/);
   assert.ok(!html.includes('<!--ATLAS_HTML-->'));assert.ok(!html.includes('<!--ATLAS_HEAD-->'));
   assert.ok(!html.includes('/*ATLAS_STATE*/null'));
 }
+assert.ok(!fs.existsSync('dist/preview/seo/index.html'));
+assert.ok(!fs.readFileSync('dist/index.html','utf8').includes('staging-notice'));
 const landing=fs.readFileSync('dist/free/video-editing-tools/index.html','utf8');
 assert.match(landing,/<h1>Free video editing tools<\/h1>/);
 assert.match(landing,/value="free video editing tools"/);

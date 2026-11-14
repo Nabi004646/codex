@@ -10,7 +10,7 @@ export function observeSidebarPosition(win,doc) {
   };
   const schedule=()=>{if(!stopped&&!frame)frame=win.requestAnimationFrame(measure);};
   const observer=typeof win.ResizeObserver==='function'?new win.ResizeObserver(schedule):null;
-  for(const element of doc.querySelectorAll('.site-header,.atlas-preferences'))observer?.observe(element);
+  for(const element of doc.querySelectorAll('.site-header,.atlas-language-settings'))observer?.observe(element);
   win.addEventListener('scroll',schedule,{passive:true});
   win.addEventListener('resize',schedule);
   doc.fonts?.ready.then(schedule).catch(()=>{});

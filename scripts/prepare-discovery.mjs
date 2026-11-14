@@ -1,17 +1,24 @@
+import {gunzipSync} from 'node:zlib';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
 import path from 'node:path';
 import {catalog} from '../server/catalog.mjs';
 import taxonomy from '../data/taxonomy.json' with {type:'json'};
 import {bucket,isPublicLink,normalize,words,packPostings} from '../server/discovery-codec.mjs';
-const flag=process.argv.indexOf('--source'),source=flag>=0?process.argv[flag+1]:null;if(!source)throw Error('Supply --source with the preserved legacy catalog.json path. Normal builds use the checked-in versioned index.');
-const legacy=JSON.parse(await fs.readFile(source,'utf8')),sourceDir=path.dirname(source),sourceManifest=JSON.parse(await fs.readFile(path.join(sourceDir,'sources.json'),'utf8'));
+const flag=process.argv.indexOf('--source'),source=flag>=0?process.argv[flag+1]:null;
+let seed;
+if(source){
+ const legacy=JSON.parse(await fs.readFile(source,'utf8')),sourceDir=path.dirname(source),sourceManifest=JSON.parse(await fs.readFile(path.join(sourceDir,'sources.json'),'utf8'));
+ const sources=[],sourceIds=new Map();
+ function credit(value,url){const key=isPublicLink(value)?value:url;if(sourceIds.has(key))return sourceIds.get(key);const found=sourceManifest.find(s=>key.startsWith(s.url)),entry=found?{...found,url:key}:{name:isPublicLink(value)?new URL(value).hostname+new URL(value).pathname:'Provider website',url:key,license:'Check original source',changes:'Names, links and taxonomy indexed; imported descriptions omitted.'};const id=sources.length;sources.push(entry);sourceIds.set(key,id);return id;}
+ seed={source_manifest:sourceManifest,sources,entries:legacy.map(r=>[r.id,r.name,r.url,r.category,r.subcategory||'',r.kind||'Website',credit(r.source,r.url),(r.tags||[]).filter(t=>typeof t==='string').slice(0,8)])};
+}else seed=JSON.parse(gunzipSync(await fs.readFile('data/discovery-seed.json.gz')).toString('utf8'));
+const sourceManifest=seed.source_manifest,sources=seed.sources;
 const withheld=new Set(['1cec592b992c467f','903160da268c9e99','2bc8e64c5b95f2cf','ec479dd90f380eb1','d1d5765fb8cea062','b4809c2d9592fe71']);
-const sources=[],sourceIds=new Map();
-function credit(value,url){const key=isPublicLink(value)?value:url;if(sourceIds.has(key))return sourceIds.get(key);const found=sourceManifest.find(s=>key.startsWith(s.url)),entry=found?{...found,url:key}:{name:isPublicLink(value)?new URL(value).hostname+new URL(value).pathname:'Provider website',url:key,license:'Check original source',changes:'Names, links and taxonomy indexed; imported descriptions omitted.'};const id=sources.length;sources.push(entry);sourceIds.set(key,id);return id;}
-const rows=catalog.map(r=>({...r,source_label:'Editorial catalog',discovery:false})),urls=new Set(rows.map(r=>new URL(r.url).href));let invalid=0,held=0,overlaps=0;
-for(const r of legacy){if(!isPublicLink(r.url)){invalid++;continue;}if(withheld.has(r.id)){held++;continue;}const key=new URL(r.url).href;if(urls.has(key)){overlaps++;continue;}urls.add(key);rows.push([r.id,r.name,key,r.category,r.subcategory||'',r.kind||'Website',credit(r.source,r.url),(r.tags||[]).filter(t=>typeof t==='string').slice(0,8)]);}
-const version=crypto.createHash('sha256').update(JSON.stringify(rows)+JSON.stringify(sourceManifest)+await fs.readFile(new URL(import.meta.url),'utf8')+await fs.readFile('server/discovery-codec.mjs','utf8')+await fs.readFile('server/discovery-search.mjs','utf8')+await fs.readFile('scripts/prepare-discovery-snapshots.mjs','utf8')).digest('hex').slice(0,16),root='/catalog/'+version,folder='public'+root;await fs.mkdir(folder,{recursive:true});
+const canonical=value=>{const u=new URL(value);if(u.hostname==='github.com'){const parts=u.pathname.split('/').filter(Boolean);if(parts.length>=2){parts[0]=parts[0].toLowerCase();parts[1]=parts[1].replace(/\.git$/i,'').toLowerCase();u.pathname='/'+parts.join('/');}}return u.href;};
+const rows=catalog.map(r=>({...r,source_label:'Editorial catalog',discovery:false})),urls=new Set(rows.map(r=>canonical(r.url))),positions=new Map(rows.map((r,index)=>[canonical(r.url),index])),aliases=[],ids=new Set(rows.map(r=>r.id));let invalid=seed.legacy_excluded?.invalid||0,held=seed.legacy_excluded?.shorteners||0,overlaps=0;
+for(const raw of seed.entries){const [id,name,url,category,subcategory,kind,sourceIndex,tags]=raw;if(!isPublicLink(url)){invalid++;continue;}if(withheld.has(id)){held++;continue;}const key=canonical(url);if(urls.has(key)){overlaps++;aliases.push([id,positions.get(key)]);continue;}if(ids.has(id))throw Error('Duplicate resource ID: '+id);if(!sources[sourceIndex]||!taxonomy.some(t=>t.name===category&&t.subcategories.includes(subcategory)))throw Error('Unknown source or taxonomy for '+id);urls.add(key);positions.set(key,rows.length);ids.add(id);rows.push([id,name,key,category,subcategory,kind,sourceIndex,tags,...raw.slice(8)]);}
+const version=crypto.createHash('sha256').update(JSON.stringify(rows)+JSON.stringify(sourceManifest)+await fs.readFile(new URL(import.meta.url),'utf8')+await fs.readFile('server/discovery-codec.mjs','utf8')+await fs.readFile('server/discovery-search.mjs','utf8')+await fs.readFile('scripts/prepare-discovery-snapshots.mjs','utf8')+await fs.readFile('server/search-language-aliases.mjs','utf8')).digest('hex').slice(0,16),root='/catalog/'+version,folder='public'+root;await fs.rm('public/catalog',{recursive:true,force:true});await fs.mkdir(folder,{recursive:true});
 const termMaps=Array.from({length:32},()=>new Map()),idMaps=Array.from({length:4},()=>({}));const filters={category:{},subcategory:{},kind:{},pricing:{},platform:{},signup:{},offline:{},gpu:{},mobile:{},ram:{},workload_ram:{},intent:{},reviewed:{},az:[],newest:[]};const push=(key,value,id)=>{if(value)(filters[key][value]??=[]).push(id);};
 const descriptions=[];
 for(let id=0;id<rows.length;id++){
@@ -33,12 +40,13 @@ for(let id=0;id<rows.length;id++){
 descriptions.sort((a,b)=>a.name.localeCompare(b.name,'en'));descriptions.forEach((r,n)=>filters.az[r.id]=n);
 descriptions.sort((a,b)=>b.checked.localeCompare(a.checked)||a.id-b.id);descriptions.forEach((r,n)=>filters.newest[r.id]=n);
 const files=[];async function write(name,value){const text=JSON.stringify(value),file=folder+'/'+name;await fs.writeFile(file,text);files.push({name,bytes:Buffer.byteLength(text),sha256:crypto.createHash('sha256').update(text).digest('hex')});}
+for(const [id,index]of aliases)if(idMaps[bucket(id,4)][id]===undefined)idMaps[bucket(id,4)][id]=index;
 for(let i=0;i<rows.length;i+=512)await write('records-'+Math.floor(i/512)+'.json',rows.slice(i,i+512));
 for(let i=0;i<32;i++)await write('terms-'+i+'.json',Object.fromEntries([...termMaps[i]].map(([term,p])=>[term,packPostings(p)])));
 for(let i=0;i<4;i++)await write('ids-'+i+'.json',idMaps[i]);
 await write('filters.json',filters);
 const categories=taxonomy.map(t=>({name:t.name,count:filters.category[t.name]?.length||0,subcategories:t.subcategories.map(name=>({name,count:(filters.subcategory[name]||[]).filter(id=>(filters.category[t.name]||[]).includes(id)).length})).filter(s=>s.count>0)}));
-const manifest={version,root,total:rows.length,record_size:512,id_buckets:4,editorial_count:catalog.length,editorial_names:catalog.map(r=>r.name),discovery_count:rows.length-catalog.length,source_checked:filters.reviewed.yes.length,source_manifest:sourceManifest,sources,categories,excluded:{invalid,shorteners:held},legacy_overlaps:overlaps,files};
+const manifest={version,root,total:rows.length,record_size:512,id_buckets:4,editorial_count:catalog.length,editorial_names:catalog.map(r=>r.name),discovery_count:rows.length-catalog.length,source_checked:filters.reviewed.yes.length,source_manifest:sourceManifest,sources,categories,excluded:{invalid,shorteners:held},legacy_overlaps:overlaps,id_alias_count:aliases.length,files};
 await fs.writeFile('data/discovery-manifest.json',JSON.stringify(manifest));
-await fs.mkdir('public/catalog-notices',{recursive:true});for(const name of ['BOOKS-LICENSE.txt','ALGORITHMS-LICENSE.txt'])await fs.copyFile(path.join(sourceDir,name),'public/catalog-notices/'+name);
+await fs.mkdir('public/catalog-notices',{recursive:true});
 console.log(JSON.stringify({version,total:rows.length,editorial:catalog.length,source_checked:manifest.source_checked,invalid,held,overlaps,files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0)},null,2));

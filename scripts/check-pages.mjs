@@ -1,3 +1,4 @@
+import manifest from '../data/discovery-manifest.json' with {type:'json'};
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import templates from '../data/template-drafts.json' with {type:'json'};
@@ -18,14 +19,20 @@ try{
  const listing=await worker.fetch(request('/api/templates?q=Inventory'),env);assert.equal(listing.status,200);assert.equal((await listing.json()).total,3);
  const detail=await worker.fetch(request('/templates/'+templates[0].slug),env);assert.equal(detail.status,200);const body=await detail.text();assert.ok(body.includes('Downloads will open after file review'));assert.ok(!body.includes('href="/api/template-draft-download'));
  const live=await worker.fetch(request('/api/live/resources?q=SEO'),env);assert.equal(live.status,200);assert.deepEqual((await live.json()).resources,[]);assert.ok(calls.includes('/rest/v1/rpc/resource_search_v2'));
- const state=JSON.parse(html.match(/window\.__ATLAS_PAGE__=(.*?);<\/script>/s)[1]);assert.ok(state.hosted);assert.equal(state.result.totalCatalog,38237);assert.equal(state.catalogMode,'discovery');assert.ok(html.includes('38,237'));assert.ok(html.includes('Library features'));
+ const state=JSON.parse(html.match(/window\.__ATLAS_PAGE__=(.*?);<\/script>/s)[1]);assert.ok(state.hosted);assert.equal(state.result.totalCatalog,manifest.total);assert.equal(state.catalogMode,'discovery');assert.ok(html.includes(manifest.total.toLocaleString('en')));assert.ok(html.includes('Library features'));
+ const spanish=await worker.fetch(request('/',{headers:{Cookie:'atlas-ui=es'}}),env);const esHtml=await spanish.text();assert.match(esHtml,/<html lang="es" dir="ltr">/);assert.ok(esHtml.includes('Recursos gratuitos'));assert.ok(esHtml.includes('Las descripciones de los recursos'));assert.equal(spanish.headers.get('Cache-Control'),'private, no-store');
+ const arabic=await(await worker.fetch(request('/?ui=ar'),env)).text();assert.match(arabic,/<html lang="ar" dir="rtl">/);assert.ok(arabic.includes('العربية'));
+ const defaultEnglish=await(await worker.fetch(request('/',{headers:{'Accept-Language':'ar'}}),env)).text();assert.match(defaultEnglish,/<html lang="en" dir="ltr">/);
+ const guide=await(await worker.fetch(request('/low-spec-tools',{headers:{Cookie:'atlas-ui=ne'}}),env)).text();assert.ok(guide.includes('तपाईंका टुलकिटहरू'));assert.ok(guide.includes('lang="en" dir="ltr"'));
+ assert.ok(!html.includes('staging-notice'));assert.ok(!html.includes('Indexing report'));assert.ok(!html.includes('/preview/live'));assert.ok(!html.includes('/preview/seo'));
+ for(const path of ['/preview/seo','/preview/live','/es/resources/untranslated'])assert.equal((await worker.fetch(request(path),env)).status,404);
  const admin=await worker.fetch(request('/admin'),env);assert.equal(admin.status,200);assert.equal(admin.headers.get('Cache-Control'),'private, no-store');assert.match(admin.headers.get('X-Robots-Tag'),/noindex/);const adminHtml=await admin.text();assert.ok(adminHtml.includes('Loading secure sign-in'));assert.ok(!adminHtml.includes('data-msg='));assert.ok(!adminHtml.includes('Switched to client rendering'));assert.ok(!adminHtml.includes('renderToString'));
  assert.equal((await worker.fetch(request('/brand/favicon.ico'),env)).status,200);
  assert.equal((await worker.fetch(request('/_worker.js'),env)).status,404);
  assert.equal((await worker.fetch(request('/api/resources',{method:'POST'}),env)).status,405);
  const sitemap=await(await worker.fetch(request('/sitemap.xml'),env)).text();assert.ok(!sitemap.includes('<url>'));
  const routes=JSON.parse(fs.readFileSync('dist/pages/_routes.json'));assert.deepEqual(routes.include,['/*']);assert.ok(routes.exclude.includes('/assets/*'));assert.ok(!routes.exclude.includes('/admin'));
- fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/pages-validation.json',JSON.stringify({checked_at:new Date().toISOString(),scope:'actual compiled standalone Pages module; isolated read-only provider',passed:['SSR homepage and built assets','dynamic resource search','dynamic template filtering','hosted draft download buttons withheld','new hosted search RPC adapter','private uncached admin route','no Worker source exposure','staging noindex and empty sitemap','write requests denied'],public_cloudflare_deployment:'pending authenticated dashboard access'},null,2)+'\n');
+ fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/pages-validation.json',JSON.stringify({checked_at:new Date().toISOString(),scope:'actual compiled standalone Pages module; isolated read-only provider',passed:['SSR homepage and built assets','dynamic resource search','dynamic template filtering','hosted draft download buttons withheld','new hosted search RPC adapter','private uncached admin route','no Worker source exposure','staging noindex and empty sitemap','write requests denied'],public_cloudflare_deployment:'verified separately through the exact GitHub commit deployment check'},null,2)+'\n');
  console.log('PASS: standalone Cloudflare Pages frontend, live search adapter, template filtering, review gates and private admin headers.');
 }finally{globalThis.fetch=originalFetch;}
 // The web-target React bundle owns a MessageChannel; all assertions above are awaited.

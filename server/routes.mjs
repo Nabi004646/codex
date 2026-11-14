@@ -7,7 +7,7 @@ export function routeState(pathname){
  if(/^\/resource\/[a-zA-Z0-9_-]{1,80}\/?$/.test(pathname))return {status:200,kind:'resource_lookup'};
  const normalized=pathname.replace(/\/$/,'')||'/';
  if(documents.has(normalized))return {status:200,kind:'public'};
- if(['/','/search','/collections','/preview/seo','/preview/live'].includes(normalized)||topicPaths.has(pathname))return {status:200,kind:'preview'};
+ if(['/','/search','/collections'].includes(normalized)||topicPaths.has(pathname))return {status:200,kind:'preview'};
  const parts=pathname.split('/').filter(Boolean);
  if(parts[0]==='category'&&parts.length<=3){const topic=taxonomy.find(t=>slug(t.name)===parts[1]);if(topic&&(parts.length===2||topic.subcategories.some(s=>slug(s)===parts[2])))return {status:200,kind:'preview'};}
  return {status:404,kind:'missing'};
