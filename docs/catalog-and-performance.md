@@ -1,3 +1,5 @@
+> Historical checkpoint: the searchable catalog has since expanded. See [current delivery notes](searchable-catalog.md).
+
 # Catalog and loading update — 14 November 2026
 
 The deployment connected to this repository is still a staging catalog. The 90,000–100,000-resource goal has not been reached.

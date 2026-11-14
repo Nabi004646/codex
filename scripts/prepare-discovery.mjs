@@ -1,0 +1,44 @@
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import path from 'node:path';
+import {catalog} from '../server/catalog.mjs';
+import taxonomy from '../data/taxonomy.json' with {type:'json'};
+import {bucket,isPublicLink,normalize,words,packPostings} from '../server/discovery-codec.mjs';
+const flag=process.argv.indexOf('--source'),source=flag>=0?process.argv[flag+1]:null;if(!source)throw Error('Supply --source with the preserved legacy catalog.json path. Normal builds use the checked-in versioned index.');
+const legacy=JSON.parse(await fs.readFile(source,'utf8')),sourceDir=path.dirname(source),sourceManifest=JSON.parse(await fs.readFile(path.join(sourceDir,'sources.json'),'utf8'));
+const withheld=new Set(['1cec592b992c467f','903160da268c9e99','2bc8e64c5b95f2cf','ec479dd90f380eb1','d1d5765fb8cea062','b4809c2d9592fe71']);
+const sources=[],sourceIds=new Map();
+function credit(value,url){const key=isPublicLink(value)?value:url;if(sourceIds.has(key))return sourceIds.get(key);const found=sourceManifest.find(s=>key.startsWith(s.url)),entry=found?{...found,url:key}:{name:isPublicLink(value)?new URL(value).hostname+new URL(value).pathname:'Provider website',url:key,license:'Check original source',changes:'Names, links and taxonomy indexed; imported descriptions omitted.'};const id=sources.length;sources.push(entry);sourceIds.set(key,id);return id;}
+const rows=catalog.map(r=>({...r,source_label:'Editorial catalog',discovery:false})),urls=new Set(rows.map(r=>new URL(r.url).href));let invalid=0,held=0,overlaps=0;
+for(const r of legacy){if(!isPublicLink(r.url)){invalid++;continue;}if(withheld.has(r.id)){held++;continue;}const key=new URL(r.url).href;if(urls.has(key)){overlaps++;continue;}urls.add(key);rows.push([r.id,r.name,key,r.category,r.subcategory||'',r.kind||'Website',credit(r.source,r.url),(r.tags||[]).filter(t=>typeof t==='string').slice(0,8)]);}
+const version=crypto.createHash('sha256').update(JSON.stringify(rows)+JSON.stringify(sourceManifest)+await fs.readFile(new URL(import.meta.url),'utf8')+await fs.readFile('server/discovery-codec.mjs','utf8')+await fs.readFile('server/discovery-search.mjs','utf8')+await fs.readFile('scripts/prepare-discovery-snapshots.mjs','utf8')).digest('hex').slice(0,16),root='/catalog/'+version,folder='public'+root;await fs.mkdir(folder,{recursive:true});
+const termMaps=Array.from({length:32},()=>new Map()),idMaps=Array.from({length:4},()=>({}));const filters={category:{},subcategory:{},kind:{},pricing:{},platform:{},signup:{},offline:{},gpu:{},mobile:{},ram:{},workload_ram:{},intent:{},reviewed:{},az:[],newest:[]};const push=(key,value,id)=>{if(value)(filters[key][value]??=[]).push(id);};
+const descriptions=[];
+for(let id=0;id<rows.length;id++){
+ const raw=rows[id],r=Array.isArray(raw)?{id:raw[0],name:raw[1],url:raw[2],category:raw[3],subcategory:raw[4],kind:raw[5],tags:raw[7],pricing:'Check terms'}:raw;
+ idMaps[bucket(r.id,4)][r.id]=id;
+ for(const key of ['category','subcategory','kind','pricing'])push(key,r[key],id);
+ for(const platform of r.free_details?.platforms||[])push('platform',platform,id);push('signup',r.free_details?.signup,id);push('offline',r.device_details?.offline,id);push('gpu',r.device_details?.dedicated_gpu,id);if(r.device_details?.minimum_ram_gb)push('ram',String(r.device_details.minimum_ram_gb),id);
+ for(const [workload,gb]of Object.entries(r.device_details?.workload_ram_gb||{}))((filters.workload_ram[workload]??={})[gb]??=[]).push(id);
+ for(const platform of r.mobile_platforms||[])push('mobile',platform,id);if(r.mobile_platforms?.includes('android')&&r.mobile_platforms.includes('ios'))push('mobile','both',id);
+ if(r.editorial?.source_verified_at)push('reviewed','yes',id);
+ if(r.category==='Video & Film'||/reels|captions?|subtitles?|transcri|ffmpeg|shotcut|kdenlive|openshot|obs studio|video.{0,10}edit/i.test([r.name,r.subcategory,...r.tags||[]].join(' ')))push('intent','video',id);
+ const purpose=[r.name,r.subcategory,...r.tags||[]].join(' ');
+ if(r.category==='Marketing & SEO'||/\bseo\b|^seo|search engine optim|search console|pagespeed|page speed|sitemap|keyword research/i.test(purpose)||/lighthouse/i.test(r.name)&&/github\.com\/GoogleChrome\/lighthouse|chrome\.google\.com|chromewebstore\.google\.com/i.test(r.url))push('intent','seo',id);
+ const weighted=new Map();const add=(value,score)=>{for(const word of words(value)){const last=Math.min(10,word.length);for(let n=Math.min(2,last);n<=last;n++){const term=word.slice(0,n);weighted.set(term,Math.max(weighted.get(term)||0,score+(n===word.length?4:0)));}}};
+ add(r.name,12);for(const tag of r.tags||[])add(tag,5);add(r.category,2);add(r.subcategory,4);add(r.kind,1);if(r.name==='Actual'&&r.url.includes('actualbudget'))add('Actual Budget',12);
+ for(const [term,score]of weighted){const b=termMaps[bucket(term)];if(!b.has(term))b.set(term,[]);b.get(term).push([id,score]);}
+ descriptions.push({id,name:r.name,checked:r.editorial?.source_verified_at||''});
+}
+descriptions.sort((a,b)=>a.name.localeCompare(b.name,'en'));descriptions.forEach((r,n)=>filters.az[r.id]=n);
+descriptions.sort((a,b)=>b.checked.localeCompare(a.checked)||a.id-b.id);descriptions.forEach((r,n)=>filters.newest[r.id]=n);
+const files=[];async function write(name,value){const text=JSON.stringify(value),file=folder+'/'+name;await fs.writeFile(file,text);files.push({name,bytes:Buffer.byteLength(text),sha256:crypto.createHash('sha256').update(text).digest('hex')});}
+for(let i=0;i<rows.length;i+=512)await write('records-'+Math.floor(i/512)+'.json',rows.slice(i,i+512));
+for(let i=0;i<32;i++)await write('terms-'+i+'.json',Object.fromEntries([...termMaps[i]].map(([term,p])=>[term,packPostings(p)])));
+for(let i=0;i<4;i++)await write('ids-'+i+'.json',idMaps[i]);
+await write('filters.json',filters);
+const categories=taxonomy.map(t=>({name:t.name,count:filters.category[t.name]?.length||0,subcategories:t.subcategories.map(name=>({name,count:(filters.subcategory[name]||[]).filter(id=>(filters.category[t.name]||[]).includes(id)).length})).filter(s=>s.count>0)}));
+const manifest={version,root,total:rows.length,record_size:512,id_buckets:4,editorial_count:catalog.length,editorial_names:catalog.map(r=>r.name),discovery_count:rows.length-catalog.length,source_checked:filters.reviewed.yes.length,source_manifest:sourceManifest,sources,categories,excluded:{invalid,shorteners:held},legacy_overlaps:overlaps,files};
+await fs.writeFile('data/discovery-manifest.json',JSON.stringify(manifest));
+await fs.mkdir('public/catalog-notices',{recursive:true});for(const name of ['BOOKS-LICENSE.txt','ALGORITHMS-LICENSE.txt'])await fs.copyFile(path.join(sourceDir,name),'public/catalog-notices/'+name);
+console.log(JSON.stringify({version,total:rows.length,editorial:catalog.length,source_checked:manifest.source_checked,invalid,held,overlaps,files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0)},null,2));

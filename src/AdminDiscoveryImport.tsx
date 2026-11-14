@@ -1,0 +1,10 @@
+import {useEffect,useRef,useState} from 'react';
+import {searchCatalog} from './catalog-search';
+import {ADMIN_CATEGORIES} from './admin-normalize.mjs';
+export default function AdminDiscoveryImport({category,disabled,onFile}:any){
+ const [busy,setBusy]=useState(false),[error,setError]=useState('');
+ const active=useRef<AbortController|null>(null);
+ useEffect(()=>{active.current?.abort();setBusy(false);setError('');return()=>active.current?.abort();},[category]);
+ async function prepare(){active.current?.abort();const controller=new AbortController();active.current=controller;setBusy(true);setError('');try{const name=ADMIN_CATEGORIES.find(c=>c.id===category)?.name;if(!name)throw Error('Choose a category.');const collected:any[]=[];for(let page=1;page<=5;page++){const result=await searchCatalog(new URLSearchParams({category:name,page:String(page)}),{signal:controller.signal});collected.push(...result.resources);if(page>=result.pages)break;}if(controller.signal.aborted)return;const rows=collected.slice(0,100).map(r=>({name:r.name,url:r.url,description:r.description,category:r.category,subcategory:r.subcategory,kind:r.kind,tags:r.tags,pricing_model:'unknown',source_urls:[r.url,...r.free_details?.source_urls||[]]}));if(!rows.length)throw Error('No discovery entries were found for this category.');onFile(new File([JSON.stringify(rows)],'discovery-'+category+'-100.json',{type:'application/json'}));}catch(e:any){if(!controller.signal.aborted)setError(e.message||'The preview could not load.');}finally{if(!controller.signal.aborted)setBusy(false);}}
+ return <div className="admin-discovery-import"><h3>Import from the searchable catalog</h3><p>Prepare up to 100 entries from the selected category. Inspect the preview, then use “Add valid links as drafts” below. This step does not publish resources.</p><button type="button" className="subtle-button" disabled={disabled||busy} onClick={prepare}>{busy?'Preparing preview…':'Preview 100 entries from this category'}</button>{error&&<p role="alert">{error}</p>}</div>;
+}

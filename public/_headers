@@ -10,3 +10,11 @@
   Cache-Control: private, no-store, max-age=0
 /admin/*
   Cache-Control: private, no-store, max-age=0
+
+/catalog/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: noindex, nofollow
+
+/catalog-notices/*
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex

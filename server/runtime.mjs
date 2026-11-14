@@ -1,3 +1,4 @@
+import {discoverySnapshot} from './discovery-snapshots.mjs';
 import {findTask} from './finder.mjs';
 import {queryLive} from './live.mjs';
 import {templateListing} from './templates.mjs';
@@ -7,6 +8,9 @@ const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:
 export function createRuntime({render,template,fetcher=fetch,cache=null}){
  return async function handle(request,env={},ctx={waitUntil:()=>{}}){
   const url=new URL(request.url),production=env.ATLAS_MODE==='production',privatePath=/^\/admin(?:\/|$)/.test(url.pathname);
+  const discovery=!production&&env.ATLAS_CATALOG==='discovery';
+  const readAsset=async path=>{if(!env.ASSETS)throw Error('Catalog assets unavailable');const response=await env.ASSETS.fetch(new Request(url.origin+path));if(!response.ok)throw Error('Catalog asset unavailable');return response.json();};
+  const search=params=>production?publishedSearch(params,fetcher):discovery?discoverySnapshot(params,readAsset):queryPreview(params);
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET, HEAD','Cache-Control':'no-store'}});
   if(url.pathname==='/robots.txt')return new Response(production?'User-agent: *\nDisallow: /admin\nDisallow: /api/\nDisallow: /search\nDisallow: /preview/\nSitemap: https://freeresourceatlas.com/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{...security,'Content-Type':'text/plain','Cache-Control':'public, max-age=60'}});
   try{
@@ -20,9 +24,9 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    if(url.pathname==='/api/live/resources')return json(await queryLive(url.searchParams,fetcher));
    if(url.pathname==='/api/templates')return production?json({error:'Template publication is pending.'},404):json(templateListing(url.searchParams));
    if(url.pathname==='/api/template-draft-download')return json({error:'Local draft files are available only in the local review environment. Published downloads require approved storage records.'},404);
-   if(url.pathname==='/api/resources')return json(production?await publishedSearch(url.searchParams,fetcher):queryPreview(url.searchParams));
+   if(url.pathname==='/api/resources'){const result=await search(url.searchParams);return json(result,result.clientRequired?409:200);}
    if(url.pathname.startsWith('/api/'))return json({error:'Endpoint not found.'},404);
-   const asset=/^\/(?:assets|brand|fonts|previews|logos|template-previews)\//.test(url.pathname)||/\.(?:ico|png|jpg|webp|svg|woff2?|ttf)$/.test(url.pathname)||['/manifest.json','/site.webmanifest'].includes(url.pathname);
+   const asset=/^\/(?:assets|brand|fonts|previews|logos|template-previews|catalog|catalog-notices)\//.test(url.pathname)||/\.(?:ico|png|jpg|webp|svg|woff2?|ttf)$/.test(url.pathname)||['/manifest.json','/site.webmanifest'].includes(url.pathname);
    if(asset)return env.ASSETS?env.ASSETS.fetch(request):new Response('Not found',{status:404,headers:security});
    if(production&&!privatePath){
     const [redirect]=await publicRows('site_redirects',{source_path:'eq.'+url.pathname,select:'target_path,status',limit:'1'},fetcher);
@@ -30,7 +34,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    }
    const cacheable=request.method==='GET'&&production&&!privatePath&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname);
    if(cacheable&&cache){const hit=await cache.match(key);if(hit)return hit;}
-   const page=await render(url.pathname+url.search,{production,fetcher,hosted:true});
+   const page=await render(url.pathname+url.search,{production,fetcher,hosted:true,discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
    const nonce=crypto.randomUUID().replaceAll('-','');
    let html=template.replace('<!--ATLAS_HEAD-->',page.head).replace('<!--ATLAS_HTML-->',page.html).replace('/*ATLAS_STATE*/null',page.state);
    if(production)html=html.replace('<meta name="robots" content="noindex,nofollow">','<meta name="robots" content="'+page.metadata.robots+'">');
@@ -39,6 +43,6 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    const response=new Response(request.method==='HEAD'?null:html,{status:page.status,headers:{...security,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':policy,'X-Robots-Tag':page.metadata.robots,'Cache-Control':cacheable&&page.status===200?'public, max-age=30, s-maxage=30':'private, no-store'}});
    if(cacheable&&cache&&page.status===200)ctx.waitUntil(cache.put(key,response.clone()));
    return response;
-  }catch(error){return json({error:'The published catalog is temporarily unavailable. Please retry.'},503);}
+  }catch(error){if(error.name==='CatalogInputError')return json({error:error.message},400);return json({error:'The published catalog is temporarily unavailable. Please retry.'},503);}
  };
 }
