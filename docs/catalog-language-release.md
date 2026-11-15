@@ -1,3 +1,5 @@
+Current release: [200,000 searchable listings](catalog-200k-release.md). The following notes describe an earlier release.
+
 # Historical release
 
 The current release is documented in [search and content update](search-and-content-update.md): 122,614 listings, corrected region browsing, 12 working templates and eight additional guides. The notes below describe the preceding release.

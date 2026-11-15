@@ -17,9 +17,10 @@
     "check:pages": "node scripts/check-pages.mjs",
     "check:interactions": "node --test scripts/check-interactions.mjs",
     "check:discovery": "node scripts/check-discovery.mjs",
-    "prepare:catalog": "node scripts/prepare-catalog.mjs",
+    "prepare:catalog": "node scripts/prepare-seed.mjs && node scripts/prepare-catalog.mjs",
     "check:languages": "node scripts/check-languages.mjs",
-    "predev": "npm run prepare:catalog"
+    "predev": "npm run prepare:catalog",
+    "pack:catalog-source": "node scripts/catalog/pack-seed.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.16",

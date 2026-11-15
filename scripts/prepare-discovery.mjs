@@ -45,7 +45,8 @@ for(let i=0;i<rows.length;i+=512)await write('records-'+Math.floor(i/512)+'.json
 for(let i=0;i<32;i++)await write('terms-'+i+'.json',Object.fromEntries([...termMaps[i]].map(([term,p])=>[term,packPostings(p)])));
 for(let i=0;i<4;i++)await write('ids-'+i+'.json',idMaps[i]);
 await write('filters.json',filters);
-const categories=taxonomy.map(t=>({name:t.name,count:filters.category[t.name]?.length||0,subcategories:t.subcategories.map(name=>({name,count:(filters.subcategory[name]||[]).filter(id=>(filters.category[t.name]||[]).includes(id)).length})).filter(s=>s.count>0)}));
+const categoryMembers=new Map(taxonomy.map(t=>[t.name,new Set(filters.category[t.name]||[])]));
+const categories=taxonomy.map(t=>({name:t.name,count:categoryMembers.get(t.name).size,subcategories:t.subcategories.map(name=>({name,count:(filters.subcategory[name]||[]).filter(id=>categoryMembers.get(t.name).has(id)).length})).filter(s=>s.count>0)}));
 const manifest={version,root,total:rows.length,record_size:512,id_buckets:4,editorial_count:catalog.length,editorial_names:catalog.map(r=>r.name),discovery_count:rows.length-catalog.length,source_checked:filters.reviewed.yes.length,source_manifest:sourceManifest,sources,categories,excluded:{invalid,shorteners:held},legacy_overlaps:overlaps,id_alias_count:aliases.length,files};
 await fs.writeFile('data/discovery-manifest.json',JSON.stringify(manifest));
 await fs.mkdir('public/catalog-notices',{recursive:true});

@@ -1,0 +1,17 @@
+{
+  "encoding": "gzip",
+  "bytes": 15410180,
+  "sha256": "0199a18a5b932edbf7c52e5b4acfd0b3da4c2f6b2ee3e11a7fe600f1738a207c",
+  "parts": [
+    {
+      "path": "data/catalog-seed/seed-01.part",
+      "bytes": 7864320,
+      "sha256": "99d6e67e54492fa2bb916567c528fc2422905d6d894bbd97af9be36f179ac74a"
+    },
+    {
+      "path": "data/catalog-seed/seed-02.part",
+      "bytes": 7545860,
+      "sha256": "efe611428eb4b07f898fa1a8b86b72c00bccf1e25ebab1509e54e3e5db13516a"
+    }
+  ]
+}

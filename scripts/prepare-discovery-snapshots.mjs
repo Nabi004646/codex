@@ -6,8 +6,8 @@ await fs.writeFile('data/discovery-runtime.json',JSON.stringify(runtimeBase));
 const {queryDiscovery}=await import('../server/discovery-search.mjs');
 const read=pathname=>fs.readFile('public'+pathname,'utf8').then(JSON.parse),queries=[new URLSearchParams()];
 for(const c of manifest.categories){queries.push(new URLSearchParams({category:c.name}));for(const sub of c.subcategories)queries.push(new URLSearchParams({category:c.name,subcategory:sub.name}));}
-for(const q of ['SEO','reels','earn money','make money','AI','automation','finance','fitness','video editing','Shotcut','free domain','business','python','javascript','react','design','free hosting','privacy','android','ios','apps','app','mobile apps'])queries.push(new URLSearchParams({q}));
-for(const kind of ['GitHub repository','Website','Learning resource','Code example','Asset collection','Mobile app'])queries.push(new URLSearchParams({kind}));
+for(const q of ['SEO','reels','earn money','make money','AI','automation','finance','fitness','video editing','Shotcut','free domain','business','python','javascript','react','design','free hosting','privacy','android','ios','apps','app','mobile apps','AI agents','MCP','coding models','robotics','cybersecurity','AI video','text to speech','speech to text','datasets','computer vision','llm','RAG'])queries.push(new URLSearchParams({q}));
+for(const kind of ['GitHub repository','Website','Learning resource','Code example','Asset collection','Mobile app','AI model','Dataset','AI demo'])queries.push(new URLSearchParams({kind}));
 for(const pricing of ['Free','Open source','Free plan','Check terms'])queries.push(new URLSearchParams({pricing}));
 queries.push(new URLSearchParams({reviewed:'1'}));
 const snapshots={};let bytes=0;manifest.files=manifest.files.filter(f=>!f.name.startsWith('snapshot-'));

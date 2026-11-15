@@ -8,6 +8,13 @@ const stop=new Set(['the','a','an','for','to','with','and','of','best','free','t
 const aliases={
  'ai':['ai','artificial','machine learning','llm','generative','local models'],
  'artificial intelligence':['ai','artificial','machine learning','llm'],
+ 'ai agents':['ai agents','agent development','tool calling','function calling'],
+ 'llm':['llm','text generation','language model'],
+ 'models':['model'],
+ 'coding models':['coding model','code model','coder model'],
+ 'datasets':['dataset'],
+ 'ai datasets':['dataset'],
+ 'speech to text':['automatic speech recognition','speech recognition','transcription'],
  'seo':['seo','search optimization','search console','pagespeed','lighthouse','keyword','sitemap'],
  'reels':['reels','short video','video editing','captions','subtitles','transcription','obs'],
  'earn money':['freelanc','invoic','ecommerce','entrepreneur','indie business'],

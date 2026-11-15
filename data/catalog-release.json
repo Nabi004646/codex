@@ -1,0 +1,39 @@
+{
+  "previous_total": 122614,
+  "total": 200000,
+  "added": 77386,
+  "previous_seed_entries": 122576,
+  "seed_entries": 199962,
+  "seed_sha256": "0199a18a5b932edbf7c52e5b4acfd0b3da4c2f6b2ee3e11a7fe600f1738a207c",
+  "seed_bytes": 15410180,
+  "added_types": {
+    "GitHub repository": 4476,
+    "AI demo": 2386,
+    "Dataset": 21000,
+    "AI model": 49524
+  },
+  "added_categories": {
+    "AI & Machine Learning": 73432,
+    "Science & Engineering": 3597,
+    "Cybersecurity": 357
+  },
+  "sources": [
+    {
+      "source": "Awesome MCP Servers — project discovery links",
+      "added": 4476
+    },
+    {
+      "source": "Hugging Face Hub — public AI demos",
+      "added": 2386
+    },
+    {
+      "source": "Hugging Face Hub — public datasets and benchmarks",
+      "added": 21000
+    },
+    {
+      "source": "Hugging Face Hub — public AI models",
+      "added": 49524
+    }
+  ],
+  "publication": "searchable discoveries; current terms require review"
+}

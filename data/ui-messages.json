@@ -4294,5 +4294,77 @@
     "ja": "一致するリソースを世界中から表示しています。",
     "vi": "Các tài nguyên phù hợp được hiển thị trên toàn thế giới.",
     "ne": "संसारभरिका मेल खाने स्रोतहरू देखाइन्छन्।"
+  },
+  "AI model": {
+    "es": "Modelo de IA",
+    "pt-br": "Modelo de IA",
+    "hi": "AI मॉडल",
+    "id": "Model AI",
+    "fr": "Modèle d’IA",
+    "de": "KI-Modell",
+    "ar": "نموذج ذكاء اصطناعي",
+    "ja": "AIモデル",
+    "vi": "Mô hình AI",
+    "ne": "AI मोडेल"
+  },
+  "Dataset": {
+    "es": "Conjunto de datos",
+    "pt-br": "Conjunto de dados",
+    "hi": "डेटासेट",
+    "id": "Dataset",
+    "fr": "Jeu de données",
+    "de": "Datensatz",
+    "ar": "مجموعة بيانات",
+    "ja": "データセット",
+    "vi": "Bộ dữ liệu",
+    "ne": "डेटासेट"
+  },
+  "AI demo": {
+    "es": "Demostración de IA",
+    "pt-br": "Demonstração de IA",
+    "hi": "AI डेमो",
+    "id": "Demo AI",
+    "fr": "Démo d’IA",
+    "de": "KI-Demo",
+    "ar": "عرض ذكاء اصطناعي",
+    "ja": "AIデモ",
+    "vi": "Bản demo AI",
+    "ne": "AI डेमो"
+  },
+  "AI Models & Weights": {
+    "es": "Modelos y pesos de IA",
+    "pt-br": "Modelos e pesos de IA",
+    "hi": "AI मॉडल और वेट",
+    "id": "Model & Bobot AI",
+    "fr": "Modèles et poids d’IA",
+    "de": "KI-Modelle und Gewichte",
+    "ar": "نماذج وأوزان الذكاء الاصطناعي",
+    "ja": "AIモデルと重み",
+    "vi": "Mô hình và trọng số AI",
+    "ne": "AI मोडेल र वेटहरू"
+  },
+  "Datasets & Benchmarks": {
+    "es": "Datos y pruebas de referencia",
+    "pt-br": "Dados e benchmarks",
+    "hi": "डेटासेट और बेंचमार्क",
+    "id": "Dataset & Tolok Ukur",
+    "fr": "Données et évaluations",
+    "de": "Datensätze und Benchmarks",
+    "ar": "مجموعات البيانات والمعايير",
+    "ja": "データセットとベンチマーク",
+    "vi": "Bộ dữ liệu và đánh giá",
+    "ne": "डेटासेट र बेन्चमार्कहरू"
+  },
+  "AI Demos": {
+    "es": "Demostraciones de IA",
+    "pt-br": "Demonstrações de IA",
+    "hi": "AI डेमो",
+    "id": "Demo AI",
+    "fr": "Démos d’IA",
+    "de": "KI-Demos",
+    "ar": "عروض الذكاء الاصطناعي",
+    "ja": "AIデモ",
+    "vi": "Bản demo AI",
+    "ne": "AI डेमोहरू"
   }
 }

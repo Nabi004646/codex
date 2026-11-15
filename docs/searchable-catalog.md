@@ -1,3 +1,5 @@
+Current release: [200,000 searchable listings](catalog-200k-release.md). The following notes describe an earlier release.
+
 # Current release
 
 Superseded by [catalog and language release notes](catalog-language-release.md):92,614 listings, pinned rebuildable source data,11 interface languages and private diagnostics. Historical implementation details below describe the earlier38,237-listing release.

@@ -23,3 +23,6 @@ CHECKSUMS.sha256
 
 # Derived search shards; regenerated from the pinned compressed seed at build time.
 public/catalog/
+
+# Reassembled from verified, tracked source parts before catalog preparation.
+data/discovery-seed.json.gz

@@ -1,3 +1,5 @@
+Current release: [200,000 searchable listings](catalog-200k-release.md). The following notes describe an earlier release.
+
 # Search and content update — 15 November 2026
 
 The searchable discovery catalog increases from 92,614 to 122,614 distinct
