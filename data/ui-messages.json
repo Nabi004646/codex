@@ -4282,5 +4282,17 @@
     "ja": "全 {total} 件中 {start}–{end} 件",
     "vi": "{start}–{end} trên {total} tài nguyên",
     "ne": "{total} स्रोतहरूमध्ये {start}–{end}"
+  },
+  "Matching resources are shown worldwide.": {
+    "es": "Se muestran recursos coincidentes de todo el mundo.",
+    "pt-br": "Os recursos correspondentes são mostrados mundialmente.",
+    "hi": "दुनिया भर के मेल खाने वाले संसाधन दिखाए जाते हैं।",
+    "id": "Sumber daya yang cocok ditampilkan dari seluruh dunia.",
+    "fr": "Les ressources correspondantes sont affichées dans le monde entier.",
+    "de": "Passende Ressourcen werden weltweit angezeigt.",
+    "ar": "تُعرض الموارد المطابقة من جميع أنحاء العالم.",
+    "ja": "一致するリソースを世界中から表示しています。",
+    "vi": "Các tài nguyên phù hợp được hiển thị trên toàn thế giới.",
+    "ne": "संसारभरिका मेल खाने स्रोतहरू देखाइन्छन्।"
   }
 }

@@ -1,3 +1,4 @@
+import {quickTemplates} from '../data/quick-templates.mjs';
 import rows from '../data/template-drafts.json' with {type:'json'};
 export const templateDrafts=rows;
 export function templateSummary(r){return {id:r.id,slug:r.slug,title:r.title,purpose:r.purpose,category:r.category,countries:r.countries,preview_url:r.preview_url,formats:r.files.map(f=>f.format),review_state:r.review_state,published:r.published};}
@@ -8,5 +9,5 @@ export function templateListing(params=new URLSearchParams()){
  return {items:matches.slice((page-1)*24,page*24).map(templateSummary),total,page,pages,categories:[...new Set(rows.map(r=>r.category))]};
 }
 export function templateDraftFile(id,format){if(!/^\d{1,3}$/.test(String(id))||!['pdf','docx','xlsx','csv'].includes(format))return null;return rows.find(r=>r.id===Number(id))?.files.find(f=>f.format===format)||null;}
-export const templatePaths=['/templates',...rows.map(r=>'/templates/'+r.slug)];
-export function templateData(path,params={}){const slug=path.split('/')[2],template=slug?rows.find(r=>r.slug===slug):null;return {type:'templates',template,listing:template?null:templateListing(new URLSearchParams(params))};}
+export const templatePaths=['/templates',...rows.map(r=>'/templates/'+r.slug),...quickTemplates.map(r=>'/templates/quick/'+r.slug)];
+export function templateData(path,params={}){if(path.startsWith('/templates/quick/'))return {type:'templates',quick:quickTemplates.find(r=>r.slug===path.split('/')[3])};const slug=path.split('/')[2],template=slug?rows.find(r=>r.slug===slug):null;return {type:'templates',template,listing:template?null:templateListing(new URLSearchParams(params))};}

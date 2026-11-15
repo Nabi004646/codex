@@ -19,7 +19,8 @@ export async function queryDiscovery(params=new URLSearchParams(),read){
  if(params.get('reviewed'))apply('reviewed','yes');
  if(['reels','video editing'].includes(terms.intent))apply('intent','video');
  if(terms.intent==='seo')apply('intent','seo');
- if(params.get('country'))eligible=new Set();
+ // Region is a browsing preference. Missing country evidence must not erase
+ // matching discoveries or turn an unknown availability into a verified claim.
  if(params.get('mobile'))apply('mobile',params.get('mobile'));
  if(params.get('ram')){const n=Number(params.get('ram')),ram=params.get('workload')?filters.workload_ram[params.get('workload')]||{}:filters.ram;eligible=intersect(eligible,Object.entries(ram).filter(([value])=>Number(value)<=n).flatMap(([,ids])=>ids));}
  if(params.has('ids'))eligible=intersect(eligible,await positions(params.get('ids').split(','),read));
@@ -34,6 +35,6 @@ export async function queryDiscovery(params=new URLSearchParams(),read){
  const total=indices.length,pages=Math.max(1,Math.ceil(total/24)),page=Math.min(requested,pages),selected=indices.slice((page-1)*24,page*24),rows=await records(selected,read);
  // Exact product names take precedence within the returned page.
  if(query&&sort==='featured'){const exact=normalize(query);rows.sort((a,b)=>Number(normalize(b.name)===exact)-Number(normalize(a.name)===exact));}
- return {resources:rows,total,totalCatalog:manifest.total,page,pages,categories:manifest.categories,suggestions:!total&&query?suggestions(query):[],offline:false,catalogMode:'discovery',catalogLabel:'discovered listings',relatedQuery:terms.related,discoveryVersion:manifest.version};
+ return {resources:rows,total,totalCatalog:manifest.total,page,pages,categories:manifest.categories,suggestions:!total&&query?suggestions(query):[],offline:false,catalogMode:'discovery',catalogLabel:'discovered listings',countryAvailability:'unverified',relatedQuery:terms.related,discoveryVersion:manifest.version};
 }
 export {manifest as discoveryManifest};

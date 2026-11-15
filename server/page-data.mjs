@@ -1,7 +1,7 @@
 import {templateData} from './templates.mjs';
 import {articles,kits,policies} from './public-content.mjs';
 import {catalog} from './catalog.mjs';
-const summaries=articles.map(({slug,title,description,category,resourceNames,created_at})=>({slug,title,description,category,resourceNames,created_at}));
+const summaries=articles.map(({slug,title,description,category,resourceNames,created_at})=>({slug,title,description,category,resourceNames,created_at,cover_url:'/article-covers/'+slug+'.svg'}));
 const resources=names=>names.map(n=>catalog.find(r=>r.name===n)).filter(Boolean);
 export function publicData(path,params={}){
  if(path==='/templates'||path.startsWith('/templates/'))return templateData(path,params);

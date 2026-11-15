@@ -1,3 +1,7 @@
+# Historical release
+
+The current release is documented in [search and content update](search-and-content-update.md): 122,614 listings, corrected region browsing, 12 working templates and eight additional guides. The notes below describe the preceding release.
+
 # Catalog, languages and search navigation
 
 The searchable discovery catalog contains92,614 unique canonical-URL listings,

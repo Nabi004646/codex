@@ -8,3 +8,14 @@
 @media(max-width:380px){.site-header .wordmark span{font-size:16px}.site-header .wordmark svg{width:23px;height:23px}.header-language select{max-width:82px}.site-header{padding-inline:10px;gap:6px}}
 .locale-root .directory-results{scroll-margin-block-start:0px;min-block-size:calc(100svh - 84px)}.directory-results.show-result-heading .results-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.results-title>div:first-child{min-width:0}.results-title h2{font-family:var(--display);font-size:clamp(23px,2vw,29px);line-height:1.25;overflow-wrap:anywhere;margin:5px 0}.results-title h2>span{font-family:var(--body);font-size:13px;margin-inline-start:10px;white-space:nowrap}.results-title .section-label{font-size:10px;letter-spacing:.08em;color:#66716a}
 .directory-results.show-result-heading .results-title>div:first-child{display:block}
+/* A native, keyboard-accessible picker in the library's warm palette. */
+.header-language{position:relative;display:inline-flex;align-items:center;max-width:164px;border:1px solid #e6cb70;border-radius:999px;background:#fff8dc;box-shadow:0 2px 0 #eadba955;transition:background .18s,border-color .18s,box-shadow .18s}
+.header-language:hover{background:#ffefb2;border-color:#ccac47}
+.header-language:focus-within{outline:2px solid #b47d16;outline-offset:3px}
+.header-language select{appearance:none;max-width:164px;width:100%;min-height:39px;padding:7px 29px 7px 35px;border:0;outline:0!important;border-radius:inherit;background:transparent;font-size:12px;font-weight:600;cursor:pointer}
+.language-symbol,.language-chevron{position:absolute;pointer-events:none;color:#735215}
+.language-symbol{inset-inline-start:12px}.language-chevron{inset-inline-end:11px}
+.locale-root[dir=rtl] .header-language select{padding:7px 35px 7px 29px}
+.region-search-note{font-size:12px;line-height:1.7;color:#625225;background:#fff9e9;border-inline-start:3px solid #e3bf50;padding:10px 13px;margin:8px 0 16px}
+@media(max-width:600px){.header-language{max-width:126px}.header-language select{max-width:126px;font-size:11px;min-height:36px;padding-inline:29px 23px}.language-symbol{width:15px;inset-inline-start:9px}.language-chevron{inset-inline-end:8px}.mobile-workspace-nav .header-language{max-width:none;width:100%}}
+@media(max-width:380px){.header-language,.header-language select{max-width:108px}.header-language select{padding-inline:25px 20px}.language-symbol{inset-inline-start:6px}.language-chevron{inset-inline-end:5px}}

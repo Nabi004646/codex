@@ -17,6 +17,7 @@ function AdminRoute(){
 }
 export default function App({page}:any){
  const [country,setCountry]=useState(page.params.country||'');
+ const changeCountry=(value:string)=>{setCountry(value);try{localStorage.setItem('atlas-country',value);}catch{}};
  useEffect(()=>{try{if(!Object.hasOwn(page.params,'country')){const saved=localStorage.getItem('atlas-country');if(saved!==null&&['','US','GB','CA','AU'].includes(saved))setCountry(saved);}}catch{}},[]);
  useEffect(()=>observeSidebarPosition(window,document),[country,page.path]);
  let content;
@@ -24,7 +25,7 @@ export default function App({page}:any){
  else if(page.liveResource)content=<ResourceDetail resource={page.liveResource} related={page.related}/>;
  else if(page.document)content=<PublicPages doc={page.document}/>;
  else if(page.kind==='missing'||page.kind==='pending')content=<><main className="atlas-control document" lang="en" dir="ltr"><a href="/">← Back to directory</a><h1>{page.kind==='missing'?'Page not found':'This resource is temporarily unavailable'}</h1><p>{page.kind==='missing'?'This address is not available. Browse the library or choose a guide to continue.':'The catalog could not answer this request. Retry later; no unpublished resource has been substituted.'}</p><a href="/guides">Explore practical guides →</a></main><SiteFooter/></>;
- else content=<><Library initial={page.result} initialFilters={page.params} articles={page.articleCards} country={country}/>{page.topic&&<section className="topic-editorial atlas-control"><h2>A useful starting point for this topic</h2><p>{page.topic.intro}</p><a href={'/blog/'+page.topic.guide}>Read the practical workflow →</a><p>These are local editorial review entries. Read each listing’s source-check state and limits before using it. A suggested workflow is not a tested compatibility guarantee.</p></section>}</>;
+ else content=<><Library initial={page.result} initialFilters={page.params} articles={page.articleCards} country={country} onCountryChange={changeCountry}/>{page.topic&&<section className="topic-editorial atlas-control"><h2>A useful starting point for this topic</h2><p>{page.topic.intro}</p><a href={'/blog/'+page.topic.guide}>Read the practical workflow →</a><p>These are local editorial review entries. Read each listing’s source-check state and limits before using it. A suggested workflow is not a tested compatibility guarantee.</p></section>}</>;
  if(page.kind==='admin')return content;
- return <LocaleProvider initialLocale={page.uiLocale||'en'} countryHint={page.countryHint||''}>{page.kind!=='admin'&&<LocaleSettings country={country} showCountry={page.kind==='preview'} setCountry={(value:string)=>{setCountry(value);try{localStorage.setItem('atlas-country',value);}catch{}}}/>}{content}{page.kind!=='admin'&&<CompareTray/>}</LocaleProvider>;
+ return <LocaleProvider initialLocale={page.uiLocale||'en'} countryHint={page.countryHint||''}>{page.kind!=='admin'&&<LocaleSettings country={country} showCountry={false} setCountry={changeCountry}/>}{content}{page.kind!=='admin'&&<CompareTray/>}</LocaleProvider>;
 }
