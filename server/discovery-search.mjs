@@ -24,11 +24,15 @@ export async function queryDiscovery(params=new URLSearchParams(),read){
  if(params.get('mobile'))apply('mobile',params.get('mobile'));
  if(params.get('ram')){const n=Number(params.get('ram')),ram=params.get('workload')?filters.workload_ram[params.get('workload')]||{}:filters.ram;eligible=intersect(eligible,Object.entries(ram).filter(([value])=>Number(value)<=n).flatMap(([,ids])=>ids));}
  if(params.has('ids'))eligible=intersect(eligible,await positions(params.get('ids').split(','),read));
- const scores=new Map();
+ const scores=new Map(),appIntent=/^(?:mobile )?apps?$/.test(normalize(query));
+ const documentedApps=appIntent?[...new Set([...(filters.kind['Mobile app']||[]),...Object.values(filters.mobile).flat()])]:[];
  if(terms.groups.length){
   const distinct=[...new Set(terms.groups.flat())],tables=await Promise.all([...new Set(distinct.map(t=>bucket(t)))].map(async n=>[n,await asset('terms-'+n+'.json',read)]));const maps=new Map(tables);
   for(const group of terms.groups){let matches=null;const groupScores=new Map();for(const term of group){const posting=unpackPostings(maps.get(bucket(term))?.[term]);matches=intersect(matches,posting.map(([id])=>id));for(const [id,score]of posting)groupScores.set(id,(groupScores.get(id)||0)+score);}for(const id of matches||[])if(!eligible||eligible.has(id))scores.set(id,Math.max(scores.get(id)||0,groupScores.get(id)||0));}
  }
+ // Broad app searches should include documented apps even when a product name
+ // does not contain the English word app. This uses recorded platform/type facts.
+ for(const id of documentedApps)if(!eligible||eligible.has(id))scores.set(id,Math.max(scores.get(id)||0,60));
  let indices=terms.groups.length?[...scores.keys()]:eligible?[...eligible]:Array.from({length:manifest.total},(_,i)=>i);
  const sort=params.get('sort')||'featured';if(!['featured','az','name','newest','recent'].includes(sort))throw Error('Choose an available sort order.');
  indices.sort((a,b)=>['az','name'].includes(sort)?filters.az[a]-filters.az[b]:['newest','recent'].includes(sort)?filters.newest[a]-filters.newest[b]:((scores.get(b)||0)+(query&&b<manifest.editorial_count?40:0))-((scores.get(a)||0)+(query&&a<manifest.editorial_count?40:0))||a-b);

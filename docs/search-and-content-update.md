@@ -34,7 +34,7 @@ Previously, any country selection forcibly returned zero discoveries. Country is
 now a browsing preference where availability evidence is missing: matching global
 results remain visible with an explicit unverified-availability notice. It does
 not claim a resource works in the selected country. Common app queries have
-server-rendered snapshots. Region controls are inside the filters, and a loading
+server-rendered snapshots. Broad app searches prioritize recorded mobile-app facts, so a product need not contain the English word app in its name to appear. Region controls are inside the filters, and a loading
 count is shown as an ellipsis rather than a misleading zero. An optional published
 CMS section cannot display an unrelated outage above successful discovery results.
 The actual published-resource API continues to report its own errors.
