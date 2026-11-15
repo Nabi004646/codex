@@ -13,14 +13,15 @@
     "postbuild": "node scripts/check-build.mjs",
     "prepare:preview": "node scripts/prepare-preview-assets.mjs && node scripts/prepare-editorial-art.mjs",
     "build:pages": "npm run build && node scripts/build-pages.mjs && node scripts/check-pages.mjs",
-    "check": "node scripts/check-model.mjs && node scripts/check-public.mjs && node scripts/check-runtime-http.mjs && npm run check:interactions && npm run check:discovery && npm run check:languages && node scripts/check-quick-templates.mjs",
+    "check": "node scripts/check-model.mjs && node scripts/check-public.mjs && node scripts/check-runtime-http.mjs && npm run check:interactions && npm run check:discovery && npm run check:languages && node scripts/check-quick-templates.mjs && npm run check:search",
     "check:pages": "node scripts/check-pages.mjs",
     "check:interactions": "node --test scripts/check-interactions.mjs",
     "check:discovery": "node scripts/check-discovery.mjs",
     "prepare:catalog": "node scripts/prepare-seed.mjs && node scripts/prepare-catalog.mjs",
     "check:languages": "node scripts/check-languages.mjs",
-    "predev": "npm run prepare:catalog",
-    "pack:catalog-source": "node scripts/catalog/pack-seed.mjs"
+    "predev": "node scripts/ensure-catalog.mjs",
+    "pack:catalog-source": "node scripts/catalog/pack-seed.mjs",
+    "check:search": "node --test scripts/check-smart-search.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.16",

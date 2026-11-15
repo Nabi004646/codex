@@ -1,7 +1,7 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';
 import {templateDraftFile} from '../server/templates.mjs';
-import {catalog} from '../server/catalog.mjs';import {queryPreview,initial} from '../server/preview.mjs';import {routeState} from '../server/routes.mjs';import {topics,articles,publicPaths} from '../server/public-content.mjs';
-assert.equal(catalog.length,42);assert.equal(new Set(catalog.map(r=>r.id)).size,42);assert.equal(new Set(catalog.map(r=>r.url.replace(/\/$/,''))).size,42);
+import {catalog} from '../server/catalog.mjs';import {consumerEntries} from '../data/consumer-catalog.mjs';import {queryPreview,initial} from '../server/preview.mjs';import {routeState} from '../server/routes.mjs';import {topics,articles,publicPaths} from '../server/public-content.mjs';
+assert.equal(catalog.length,42+consumerEntries.length);assert.equal(new Set(catalog.map(r=>r.id)).size,catalog.length);assert.equal(new Set(catalog.map(r=>r.url.replace(/\/$/,''))).size,catalog.length);
 const query=p=>queryPreview(new URLSearchParams(p));
 assert.equal(query({q:'Shotcut'}).resources[0].name,'Shotcut');
 assert.ok(query({q:'SEO'}).resources.some(r=>r.name==='Lighthouse'));
@@ -14,7 +14,7 @@ assert.ok(query({category:'Video & Film',subcategory:'Screen Recording'}).resour
 assert.ok(query({platform:'Linux',signup:'Not required'}).resources.every(r=>r.free_details.platforms.includes('Linux')&&r.free_details.signup==='Not required'));
 assert.ok(query({ram:'4',workload:'4K'}).resources.every(r=>r.device_details.workload_ram_gb['4K']<=4));assert.ok(!query({ram:'4',workload:'4K'}).resources.some(r=>r.name==='Shotcut'));
 assert.equal(query({country:'US'}).total,0);
-assert.equal(query({mobile:'both'}).resources[0].name,'wger');assert.ok(query({mobile:'both'}).resources.every(r=>r.mobile_platforms.includes('android')&&r.mobile_platforms.includes('ios')));assert.ok(query({q:'Android'}).resources.some(r=>r.name==='wger'));assert.equal(query({view:'saved'}).total,0);
+assert.equal(query({mobile:'both'}).resources[0].name,'wger');assert.ok(query({mobile:'both'}).resources.every(r=>r.mobile_platforms.includes('android')&&r.mobile_platforms.includes('ios')));assert.ok(query({q:'Android',ids:catalog.find(r=>r.name==='wger').id}).resources.some(r=>r.name==='wger'));assert.equal(query({view:'saved'}).total,0);
 assert.deepEqual(query({sort:'az'}).resources.map(r=>r.name),catalog.map(r=>r.name).sort((a,b)=>a.localeCompare(b,'en')).slice(0,24));
 assert.equal(query({page:'NaN'}).page,1);
 assert.equal(initial('/?view=saved').params.section,'saved');assert.equal(initial('/collections').params.section,'collections');

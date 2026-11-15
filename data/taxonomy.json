@@ -397,5 +397,15 @@
       "Social Networks",
       "Other Community Resources"
     ]
+  },
+  {
+    "name": "Games & Entertainment",
+    "description": "Find mobile, PC and browser games with clear free or paid access labels and official provider links.",
+    "subcategories": [
+      "Mobile Games",
+      "PC Games",
+      "Browser Games",
+      "Game Stores & Launchers"
+    ]
   }
 ]

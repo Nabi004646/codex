@@ -1,5 +1,8 @@
 // Search intents, not translated product names. Original names stay searchable.
 const groups={
+ games:['juegos','jogos','गेम','खेल','permainan','jeux','spiele','ألعاب','ゲーム','trò chơi'],
+ 'mobile apps':['aplicaciones móviles','aplicativos móveis','मोबाइल ऐप','aplikasi seluler','applications mobiles','handy apps','تطبيقات الهاتف','モバイルアプリ','ứng dụng di động','मोबाइल एप'],
+ software:['programas','programmes','सॉफ्टवेयर','सफ्टवेयर','perangkat lunak','logiciels','programme','برامج','ソフトウェア','phần mềm'],
  ai:['inteligencia artificial','herramientas ia','inteligência artificial','ferramentas ia','एआई','आर्टिफिशियल इंटेलिजेंस','kecerdasan buatan','intelligence artificielle','outils ia','künstliche intelligenz','ki tools','الذكاء الاصطناعي','人工知能','aiツール','trí tuệ nhân tạo','công cụ ai','कृत्रिम बुद्धिमत्ता'],
  seo:['posicionamiento web','optimización de buscadores','otimização de buscas','एसईओ','optimasi mesin pencari','référencement','optimisation moteurs de recherche','suchmaschinenoptimierung','تحسين محركات البحث','検索エンジン最適化','tối ưu công cụ tìm kiếm'],
  'video editing':['edición de vídeo','edición de video','editar videos','edição de vídeo','वीडियो एडिटिंग','वीडियो संपादन','edit video','penyuntingan video','montage vidéo','videobearbeitung','تحرير الفيديو','動画編集','chỉnh sửa video','भिडियो सम्पादन'],

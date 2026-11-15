@@ -1,0 +1,66 @@
+/* Each filter owns its column, including intrinsic-width native selects. */
+.library-shell .advanced-resource-filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));align-items:start;gap:18px 16px;min-width:0;max-width:100%;padding:18px}
+.library-shell .advanced-resource-filters>label{display:grid;gap:7px;min-width:0;width:100%;font-size:12px;line-height:1.5;align-content:start}
+.library-shell .advanced-resource-filters>label>span{overflow-wrap:anywhere}
+.library-shell .advanced-resource-filters select{display:block;width:100%;min-width:0;max-width:100%;min-height:44px;padding:10px;font-size:13px;text-overflow:ellipsis}
+.library-shell .advanced-resource-filters .reviewed-only{display:flex;align-items:center;gap:10px;grid-column:1/-1;padding-top:3px}
+.library-shell .reviewed-only input{flex:0 0 18px;width:18px;height:18px;margin:0}
+.library-shell .advanced-resource-filters>p{grid-column:1/-1;font-size:12px;line-height:1.7;min-width:0;overflow-wrap:anywhere}
+.library-shell .advanced-resource-filters>p>a{text-decoration:underline;text-underline-offset:3px}
+.library-shell .resource-filters,.library-shell .result-controls{min-width:0;max-width:100%}
+.library-shell .result-controls>label{min-width:0}
+.library-shell .result-controls select{max-width:100%;min-width:0;min-height:40px}
+.access-paid,.suggestion-price.paid{background:#f6e7df;color:#713d27;border-color:#e1c8ba}
+
+/* One border and one native control; focus stays visible for keyboard users. */
+.library-shell .header-language{position:relative;display:inline-flex;align-items:center;flex:0 0 auto;width:150px;max-width:150px;border:1px solid #dec365;border-radius:999px;background:#fff7d5;box-shadow:none;outline:none}
+.library-shell .header-language:hover{background:#fff0b5}
+.library-shell .header-language select{display:block;appearance:none;width:100%;max-width:none;min-width:0;min-height:42px;padding:9px 30px 9px 35px;border:0;border-radius:inherit;background:transparent;font-size:12px;font-weight:600;line-height:1.4;box-shadow:none;outline:none!important;text-overflow:ellipsis}
+.library-shell .header-language select:focus{border:0;box-shadow:none}
+.library-shell .header-language:has(select:focus-visible){outline:2px solid #8d650b;outline-offset:3px}
+.library-shell .header-language .language-symbol{inset-inline-start:12px}
+.library-shell .header-language .language-chevron{inset-inline-end:12px}
+.locale-root[dir=rtl] .library-shell .header-language select{padding-inline:35px 30px}
+.library-shell .mobile-workspace-nav .header-language{flex-basis:100%;width:100%;max-width:100%;margin:0 0 8px}
+.library-shell .mobile-workspace-nav .header-language select{width:100%;max-width:none;min-height:46px;font-size:14px}
+
+.library-shell .main-search{position:relative;isolation:isolate}
+.library-shell .main-search .search-suggestions{inset-inline:0;top:calc(100% + 7px);max-height:min(440px,60svh);overflow-y:auto;overscroll-behavior:contain;padding:6px;border-radius:8px}
+.autocomplete-heading,.autocomplete-hint{padding:8px 12px;font-size:11px;color:#68716b;line-height:1.5}
+.autocomplete-heading{font-weight:700;letter-spacing:.03em}
+.autocomplete-hint{border-top:1px solid #edf0e9;margin-top:4px}
+.library-shell .search-suggestions>button{min-height:49px;gap:11px;padding:9px 12px;text-align:start}
+.suggestion-copy{display:grid;gap:3px;min-width:0;flex:1}
+.suggestion-copy strong{font-size:13px;font-weight:650;overflow-wrap:anywhere}
+.suggestion-copy small{font-size:10px;color:#66716a}
+.suggestion-price{flex-shrink:0;padding:3px 7px;border:1px solid #dfd9b7;border-radius:4px;background:#fff6cf;font-size:10px;line-height:1.4}
+.library-shell .search-suggestions>button>svg:last-child{margin-inline-start:0}
+
+@media(max-width:600px){
+ .library-shell .site-header{gap:8px}
+ .library-shell .site-header .wordmark{flex:1 1 auto;min-width:0;gap:6px}
+ .library-shell .site-header .wordmark>span{font-size:clamp(12px,4.2vw,19px);letter-spacing:-.6px}
+ .library-shell .site-header .wordmark>svg{width:26px;height:26px}
+ .library-shell .site-header>.header-language{width:clamp(96px,26vw,126px);max-width:126px;margin-inline-start:0}
+ .library-shell .site-header>.header-language select{min-height:38px;font-size:11px;padding-inline:27px 22px}
+ .library-shell .site-header>.header-language .language-symbol{inset-inline-start:8px;width:14px}
+ .library-shell .site-header>.header-language .language-chevron{inset-inline-end:7px;width:11px}
+ .library-shell .result-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%}
+ .library-shell .result-controls>label{display:grid;gap:5px;align-items:start}
+ .library-shell .result-controls select{width:100%;font-size:12px}
+ .library-shell .search-suggestions>button{padding-inline:9px}
+ .suggestion-copy strong{font-size:12px}
+ .suggestion-price{font-size:10px}
+ .autocomplete-hint{display:none}
+}
+@media(max-width:560px){.library-shell .advanced-resource-filters{grid-template-columns:minmax(0,1fr);padding:16px;gap:16px}}
+@media(max-width:380px){
+ .library-shell .site-header{padding-inline:10px;gap:6px}
+ .library-shell .site-header .wordmark{gap:5px}
+ .library-shell .site-header .wordmark>svg{width:22px;height:22px}
+ .library-shell .site-header>.header-language{width:90px;max-width:90px}
+}
+
+.library-shell .sidebar-count{gap:12px;white-space:normal;align-items:center}
+.library-shell .sidebar-count>button:first-child{min-width:0;text-align:start;line-height:1.6;overflow-wrap:anywhere}
+.library-shell .sidebar-count>.mobile-close{flex-shrink:0}

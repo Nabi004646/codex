@@ -1,4 +1,5 @@
 import manifest from '../data/discovery-runtime.json' with {type:'json'};
+import {searchPlan,editDistance} from './search-intents.mjs';
 import {bucket,normalize,searchTerms,unpackPostings,isPublicLink} from './discovery-codec.mjs';
 const cache=new Map(),MAX_CACHE=48;
 async function asset(name,read){const path=manifest.root+'/'+name;if(cache.has(path)){const value=cache.get(path);cache.delete(path);cache.set(path,value);return value;}const value=await read(path);cache.set(path,value);while(cache.size>MAX_CACHE)cache.delete(cache.keys().next().value);return value;}
@@ -11,34 +12,57 @@ async function records(indices,read){const chunks=[...new Set(indices.map(n=>Mat
 async function positions(ids,read){const unique=[...new Set(ids)].filter(id=>/^[A-Za-z0-9_-]{1,80}$/.test(id)).slice(0,500),groups=[...new Set(unique.map(id=>bucket(id,manifest.id_buckets)))],maps=await Promise.all(groups.map(n=>asset('ids-'+n+'.json',read))),lookup=Object.assign({},...maps);return [...new Set(unique.map(id=>lookup[id]).filter(Number.isInteger))];}
 export async function discoveryByIds(ids,read){return records(await positions(ids,read),read);}
 export async function queryDiscovery(params=new URLSearchParams(),read){
- const query=params.get('q')||'';if(query.length>160)throw Error('Use at most 160 search characters.');
- const requested=Number(params.get('page')||1);if(!Number.isInteger(requested)||requested<1||requested>10000)throw Error('The requested page is invalid.');
- const filters=await asset('filters.json',read),terms=searchTerms(query);let eligible=null;
+ const query=params.get('q')||'';
+ if(query.length>160)throw Error('Use at most 160 search characters.');
+ const requested=Number(params.get('page')||1);
+ if(!Number.isInteger(requested)||requested<1||requested>10000)throw Error('The requested page is invalid.');
+ const filters=await asset('filters.json',read),plan=searchPlan(query,normalize);
+ let terms=searchTerms(plan.text),eligible=null,correctedQuery='';
  const apply=(name,value)=>{if(value)eligible=intersect(eligible,filters[name]?.[value]||[]);};
- for(const [name,key]of[['category','category'],['subcategory','subcategory'],['kind','kind'],['pricing','pricing'],['platform','platform'],['signup','signup'],['offline','offline'],['gpu','gpu']])apply(name,params.get(key));
+ for(const [name,key]of [['category','category'],['subcategory','subcategory'],['kind','kind'],['pricing','pricing'],['platform','platform'],['signup','signup'],['offline','offline'],['gpu','gpu']])apply(name,params.get(key));
  if(params.get('reviewed'))apply('reviewed','yes');
+ if(plan.scope)apply('intent',plan.scope);
+ if(plan.desktop)apply('intent','desktop');
+ if(plan.mobileOnly)apply('intent','mobile');
+ if(plan.platform)apply('platform',plan.platform);
+ if(plan.pricing==='paid')apply('pricing','Paid');
+ if(plan.pricing==='free')eligible=intersect(eligible,['Free','Open source','Free plan'].flatMap(p=>filters.pricing[p]||[]));
  if(['reels','video editing'].includes(terms.intent))apply('intent','video');
  if(terms.intent==='seo')apply('intent','seo');
- // Region is a browsing preference. Missing country evidence must not erase
- // matching discoveries or turn an unknown availability into a verified claim.
+ // Country is a preference, not evidence of a verified country restriction.
  if(params.get('mobile'))apply('mobile',params.get('mobile'));
  if(params.get('ram')){const n=Number(params.get('ram')),ram=params.get('workload')?filters.workload_ram[params.get('workload')]||{}:filters.ram;eligible=intersect(eligible,Object.entries(ram).filter(([value])=>Number(value)<=n).flatMap(([,ids])=>ids));}
  if(params.has('ids'))eligible=intersect(eligible,await positions(params.get('ids').split(','),read));
- const scores=new Map(),appIntent=/^(?:mobile )?apps?$/.test(normalize(query));
- const documentedApps=appIntent?[...new Set([...(filters.kind['Mobile app']||[]),...Object.values(filters.mobile).flat()])]:[];
- if(terms.groups.length){
-  const distinct=[...new Set(terms.groups.flat())],tables=await Promise.all([...new Set(distinct.map(t=>bucket(t)))].map(async n=>[n,await asset('terms-'+n+'.json',read)]));const maps=new Map(tables);
-  for(const group of terms.groups){let matches=null;const groupScores=new Map();for(const term of group){const posting=unpackPostings(maps.get(bucket(term))?.[term]);matches=intersect(matches,posting.map(([id])=>id));for(const [id,score]of posting)groupScores.set(id,(groupScores.get(id)||0)+score);}for(const id of matches||[])if(!eligible||eligible.has(id))scores.set(id,Math.max(scores.get(id)||0,groupScores.get(id)||0));}
+ const pureScope=plan.scope&&plan.text===plan.scope;
+ async function matchesFor(search){
+  const scores=new Map();
+  if(!search.groups.length)return scores;
+  const distinct=[...new Set(search.groups.flat())],tables=await Promise.all([...new Set(distinct.map(t=>bucket(t)))].map(async n=>[n,await asset('terms-'+n+'.json',read)])),maps=new Map(tables);
+  for(const group of search.groups){
+   let matches=null;const groupScores=new Map();
+   for(const term of group){const posting=unpackPostings(maps.get(bucket(term))?.[term]);matches=intersect(matches,posting.map(([id])=>id));for(const [id,score]of posting)groupScores.set(id,(groupScores.get(id)||0)+score);}
+   for(const id of matches||[])if(!eligible||eligible.has(id))scores.set(id,Math.max(scores.get(id)||0,groupScores.get(id)||0));
+  }
+  return scores;
  }
- // Broad app searches should include documented apps even when a product name
- // does not contain the English word app. This uses recorded platform/type facts.
- for(const id of documentedApps)if(!eligible||eligible.has(id))scores.set(id,Math.max(scores.get(id)||0,60));
- let indices=terms.groups.length?[...scores.keys()]:eligible?[...eligible]:Array.from({length:manifest.total},(_,i)=>i);
- const sort=params.get('sort')||'featured';if(!['featured','az','name','newest','recent'].includes(sort))throw Error('Choose an available sort order.');
+ let scores=pureScope?new Map():await matchesFor(terms);
+ // Full product names and aliases rank above incidental words in repositories.
+ for(const id of filters.named?.[normalize(plan.text)]||[])if(!eligible||eligible.has(id))scores.set(id,10000);
+ if(query&&!pureScope&&!scores.size&&plan.text.length>=3&&plan.text.length<=65){
+  const candidate=Object.keys(filters.named||{}).map(name=>({name,d:editDistance(normalize(plan.text),name)})).filter(v=>v.d<=(plan.text.length>=6?2:1)).sort((a,b)=>a.d-b.d||a.name.length-b.name.length)[0];
+  if(candidate){
+   const corrected=await matchesFor(searchTerms(candidate.name));
+   for(const id of filters.named[candidate.name]||[])if(!eligible||eligible.has(id))corrected.set(id,10000);
+   if(corrected.size){scores=corrected;correctedQuery=candidate.name;}
+  }
+ }
+ let indices=query&&!pureScope?[...scores.keys()]:eligible?[...eligible]:Array.from({length:manifest.total},(_,i)=>i);
+ const sort=params.get('sort')||'featured';
+ if(!['featured','az','name','newest','recent'].includes(sort))throw Error('Choose an available sort order.');
  indices.sort((a,b)=>['az','name'].includes(sort)?filters.az[a]-filters.az[b]:['newest','recent'].includes(sort)?filters.newest[a]-filters.newest[b]:((scores.get(b)||0)+(query&&b<manifest.editorial_count?40:0))-((scores.get(a)||0)+(query&&a<manifest.editorial_count?40:0))||a-b);
- const total=indices.length,pages=Math.max(1,Math.ceil(total/24)),page=Math.min(requested,pages),selected=indices.slice((page-1)*24,page*24),rows=await records(selected,read);
- // Exact product names take precedence within the returned page.
- if(query&&sort==='featured'){const exact=normalize(query);rows.sort((a,b)=>Number(normalize(b.name)===exact)-Number(normalize(a.name)===exact));}
- return {resources:rows,total,totalCatalog:manifest.total,page,pages,categories:manifest.categories,suggestions:!total&&query?suggestions(query):[],offline:false,catalogMode:'discovery',catalogLabel:'discovered listings',countryAvailability:'unverified',relatedQuery:terms.related,discoveryVersion:manifest.version};
+ const total=indices.length,pages=Math.max(1,Math.ceil(total/24)),page=Math.min(requested,pages),rows=await records(indices.slice((page-1)*24,page*24),read);
+ if(correctedQuery)correctedQuery=rows[0]?.name||correctedQuery;
+ if(query&&sort==='featured'){const exact=normalize(plan.text);rows.sort((a,b)=>Number(normalize(b.name)===exact)-Number(normalize(a.name)===exact));}
+ return {resources:rows,total,totalCatalog:manifest.total,page,pages,categories:manifest.categories,suggestions:correctedQuery?[correctedQuery]:!total&&query?suggestions(query):[],correctedQuery:correctedQuery||undefined,offline:false,catalogMode:'discovery',catalogLabel:'discovered listings',countryAvailability:'unverified',relatedQuery:terms.related,discoveryVersion:manifest.version};
 }
 export {manifest as discoveryManifest};

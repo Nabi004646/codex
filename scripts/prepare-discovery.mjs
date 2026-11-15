@@ -18,8 +18,8 @@ const withheld=new Set(['1cec592b992c467f','903160da268c9e99','2bc8e64c5b95f2cf'
 const canonical=value=>{const u=new URL(value);if(u.hostname==='github.com'){const parts=u.pathname.split('/').filter(Boolean);if(parts.length>=2){parts[0]=parts[0].toLowerCase();parts[1]=parts[1].replace(/\.git$/i,'').toLowerCase();u.pathname='/'+parts.join('/');}}return u.href;};
 const rows=catalog.map(r=>({...r,source_label:'Editorial catalog',discovery:false})),urls=new Set(rows.map(r=>canonical(r.url))),positions=new Map(rows.map((r,index)=>[canonical(r.url),index])),aliases=[],ids=new Set(rows.map(r=>r.id));let invalid=seed.legacy_excluded?.invalid||0,held=seed.legacy_excluded?.shorteners||0,overlaps=0;
 for(const raw of seed.entries){const [id,name,url,category,subcategory,kind,sourceIndex,tags]=raw;if(!isPublicLink(url)){invalid++;continue;}if(withheld.has(id)){held++;continue;}const key=canonical(url);if(urls.has(key)){overlaps++;aliases.push([id,positions.get(key)]);continue;}if(ids.has(id))throw Error('Duplicate resource ID: '+id);if(!sources[sourceIndex]||!taxonomy.some(t=>t.name===category&&t.subcategories.includes(subcategory)))throw Error('Unknown source or taxonomy for '+id);urls.add(key);positions.set(key,rows.length);ids.add(id);rows.push([id,name,key,category,subcategory,kind,sourceIndex,tags,...raw.slice(8)]);}
-const version=crypto.createHash('sha256').update(JSON.stringify(rows)+JSON.stringify(sourceManifest)+await fs.readFile(new URL(import.meta.url),'utf8')+await fs.readFile('server/discovery-codec.mjs','utf8')+await fs.readFile('server/discovery-search.mjs','utf8')+await fs.readFile('scripts/prepare-discovery-snapshots.mjs','utf8')+await fs.readFile('server/search-language-aliases.mjs','utf8')).digest('hex').slice(0,16),root='/catalog/'+version,folder='public'+root;await fs.rm('public/catalog',{recursive:true,force:true});await fs.mkdir(folder,{recursive:true});
-const termMaps=Array.from({length:32},()=>new Map()),idMaps=Array.from({length:4},()=>({}));const filters={category:{},subcategory:{},kind:{},pricing:{},platform:{},signup:{},offline:{},gpu:{},mobile:{},ram:{},workload_ram:{},intent:{},reviewed:{},az:[],newest:[]};const push=(key,value,id)=>{if(value)(filters[key][value]??=[]).push(id);};
+const version=crypto.createHash('sha256').update(JSON.stringify(rows)+JSON.stringify(sourceManifest)+await fs.readFile(new URL(import.meta.url),'utf8')+await fs.readFile('server/discovery-codec.mjs','utf8')+await fs.readFile('server/discovery-search.mjs','utf8')+await fs.readFile('scripts/prepare-discovery-snapshots.mjs','utf8')+await fs.readFile('server/search-language-aliases.mjs','utf8')+await fs.readFile('server/search-intents.mjs','utf8')+await fs.readFile('server/search-autocomplete.mjs','utf8')).digest('hex').slice(0,16),root='/catalog/'+version,folder='public'+root;await fs.rm('public/catalog',{recursive:true,force:true});await fs.mkdir(folder,{recursive:true});
+const termMaps=Array.from({length:32},()=>new Map()),idMaps=Array.from({length:4},()=>({}));const filters={category:{},subcategory:{},kind:{},pricing:{},platform:{},signup:{},offline:{},gpu:{},mobile:{},ram:{},workload_ram:{},intent:{},reviewed:{},named:{},az:[],newest:[]};const push=(key,value,id)=>{if(value)(filters[key][value]??=[]).push(id);};
 const descriptions=[];
 for(let id=0;id<rows.length;id++){
  const raw=rows[id],r=Array.isArray(raw)?{id:raw[0],name:raw[1],url:raw[2],category:raw[3],subcategory:raw[4],kind:raw[5],tags:raw[7],pricing:'Check terms'}:raw;
@@ -29,11 +29,17 @@ for(let id=0;id<rows.length;id++){
  for(const [workload,gb]of Object.entries(r.device_details?.workload_ram_gb||{}))((filters.workload_ram[workload]??={})[gb]??=[]).push(id);
  for(const platform of r.mobile_platforms||[])push('mobile',platform,id);if(r.mobile_platforms?.includes('android')&&r.mobile_platforms.includes('ios'))push('mobile','both',id);
  if(r.editorial?.source_verified_at)push('reviewed','yes',id);
+ if(!Array.isArray(raw))for(const value of [r.name,...r.search_aliases||[]])push('named',normalize(value),id);
+ if(r.kind==='Game')push('intent','games',id);
+ if(r.kind==='Mobile app'||r.consumer&&r.kind!=='Game')push('intent','apps',id);
+ if(r.kind==='Desktop software'||r.kind!=='Game'&&r.free_details?.platforms?.some(p=>['Windows','Linux','macOS'].includes(p)))push('intent','software',id);
+ if(r.free_details?.platforms?.some(p=>['Windows','Linux','macOS'].includes(p)))push('intent','desktop',id);
+ if(r.mobile_platforms?.length)push('intent','mobile',id);
  if(r.category==='Video & Film'||/reels|captions?|subtitles?|transcri|ffmpeg|shotcut|kdenlive|openshot|obs studio|video.{0,10}edit/i.test([r.name,r.subcategory,...r.tags||[]].join(' ')))push('intent','video',id);
  const purpose=[r.name,r.subcategory,...r.tags||[]].join(' ');
  if(r.category==='Marketing & SEO'||/\bseo\b|^seo|search engine optim|search console|pagespeed|page speed|sitemap|keyword research/i.test(purpose)||/lighthouse/i.test(r.name)&&/github\.com\/GoogleChrome\/lighthouse|chrome\.google\.com|chromewebstore\.google\.com/i.test(r.url))push('intent','seo',id);
  const weighted=new Map();const add=(value,score)=>{for(const word of words(value)){const last=Math.min(10,word.length);for(let n=Math.min(2,last);n<=last;n++){const term=word.slice(0,n);weighted.set(term,Math.max(weighted.get(term)||0,score+(n===word.length?4:0)));}}};
- add(r.name,12);for(const tag of r.tags||[])add(tag,5);add(r.category,2);add(r.subcategory,4);add(r.kind,1);if(r.name==='Actual'&&r.url.includes('actualbudget'))add('Actual Budget',12);
+ add(r.name,12);for(const alias of r.search_aliases||[])add(alias,14);if(!Array.isArray(raw))add(r.description,1);for(const tag of r.tags||[])add(tag,5);add(r.category,2);add(r.subcategory,4);add(r.kind,1);for(const platform of r.free_details?.platforms||[])add(platform,2);if(r.name==='Actual'&&r.url.includes('actualbudget'))add('Actual Budget',12);
  for(const [term,score]of weighted){const b=termMaps[bucket(term)];if(!b.has(term))b.set(term,[]);b.get(term).push([id,score]);}
  descriptions.push({id,name:r.name,checked:r.editorial?.source_verified_at||''});
 }
@@ -49,5 +55,12 @@ const categoryMembers=new Map(taxonomy.map(t=>[t.name,new Set(filters.category[t
 const categories=taxonomy.map(t=>({name:t.name,count:categoryMembers.get(t.name).size,subcategories:t.subcategories.map(name=>({name,count:(filters.subcategory[name]||[]).filter(id=>categoryMembers.get(t.name).has(id)).length})).filter(s=>s.count>0)}));
 const manifest={version,root,total:rows.length,record_size:512,id_buckets:4,editorial_count:catalog.length,editorial_names:catalog.map(r=>r.name),discovery_count:rows.length-catalog.length,source_checked:filters.reviewed.yes.length,source_manifest:sourceManifest,sources,categories,excluded:{invalid,shorteners:held},legacy_overlaps:overlaps,id_alias_count:aliases.length,files};
 await fs.writeFile('data/discovery-manifest.json',JSON.stringify(manifest));
+// A compact immediate shortlist; the UI also completes from live search results.
+const suggestionEntries=[
+ ...['games','mobile apps','software','video editing','SEO','AI','automation'].map(label=>({label,kind:'Topic',popular:true,curated:true})),
+ ...catalog.map(r=>({label:r.name,kind:r.kind,pricing:r.pricing,curated:true,...(r.search_aliases?.length?{aliases:r.search_aliases}:{})})),
+ ...categories.map(c=>({label:c.name,kind:'Category'}))
+];
+await fs.writeFile('data/search-suggestions.json',JSON.stringify(suggestionEntries));
 await fs.mkdir('public/catalog-notices',{recursive:true});
 console.log(JSON.stringify({version,total:rows.length,editorial:catalog.length,source_checked:manifest.source_checked,invalid,held,overlaps,files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0)},null,2));
