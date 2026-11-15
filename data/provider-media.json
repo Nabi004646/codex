@@ -1,0 +1,735 @@
+{
+  "https://github.com/Comfy-Org/ComfyUI": {
+    "name": "ComfyUI",
+    "source_url": "https://github.com/Comfy-Org/ComfyUI",
+    "checked_on": "2026-11-15",
+    "image_url": "https://repository-images.githubusercontent.com/589831718/8894dcc0-5f53-4f3c-97f0-50d820b7779b",
+    "image_kind": "publisher"
+  },
+  "https://github.com/activepieces/activepieces": {
+    "name": "Activepieces",
+    "source_url": "https://github.com/activepieces/activepieces",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/1515ecf6cf3f085c0c7c5b2b4d151884f7992e4c04bc88b3a2fde2764031728c/activepieces/activepieces",
+    "image_kind": "publisher"
+  },
+  "https://github.com/actualbudget/actual": {
+    "name": "Actual Budget",
+    "source_url": "https://github.com/actualbudget/actual",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/bf240fac3ff42321890b98b708eb04a481127954e39b237f18178c211900168e/actualbudget/actual",
+    "image_kind": "publisher"
+  },
+  "https://www.blender.org": {
+    "name": "Blender",
+    "source_url": "https://www.blender.org",
+    "checked_on": "2026-11-15",
+    "status": "HTTPError"
+  },
+  "https://github.com/wger-project/wger": {
+    "name": "wger",
+    "source_url": "https://github.com/wger-project/wger",
+    "checked_on": "2026-11-15",
+    "image_url": "https://repository-images.githubusercontent.com/7705569/9f71e2c8-6d0e-4939-bcf7-7eca4427ae83",
+    "image_kind": "publisher"
+  },
+  "https://reactbits.dev": {
+    "name": "React Bits",
+    "source_url": "https://reactbits.dev",
+    "checked_on": "2026-11-15",
+    "image_url": "https://reactbits.dev/og.jpg",
+    "image_kind": "publisher"
+  },
+  "https://shotcut.org": {
+    "name": "Shotcut",
+    "source_url": "https://flathub.org/apps/org.shotcut.Shotcut",
+    "image_url": "https://dl.flathub.org/media/org/shotcut/Shotcut/6740996b9caf645b4d2d71211d68fd3f/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://krita.org": {
+    "name": "Krita",
+    "source_url": "https://flathub.org/apps/org.kde.krita",
+    "image_url": "https://dl.flathub.org/media/org/kde/krita/1348962dcc0842250c4ce6876acc36cc/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://github.com/OpenShot/openshot-qt": {
+    "name": "OpenShot",
+    "source_url": "https://flathub.org/apps/org.openshot.OpenShot",
+    "image_url": "https://dl.flathub.org/media/org/openshot/OpenShot/70e490a97108be7b86e11ffcf7674bfa/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://kdenlive.org": {
+    "name": "Kdenlive",
+    "source_url": "https://flathub.org/apps/org.kde.kdenlive.desktop",
+    "image_url": "https://dl.flathub.org/media/org/kde/kdenlive.desktop/43ea1daa3a961b305292f8cd7ccae60f/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://joplinapp.org": {
+    "name": "Joplin",
+    "source_url": "https://flathub.org/apps/net.cozic.joplin_desktop",
+    "image_url": "https://dl.flathub.org/media/net/cozic/joplin_desktop/0400efd10f68aa1b55f521ff7c205f74/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://obsidian.md": {
+    "name": "Obsidian",
+    "source_url": "https://flathub.org/apps/md.obsidian.Obsidian",
+    "image_url": "https://dl.flathub.org/media/md/obsidian/Obsidian/cf7bc04e771397dee717a90628eeba9d/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.audacityteam.org": {
+    "name": "Audacity",
+    "source_url": "https://flathub.org/apps/org.audacityteam.Audacity",
+    "image_url": "https://dl.flathub.org/media/org/audacityteam/Audacity/0ad4a24524b6c06220649dc83a08ae81/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://github.com/node-red/node-red": {
+    "name": "Node-RED",
+    "source_url": "https://github.com/node-red/node-red",
+    "checked_on": "2026-11-15",
+    "image_url": "https://repository-images.githubusercontent.com/12618379/33692d8a-01f5-4144-ab44-eb2bb9f6089c",
+    "image_kind": "publisher"
+  },
+  "https://www.freecodecamp.org": {
+    "name": "freeCodeCamp",
+    "source_url": "https://www.freecodecamp.org",
+    "checked_on": "2026-11-15",
+    "image_url": "https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png",
+    "image_kind": "publisher"
+  },
+  "https://huggingface.co": {
+    "name": "Hugging Face",
+    "source_url": "https://huggingface.co",
+    "checked_on": "2026-11-15",
+    "image_url": "https://huggingface.co/front/thumbnails/v2-2.png",
+    "image_kind": "publisher"
+  },
+  "https://portswigger.net/web-security": {
+    "name": "PortSwigger Web Security Academy",
+    "source_url": "https://portswigger.net/web-security",
+    "checked_on": "2026-11-15",
+    "image_url": "https://portswigger.net/content/images/logos/academy-twittercard.png",
+    "image_kind": "publisher"
+  },
+  "https://github.com/ollama/ollama": {
+    "name": "Ollama",
+    "source_url": "https://github.com/ollama/ollama",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/a7e9b243c5e78cd8ca9544ee6a941344272382bd7c25920d7bcf0e453b9c52b0/ollama/ollama",
+    "image_kind": "publisher"
+  },
+  "https://github.com/openai/whisper": {
+    "name": "Whisper",
+    "source_url": "https://github.com/openai/whisper",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/6879893ae62b1a102b51030a5f573d6e063f5d2187f99bffe318b114e47ae3ed/openai/whisper",
+    "image_kind": "publisher"
+  },
+  "https://github.com/GoogleChrome/lighthouse": {
+    "name": "Lighthouse",
+    "source_url": "https://github.com/GoogleChrome/lighthouse",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/85b056874e49487cd3603bed0ceedf4d415f3aa7de30aa29cac111148de0343d/GoogleChrome/lighthouse",
+    "image_kind": "publisher"
+  },
+  "https://github.com/penpot/penpot": {
+    "name": "Penpot",
+    "source_url": "https://github.com/penpot/penpot",
+    "checked_on": "2026-11-15",
+    "image_url": "https://repository-images.githubusercontent.com/48769241/1e3fb75a-13e6-4d77-a658-e70e17fb1c6f",
+    "image_kind": "publisher"
+  },
+  "https://github.com/keepassxreboot/keepassxc": {
+    "name": "KeePassXC",
+    "source_url": "https://flathub.org/apps/org.keepassxc.KeePassXC.desktop",
+    "image_url": "https://dl.flathub.org/media/org/keepassxc/KeePassXC.desktop/8703bd4e659abcb1dac1d6646881bb00/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://github.com/obsproject/obs-studio": {
+    "name": "OBS Studio",
+    "source_url": "https://flathub.org/apps/com.obsproject.Studio",
+    "image_url": "https://dl.flathub.org/media/com/obsproject/Studio/eee0a1f453649164008dc9f0913dfe7e/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.gimp.org": {
+    "name": "GIMP",
+    "source_url": "https://flathub.org/apps/org.gimp.GIMP",
+    "image_url": "https://dl.flathub.org/media/org/gimp/GIMP/800933a572869e1c8daee367dc2287cb/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.libreoffice.org": {
+    "name": "LibreOffice",
+    "source_url": "https://flathub.org/apps/org.libreoffice.LibreOffice",
+    "image_url": "https://dl.flathub.org/media/org/libreoffice/LibreOffice/341e8fb5e2267b0cdc5e932b3886a08e/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://exercism.org": {
+    "name": "Exercism",
+    "source_url": "https://exercism.org",
+    "checked_on": "2026-11-15",
+    "image_url": "https://assets.exercism.org/meta/og.png",
+    "image_kind": "publisher"
+  },
+  "https://developer.mozilla.org/en-US/docs/Learn_web_development": {
+    "name": "MDN Learn Web Development",
+    "source_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+    "checked_on": "2026-11-15",
+    "image_url": "https://developer.mozilla.org/mdn-social-image.46ac2375.png",
+    "image_kind": "publisher"
+  },
+  "https://www.theodinproject.com": {
+    "name": "The Odin Project",
+    "source_url": "https://www.theodinproject.com",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.theodinproject.com/assets/og-logo-2bdf3a30.png",
+    "image_kind": "publisher"
+  },
+  "https://pages.github.com": {
+    "name": "GitHub Pages",
+    "source_url": "https://pages.github.com",
+    "checked_on": "2026-11-15",
+    "image_url": "https://pages.github.com/favicon.ico",
+    "image_kind": "logo"
+  },
+  "https://pages.cloudflare.com": {
+    "name": "Cloudflare Pages",
+    "source_url": "https://pages.cloudflare.com",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.cloudflare.com/preview.png",
+    "image_kind": "publisher"
+  },
+  "https://search.google.com/search-console/about": {
+    "name": "Google Search Console",
+    "source_url": "https://search.google.com/search-console/about",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.gstatic.com/search-console/scfe/favicon.png",
+    "image_kind": "logo"
+  },
+  "https://pagespeed.web.dev": {
+    "name": "PageSpeed Insights",
+    "source_url": "https://pagespeed.web.dev",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png",
+    "image_kind": "logo"
+  },
+  "https://github.com/withastro/astro": {
+    "name": "Astro",
+    "source_url": "https://github.com/withastro/astro",
+    "checked_on": "2026-11-15",
+    "status": "publisher_image_unavailable"
+  },
+  "https://github.com/vitejs/vite": {
+    "name": "Vite",
+    "source_url": "https://github.com/vitejs/vite",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/ce4adf3505fa05709c88f5de66c36a5d5124c7547a3c4d1e4c775b93837aca61/vitejs/vite",
+    "image_kind": "publisher"
+  },
+  "https://github.com/microsoft/playwright": {
+    "name": "Playwright",
+    "source_url": "https://github.com/microsoft/playwright",
+    "checked_on": "2026-11-15",
+    "image_url": "https://repository-images.githubusercontent.com/221981891/8c5c6942-c91f-4df1-825f-4cf474056bd7",
+    "image_kind": "publisher"
+  },
+  "https://github.com/huginn/huginn": {
+    "name": "Huginn",
+    "source_url": "https://github.com/huginn/huginn",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/b180ac93f85197d765cdd1a7f0dc92b980692883200889a7d8f98cc1b86c3e63/huginn/huginn",
+    "image_kind": "publisher"
+  },
+  "https://www.gnucash.org": {
+    "name": "GnuCash",
+    "source_url": "https://flathub.org/apps/org.gnucash.GnuCash",
+    "image_url": "https://dl.flathub.org/media/org/gnucash/GnuCash/1a86a3cf1fcb0f8d45f915a88fa02491/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://github.com/frappe/erpnext": {
+    "name": "ERPNext",
+    "source_url": "https://github.com/frappe/erpnext",
+    "checked_on": "2026-11-15",
+    "image_url": "https://repository-images.githubusercontent.com/1864233/0e742aa9-8846-41aa-8474-026e31a77540",
+    "image_kind": "publisher"
+  },
+  "https://github.com/godotengine/godot": {
+    "name": "Godot",
+    "source_url": "https://github.com/godotengine/godot",
+    "checked_on": "2026-11-15",
+    "image_url": "https://opengraph.githubassets.com/2baf4e07c1a7defbb9195a2f1fa02e65fa189c593ef08342b1be97ea9a353652/godotengine/godot",
+    "image_kind": "publisher"
+  },
+  "https://www.zotero.org": {
+    "name": "Zotero",
+    "source_url": "https://flathub.org/apps/org.zotero.Zotero",
+    "image_url": "https://dl.flathub.org/media/org/zotero/Zotero/d97a75b97ab9d6647adb4172328c0da3/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://fonts.google.com": {
+    "name": "Google Fonts",
+    "source_url": "https://fonts.google.com",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.gstatic.com/images/icons/material/apps/fonts/1x/catalog/v5/opengraph_color.png",
+    "image_kind": "publisher"
+  },
+  "https://www.openstreetmap.org": {
+    "name": "OpenStreetMap",
+    "source_url": "https://www.openstreetmap.org",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.openstreetmap.org/assets/osm_logo_256-ed028f90468224a272961c380ecee0cfb73b8048b34f4b4b204b7f0d1097875d.png",
+    "image_kind": "publisher"
+  },
+  "https://ff.garena.com/en/": {
+    "name": "Free Fire",
+    "source_url": "https://play.google.com/store/apps/details?id=com.dts.freefireth",
+    "checked_on": "2026-11-15",
+    "image_url": "https://play-lh.googleusercontent.com/hnnIRd5AAf7T2gWzwki00aA9aWMX9JUbr8N42WjGqSVEq36Ey5_T0GCvyekeBkn_rSknR3vXvF4zTkZh4j-KRw=s0-br30",
+    "image_kind": "publisher"
+  },
+  "https://www.pubgmobile.com/en-US/home.shtml": {
+    "name": "PUBG MOBILE",
+    "source_url": "https://www.pubgmobile.com/en-US/home.shtml",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.pubgmobile.com/images/event/home/share.jpg",
+    "image_kind": "publisher"
+  },
+  "https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS/": {
+    "name": "PUBG: BATTLEGROUNDS",
+    "source_url": "https://store.steampowered.com/app/578080/PUBG_BATTLEGROUNDS/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/578080/3c8895a8ff87fb18d50ff17842511514d4200437/capsule_616x353.jpg?t=1792718193",
+    "image_kind": "publisher"
+  },
+  "https://www.rockstargames.com/gta-v": {
+    "name": "Grand Theft Auto V",
+    "source_url": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V_Enhanced/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1781187782",
+    "image_kind": "publisher"
+  },
+  "https://www.fortnite.com/": {
+    "name": "Fortnite",
+    "source_url": "https://www.fortnite.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://cms-assets.unrealengine.com/cm6l5gfpm05kr07my04cqgy2x/cmfo4y74z03yw07ohsjgs0qj7",
+    "image_kind": "publisher"
+  },
+  "https://playvalorant.com/en-us/": {
+    "name": "VALORANT",
+    "source_url": "https://playvalorant.com/en-us/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/cbf4460132cdfeb2a97fad5f9dd25ba0bc058f76-128x128.png?accountingTag=VAL?w=1200&h=630&fm=webp&fit=crop&crop=center",
+    "image_kind": "logo"
+  },
+  "https://store.steampowered.com/app/730/CounterStrike_2/": {
+    "name": "Counter-Strike 2",
+    "source_url": "https://store.steampowered.com/app/730/CounterStrike_2/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730/6328493f4cc4a8fb83e1149be1cac5a7823fe588/capsule_616x353.jpg?t=1793054556",
+    "image_kind": "publisher"
+  },
+  "https://store.steampowered.com/app/570/Dota_2/": {
+    "name": "Dota 2",
+    "source_url": "https://store.steampowered.com/app/570/Dota_2/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/570/capsule_616x353.jpg?t=1791407503",
+    "image_kind": "publisher"
+  },
+  "https://www.leagueoflegends.com/en-us/": {
+    "name": "League of Legends",
+    "source_url": "https://www.leagueoflegends.com/en-us/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/565197caf987af4e4da307df6e2b235a28714736-837x469.jpg?accountingTag=LoL?w=1200&h=630&fm=webp&fit=crop&crop=center",
+    "image_kind": "publisher"
+  },
+  "https://www.ea.com/games/apex-legends": {
+    "name": "Apex Legends",
+    "source_url": "https://www.ea.com/games/apex-legends",
+    "checked_on": "2026-11-15",
+    "image_url": "https://drop-assets.ea.com/images/3y7UvygiXzw9jlo05Mn3I5/3d6885fa12103d27c410646df999b979/Apex_S31-Season-Page-16x9.jpg?im=AspectCrop=(16,9),xPosition=0.76875,yPosition=0.4444444444444444",
+    "image_kind": "publisher"
+  },
+  "https://www.rocketleague.com/": {
+    "name": "Rocket League",
+    "source_url": "https://www.rocketleague.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.rocketleague.com/images/evergreen/rocket-league-with-logo.jpg",
+    "image_kind": "publisher"
+  },
+  "https://www.roblox.com/": {
+    "name": "Roblox",
+    "source_url": "https://www.roblox.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://images.rbxcdn.com/5348266ea6c5e67b19d6a814cbbb70f6.jpg",
+    "image_kind": "publisher"
+  },
+  "https://www.minecraft.net/en-us": {
+    "name": "Minecraft",
+    "source_url": "https://www.minecraft.net/en-us",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.minecraft.net/content/dam/minecraftnet/franchise/logos/minecraft-creeper-face.jpg",
+    "image_kind": "logo"
+  },
+  "https://genshin.hoyoverse.com/": {
+    "name": "Genshin Impact",
+    "source_url": "https://genshin.hoyoverse.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://upload-static.hoyoverse.com/hk4e/upload/fb/common.jpg",
+    "image_kind": "publisher"
+  },
+  "https://supercell.com/en/games/brawlstars/": {
+    "name": "Brawl Stars",
+    "source_url": "https://supercell.com/en/games/brawlstars/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://supercell.com/_next/static/media/games_thumbnail_brawlstars.59dcf516.jpg",
+    "image_kind": "publisher"
+  },
+  "https://supercell.com/en/games/clashofclans/": {
+    "name": "Clash of Clans",
+    "source_url": "https://supercell.com/en/games/clashofclans/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://supercell.com/images/4c0ab0c1fb2958e72103f81632fee096/og_clashofclans.f3149338.jpg",
+    "image_kind": "publisher"
+  },
+  "https://supercell.com/en/games/clashroyale/": {
+    "name": "Clash Royale",
+    "source_url": "https://supercell.com/en/games/clashroyale/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://supercell.com/images/8654bffbaa77efb91243d3706b739c25/og_clashroyale.d235f90b.jpg",
+    "image_kind": "publisher"
+  },
+  "https://www.callofduty.com/mobile": {
+    "name": "Call of Duty: Mobile",
+    "source_url": "https://www.callofduty.com/mobile",
+    "checked_on": "2026-11-15",
+    "image_url": "https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mobile/meta/CODM_Meta.webp",
+    "image_kind": "publisher"
+  },
+  "https://www.brawlhalla.com/": {
+    "name": "Brawlhalla",
+    "source_url": "https://www.brawlhalla.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.brawlhalla.com/img/Logo_BrawlhallaHammer.png",
+    "image_kind": "logo"
+  },
+  "https://store.steampowered.com/app/105600/Terraria/": {
+    "name": "Terraria",
+    "source_url": "https://store.steampowered.com/app/105600/Terraria/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/105600/capsule_616x353.jpg?t=1792530636",
+    "image_kind": "publisher"
+  },
+  "https://store.steampowered.com/app/413150/Stardew_Valley/": {
+    "name": "Stardew Valley",
+    "source_url": "https://store.steampowered.com/app/413150/Stardew_Valley/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_616x353.jpg?t=1786554168",
+    "image_kind": "publisher"
+  },
+  "https://lichess.org/": {
+    "name": "Lichess",
+    "source_url": "https://lichess.org/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://lichess.org//assets/_A9dBjt/logo/lichess-tile-wide.png",
+    "image_kind": "publisher"
+  },
+  "https://www.chess.com/": {
+    "name": "Chess.com",
+    "source_url": "https://www.chess.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.chess.com/bundles/web/images/social/share-home-v3.1fb9a737.png",
+    "image_kind": "publisher"
+  },
+  "https://supertuxkart.net/": {
+    "name": "SuperTuxKart",
+    "source_url": "https://flathub.org/apps/net.supertuxkart.SuperTuxKart",
+    "image_url": "https://dl.flathub.org/media/net/supertuxkart/SuperTuxKart/028ae02b599fe94c187b4956f39b6245/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.videolan.org/vlc/": {
+    "name": "VLC media player",
+    "source_url": "https://flathub.org/apps/org.videolan.VLC",
+    "image_url": "https://dl.flathub.org/media/org/videolan/VLC/0e71024f872bdd57a2907a775cca0e6c/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.firefox.com/": {
+    "name": "Firefox",
+    "source_url": "https://flathub.org/apps/org.mozilla.firefox",
+    "image_url": "https://raw.githubusercontent.com/mozilla-releng/scriptworker-scripts/master/pushflatpakscript/media/screenshots/image1.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.google.com/chrome/": {
+    "name": "Google Chrome",
+    "source_url": "https://flathub.org/apps/com.google.Chrome",
+    "image_url": "https://dl.flathub.org/media/com/google/Chrome/b9c93df4834ec259d69f45027d9fdc0b/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://brave.com/": {
+    "name": "Brave",
+    "source_url": "https://flathub.org/apps/com.brave.Browser",
+    "image_url": "https://dl.flathub.org/media/com/brave/Browser/eaad22d475d8a7ae02d00d8995778a3f/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.thunderbird.net/": {
+    "name": "Thunderbird",
+    "source_url": "https://flathub.org/apps/org.mozilla.thunderbird",
+    "image_url": "https://dl.flathub.org/media/org/mozilla/thunderbird/add6c1c4e3b479450e2da56d0ea792f9/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://signal.org/download/": {
+    "name": "Signal",
+    "source_url": "https://flathub.org/apps/org.signal.Signal",
+    "image_url": "https://dl.flathub.org/media/org/signal/Signal/97745136a034a1e324b5005f39983f8b/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.whatsapp.com/download/": {
+    "name": "WhatsApp",
+    "source_url": "https://www.whatsapp.com/download/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://static.whatsapp.net/rsrc.php/v4/yh/r/omKgbjF2H-C.png",
+    "image_kind": "publisher"
+  },
+  "https://telegram.org/apps": {
+    "name": "Telegram",
+    "source_url": "https://flathub.org/apps/org.telegram.desktop",
+    "image_url": "https://dl.flathub.org/media/org/telegram/desktop/af33066ba53989ab2853bf732502f6c1/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://discord.com/download": {
+    "name": "Discord",
+    "source_url": "https://flathub.org/apps/com.discordapp.Discord",
+    "image_url": "https://dl.flathub.org/media/com/discordapp/Discord/ad437a3fa3ceb2574841465284223573/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.zoom.com/en/products/virtual-meetings/": {
+    "name": "Zoom",
+    "source_url": "https://flathub.org/apps/us.zoom.Zoom",
+    "image_url": "https://dl.flathub.org/media/us/zoom/Zoom/58282a0f461c5b2c1f503aa027e8e052/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://proton.me/mail/pricing": {
+    "name": "Proton Mail",
+    "source_url": "https://flathub.org/apps/me.proton.Mail",
+    "image_url": "https://dl.flathub.org/media/me/proton/Mail/c29d742ba868000d394b1a7f7982ee02/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://bitwarden.com/pricing/": {
+    "name": "Bitwarden",
+    "source_url": "https://flathub.org/apps/com.bitwarden.desktop",
+    "image_url": "https://dl.flathub.org/media/com/bitwarden/desktop/1b8e29276714c7a0aac31a343205f421/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.notion.com/pricing": {
+    "name": "Notion",
+    "source_url": "https://www.notion.com/pricing",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.notion.com/front-static/meta/global-evergreen-01.png",
+    "image_kind": "publisher"
+  },
+  "https://trello.com/pricing": {
+    "name": "Trello",
+    "source_url": "https://trello.com/pricing",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.trello.com/favicon.ico",
+    "image_kind": "logo"
+  },
+  "https://www.todoist.com/pricing": {
+    "name": "Todoist",
+    "source_url": "https://flathub.org/apps/com.todoist.Todoist",
+    "image_url": "https://dl.flathub.org/media/com/todoist/Todoist/528f7111d74c246feac4daf247dcbf83/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://workspace.google.com/products/keep/": {
+    "name": "Google Keep",
+    "source_url": "https://workspace.google.com/products/keep/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://lh3.googleusercontent.com/ffytxbImc901tjM-y5804hY-BaKY2u4Wkrk1JSo1SedoWDLlHIHdqkzEeqZMSq2XIO3qFIhkkeq8_3o_NA_61EiPXi4pE61iRXm01g=w1200-e365",
+    "image_kind": "publisher"
+  },
+  "https://workspace.google.com/products/docs/": {
+    "name": "Google Docs",
+    "source_url": "https://workspace.google.com/products/docs/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://lh3.googleusercontent.com/IiFEbz_dcLIKBLVIMfIhq2KOiT0C98fB7hCBEwf7BOHjWJ3Gin_FEqbQngrLIc1hvSYn25R6V3iQYKLqb3XijtVzVvQk1FuF_Aaw=w1200-e365",
+    "image_kind": "publisher"
+  },
+  "https://www.microsoft.com/en-us/microsoft-365/free-office-online-for-the-web": {
+    "name": "Microsoft 365 for the web",
+    "source_url": "https://www.microsoft.com/en-us/microsoft-365/free-office-online-for-the-web",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.microsoft.com/favicon.ico?v2",
+    "image_kind": "logo"
+  },
+  "https://www.canva.com/pricing/": {
+    "name": "Canva",
+    "source_url": "https://www.canva.com/pricing/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://static.canva.com/static/images/fb_cover-1.jpg",
+    "image_kind": "publisher"
+  },
+  "https://www.photopea.com/": {
+    "name": "Photopea",
+    "source_url": "https://www.photopea.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.photopea.com/promo/icon512.png",
+    "image_kind": "logo"
+  },
+  "https://www.figma.com/pricing/": {
+    "name": "Figma",
+    "source_url": "https://www.figma.com/pricing/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://cdn.sanity.io/images/599r6htc/regionalized/333f4e510bc0adfb0b7076ff7c4df69274b582bd-2400x1260.png?w=1200&q=70&fit=max&auto=format",
+    "image_kind": "publisher"
+  },
+  "https://www.capcut.com/": {
+    "name": "CapCut",
+    "source_url": "https://www.capcut.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://p16-seeyou-sg.ibyteimg.com/tos-alisg-i-2zwwjm3azk-sg/af60401275b14f6684c2af1f7564d717~tplv-2zwwjm3azk-image.image",
+    "image_kind": "publisher"
+  },
+  "https://www.blackmagicdesign.com/products/davinciresolve": {
+    "name": "DaVinci Resolve",
+    "source_url": "https://www.blackmagicdesign.com/products/davinciresolve",
+    "image_url": "https://images.blackmagicdesign.com/images/products/davinciresolve/overview/onesolution/edit.jpg?_v=1774849327",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.adobe.com/products/photoshop.html": {
+    "name": "Adobe Photoshop",
+    "source_url": "https://www.adobe.com/products/photoshop.html",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.adobe.com/homepage/assets/product-icons/jpg/media_1e1d6ce6caa68dfd49689c46528c152d9fdeaad6f.jpg",
+    "image_kind": "publisher"
+  },
+  "https://www.adobe.com/products/premiere.html": {
+    "name": "Adobe Premiere",
+    "source_url": "https://www.adobe.com/products/premiere.html",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.adobe.com/homepage/assets/product-icons/jpg/media_1e1d6ce6caa68dfd49689c46528c152d9fdeaad6f.jpg",
+    "image_kind": "publisher"
+  },
+  "https://inkscape.org/": {
+    "name": "Inkscape",
+    "source_url": "https://flathub.org/apps/org.inkscape.Inkscape",
+    "image_url": "https://dl.flathub.org/media/org/inkscape/Inkscape/d06b79da7ad6df73032683fbcf8c4d56/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.7-zip.org/": {
+    "name": "7-Zip",
+    "source_url": "https://www.7-zip.org/",
+    "image_url": "https://www.7-zip.org/7ziplogo.png",
+    "image_kind": "logo",
+    "checked_on": "2026-11-15"
+  },
+  "https://code.visualstudio.com/": {
+    "name": "Visual Studio Code",
+    "source_url": "https://flathub.org/apps/com.visualstudio.code",
+    "image_url": "https://dl.flathub.org/media/com/visualstudio/code/929ab57f09f2d5a5bc7cea0648c9a332/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://developer.android.com/studio": {
+    "name": "Android Studio",
+    "source_url": "https://flathub.org/apps/com.google.AndroidStudio",
+    "image_url": "https://dl.flathub.org/media/com/google/AndroidStudio/a8ef9ddd3682ccf805abe6597961544b/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.duolingo.com/": {
+    "name": "Duolingo",
+    "source_url": "https://www.duolingo.com/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.duolingo.com/images/facebook/duo-08523a2.jpg",
+    "image_kind": "publisher"
+  },
+  "https://www.khanacademy.org/": {
+    "name": "Khan Academy",
+    "source_url": "https://apps.apple.com/us/app/khan-academy/id469863705?uo=4",
+    "image_url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource116/v4/6d/95/0a/6d950a24-dab9-cd4d-84d0-9bbb8f63fbd4/2202ea67-fa88-4a35-a215-26e47da28d94_0_APP_IPHONE_55_0.png/392x696bb.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://apps.ankiweb.net/": {
+    "name": "Anki",
+    "source_url": "https://flathub.org/apps/net.ankiweb.Anki",
+    "image_url": "https://dl.flathub.org/media/net/ankiweb/Anki/844887dbd05a52ecf890ddd79317b1ff/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.google.com/maps/about/": {
+    "name": "Google Maps",
+    "source_url": "https://www.google.com/maps/about/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://www.gstatic.com/marketing-cms/assets/images/81/e4/1bdb808b40a28cc70ac24bf5e6fa/google-maps-favicon.png=s16",
+    "image_kind": "logo"
+  },
+  "https://organicmaps.app/": {
+    "name": "Organic Maps",
+    "source_url": "https://flathub.org/apps/app.organicmaps.desktop",
+    "image_url": "https://dl.flathub.org/media/app/organicmaps/desktop/6fb8b4ba9d61d3fbc4f43f88bb1569ff/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://www.spotify.com/free/": {
+    "name": "Spotify",
+    "source_url": "https://flathub.org/apps/com.spotify.Client",
+    "image_url": "https://dl.flathub.org/media/com/spotify/Client/2be38d678bbcc0e04cec0c19c60a80fe/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://get.adobe.com/reader/": {
+    "name": "Adobe Acrobat Reader",
+    "source_url": "https://get.adobe.com/reader/",
+    "checked_on": "2026-11-15",
+    "image_url": "https://get.adobe.com/reader/favicon.ico",
+    "image_kind": "logo"
+  },
+  "https://handbrake.fr/": {
+    "name": "HandBrake",
+    "source_url": "https://flathub.org/apps/fr.handbrake.ghb",
+    "image_url": "https://dl.flathub.org/media/fr/handbrake/ghb/ba64e7a37b2b3270d6065fdca313dfa3/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://calibre-ebook.com/": {
+    "name": "calibre",
+    "source_url": "https://flathub.org/apps/com.calibre_ebook.calibre",
+    "image_url": "https://dl.flathub.org/media/com/calibre_ebook/calibre/2ac083fe30ac8e892f25412b0f652fca/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  },
+  "https://store.steampowered.com/about/": {
+    "name": "Steam",
+    "source_url": "https://flathub.org/apps/com.valvesoftware.Steam",
+    "image_url": "https://dl.flathub.org/media/com/valvesoftware/Steam/71bd4338705ac5f74c133bfbaacaa3d8/screenshots/image-1_orig.png",
+    "image_kind": "screenshot",
+    "checked_on": "2026-11-15"
+  }
+}

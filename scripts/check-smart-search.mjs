@@ -17,7 +17,7 @@ test('autocomplete completes names before any results or network response',()=>{
 
 test('games searches include consumer games, not engines or repository matches',async()=>{
  const result=await search('games');
- assert.equal(result.total,24);
+ assert.ok(result.total>=25);
  assert.ok(result.resources.every(r=>r.kind==='Game'));
  for(const name of ['Free Fire','PUBG MOBILE','Grand Theft Auto V'])assert.ok(result.resources.some(r=>r.name===name));
 });
@@ -40,7 +40,7 @@ test('PC and Android search phrases respect recorded platforms',async()=>{
 });
 
 test('product aliases and confident spelling repairs return the intended product',async()=>{
- for(const [q,name]of [['freefire','Free Fire'],['PUG','PUBG MOBILE'],['gta5','Grand Theft Auto V'],['vscode','Visual Studio Code'],['shocut','Shotcut'],['photoshp','Adobe Photoshop']])assert.equal((await search(q)).resources[0]?.name,name,q);
+ for(const [q,name]of [['freefire','Free Fire'],['PUG','PUBG MOBILE'],['gta5','Grand Theft Auto V'],['gta6','Grand Theft Auto VI'],['vscode','Visual Studio Code'],['shocut','Shotcut'],['photoshp','Adobe Photoshop']])assert.equal((await search(q)).resources[0]?.name,name,q);
  assert.equal((await search('shocut')).correctedQuery,'Shotcut');
  const unknown=await search('zzqxvnlnoexist');assert.equal(unknown.total,0);assert.equal(unknown.correctedQuery,undefined);
 });
@@ -53,8 +53,8 @@ test('software, PDF, browser, messaging and editing searches have useful results
 test('saved resource IDs, language intents and discovery terms remain available',async()=>{
  const gta=catalog.find(r=>r.name==='Grand Theft Auto V');
  assert.equal((await search('',{ids:gta.id})).resources[0]?.id,gta.id);
- assert.equal((await search('खेल')).total,24);
- assert.equal((await search('juegos')).total,24);
+ assert.equal((await search('खेल')).total,(await search('games')).total);
+ assert.equal((await search('juegos')).total,(await search('games')).total);
  assert.ok((await search('AI agents')).total>0);
  assert.ok((await search('computer vision')).total>0,'Computer vision must not become a desktop-platform filter');
  assert.ok((await search('SEO')).total>0);

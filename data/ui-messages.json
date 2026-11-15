@@ -4546,5 +4546,65 @@
     "ja": "利用条件がわかるツール、アプリ、ゲーム、学習資料を探せます。",
     "vi": "Tìm công cụ, ứng dụng, trò chơi và tài nguyên với nhãn truy cập rõ ràng.",
     "ne": "पहुँच स्पष्ट खुलाइएका टुल, एप, खेल र अध्ययन स्रोत फेला पार्नुहोस्।"
+  },
+  "Downloads": {
+    "es": "Descargas",
+    "pt-br": "Downloads",
+    "hi": "डाउनलोड",
+    "id": "Unduhan",
+    "fr": "Téléchargements",
+    "de": "Downloads",
+    "ar": "التنزيلات",
+    "ja": "ダウンロード",
+    "vi": "Tải xuống",
+    "ne": "डाउनलोडहरू"
+  },
+  "Console Games": {
+    "es": "Juegos de consola",
+    "pt-br": "Jogos de console",
+    "hi": "कंसोल गेम",
+    "id": "Gim konsol",
+    "fr": "Jeux sur console",
+    "de": "Konsolenspiele",
+    "ar": "ألعاب أجهزة الألعاب",
+    "ja": "コンソールゲーム",
+    "vi": "Trò chơi console",
+    "ne": "कन्सोल खेलहरू"
+  },
+  "Penetration Testing": {
+    "es": "Pruebas de penetración",
+    "pt-br": "Testes de penetração",
+    "hi": "पेनिट्रेशन परीक्षण",
+    "id": "Pengujian penetrasi",
+    "fr": "Tests de pénétration",
+    "de": "Penetrationstests",
+    "ar": "اختبار الاختراق",
+    "ja": "ペネトレーションテスト",
+    "vi": "Kiểm thử xâm nhập",
+    "ne": "पेनिट्रेसन परीक्षण"
+  },
+  "Digital Forensics": {
+    "es": "Informática forense",
+    "pt-br": "Perícia digital",
+    "hi": "डिजिटल फॉरेंसिक",
+    "id": "Forensik digital",
+    "fr": "Analyse forensique numérique",
+    "de": "Digitale Forensik",
+    "ar": "التحليل الجنائي الرقمي",
+    "ja": "デジタルフォレンジック",
+    "vi": "Điều tra số",
+    "ne": "डिजिटल फरेन्सिक"
+  },
+  "Network Analysis": {
+    "es": "Análisis de redes",
+    "pt-br": "Análise de redes",
+    "hi": "नेटवर्क विश्लेषण",
+    "id": "Analisis jaringan",
+    "fr": "Analyse réseau",
+    "de": "Netzwerkanalyse",
+    "ar": "تحليل الشبكات",
+    "ja": "ネットワーク分析",
+    "vi": "Phân tích mạng",
+    "ne": "नेटवर्क विश्लेषण"
   }
 }

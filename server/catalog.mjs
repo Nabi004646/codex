@@ -1,3 +1,5 @@
+import providerMedia from '../data/provider-media.json' with {type:'json'};
+import gtaRelease from '../data/gta6-release.json' with {type:'json'};
 import {createHash} from 'node:crypto';
 import baseline from '../data/preview-resources.json' with {type:'json'};
 import facts from '../data/starter-facts.json' with {type:'json'};
@@ -10,14 +12,14 @@ function enrich(r,n){const sources=evidence[r.name]||r.free_details?.source_urls
 const old=baseline.map(r=>enrich({...r,free_details:facts[r.id]},baselineNotes[r.name]));
 const fresh=additions.map(([name,url,category,sub,pricing,platforms,description,example,limits,license,signup])=>enrich({id:'r_'+createHash('sha256').update(url.replace(/\/$/,'')).digest('hex').slice(0,24),name,url,category,description,pricing,tags:[],kind:url.includes('github.com/')?'GitHub repository':category==='Courses & Learning'?'Learning resource':'Website',source:'Official provider',featured:false},{sub,platforms,example,limits,license,signup}));
 const consumer=consumerEntries.map(([name,url,category,subcategory,pricing,platforms,kind,aliases,description])=>{
- const checked=['Free Fire','PUBG MOBILE','PUBG: BATTLEGROUNDS','Grand Theft Auto V'].includes(name)?'2026-11-14':null;
+ const checked=['Free Fire','PUBG MOBILE','PUBG: BATTLEGROUNDS','Grand Theft Auto V','Grand Theft Auto VI'].includes(name)?'2026-11-14':null;
  const limits=description+' Check the provider for current prices, supported devices, age ratings and regional availability.';
  return {id:'r_'+createHash('sha256').update(url.replace(/\/$/,'')).digest('hex').slice(0,24),name,url,category,subcategory,pricing,kind,description,search_aliases:aliases,tags:[...new Set([...aliases,subcategory,category,...platforms])],status:'staging',featured:false,source:url,consumer:true,
  mobile_platforms:platforms.filter(p=>['Android','iOS'].includes(p)).map(p=>p.toLowerCase()),
  free_details:{platforms,signup:'Unknown',credit_card:'Unknown',access_model:pricing==='Free plan'?'Freemium':pricing==='Paid'?'Paid':pricing==='Open source'?'Fully free':'Unknown',limits,cost_notes:pricing==='Paid'?'Paid product. Trials or giveaways do not make the full product free.':'Optional upgrades, subscriptions, in-app purchases and connectivity can cost extra.',reviewed_on:checked||'',source_urls:[url]},
  editorial:{license:pricing==='Open source'?'See the official project license':'Provider terms; not a redistribution license',source_urls:[url],source_verified_at:checked,review_type:checked?'Official base-access offer reviewed':'Provider-linked catalog entry; current terms need review',example:'Open the official provider page, choose your platform and check its current access conditions before installing or purchasing.',tradeoff:limits,details:limits}};
 });
-export const catalog=[...old,...fresh,...consumer];
+export const catalog=[...old,...fresh,...consumer].map(r=>{const media=providerMedia[r.url];if(r.name==='Grand Theft Auto VI')return {...r,image_url:gtaRelease.hero,image_kind:'publisher',image_source_url:gtaRelease.official_url};if(!media?.image_url||['ComfyUI','Activepieces','Actual','Blender','wger','React Bits'].includes(r.name))return r;return {...r,image_url:media.image_url,image_kind:media.image_kind,image_source_url:media.source_url};});
 const mobileEntry=catalog.find(r=>r.name==='wger');
 mobileEntry.kind='Mobile app';mobileEntry.mobile_platforms=['android','ios'];mobileEntry.mobile={android:{url:'https://play.google.com/store/apps/details?id=de.wger.flutter',verified_at:'2026-11-13'},ios:{url:'https://apps.apple.com/us/app/wger-workout-manager/id6502226792',verified_at:'2026-11-13'}};mobileEntry.editorial.source_urls=[...mobileEntry.editorial.source_urls,mobileEntry.mobile.android.url,mobileEntry.mobile.ios.url];
 export const byId=new Map(catalog.map(r=>[r.id,r]));

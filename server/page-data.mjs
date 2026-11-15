@@ -4,6 +4,7 @@ import {catalog} from './catalog.mjs';
 const summaries=articles.map(({slug,title,description,category,resourceNames,created_at})=>({slug,title,description,category,resourceNames,created_at,cover_url:'/article-covers/'+slug+'.svg'}));
 const resources=names=>names.map(n=>catalog.find(r=>r.name===n)).filter(Boolean);
 export function publicData(path,params={}){
+ if(path==='/downloads')return {path,type:'downloads'};if(path==='/games/gta-6')return {path,type:'gta-release'};
  if(path==='/templates'||path.startsWith('/templates/'))return templateData(path,params);
  const p=path.replace(/\/$/,''),parts=p.split('/').filter(Boolean),page={path:p,articleCards:summaries};
  if(parts[0]==='blog'&&parts[1])return {...page,type:'article',article:articles.find(a=>a.slug===parts[1]),resources:resources(articles.find(a=>a.slug===parts[1])?.resourceNames||[])};

@@ -6,6 +6,9 @@ export function packPostings(entries){const bytes=[];let before=0;for(const [id,
 export function unpackPostings(value){const bytes=Uint8Array.from(atob(value||''),c=>c.charCodeAt(0)),out=[];let id=0;for(let i=0;i<bytes.length;){let n=0,shift=0,b;do{b=bytes[i++];n|=(b&127)<<shift;shift+=7;}while(b&128);id+=n;out.push([id,bytes[i++]]);}return out;}
 const stop=new Set(['the','a','an','for','to','with','and','of','best','free','tools','tool','resources','resource','i','need','want','find','me','please','show','get','download','downloads','popular','famous','can','my','on','in','like']);
 const aliases={
+ 'ethical hacking':['pentesting','penetration testing','security learning','cybersecurity'],
+ 'pentesting':['pentesting','penetration testing','security utilities'],
+ 'cyber security':['cybersecurity','security learning','incident response'],
  'ai':['ai','artificial','machine learning','llm','generative','local models'],
  'artificial intelligence':['ai','artificial','machine learning','llm'],
  'ai agents':['ai agents','agent development','tool calling','function calling'],

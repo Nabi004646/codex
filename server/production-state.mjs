@@ -1,5 +1,5 @@
 import {initial} from './preview.mjs';import {publicData,summaries} from './page-data.mjs';import {publishedSearch,publishedDetail,publishedMetadata,publicRows,publishedCard} from './published.mjs';
-const staticUtility=new Set(['/','/search','/collections','/toolkits','/compare','/guides','/kits','/finder','/blog','/about','/sources','/editorial-policy','/privacy','/cookies','/terms','/advertising','/contact','/submit','/authors/nabin-kunwar']);
+const staticUtility=new Set(['/downloads','/games/gta-6','/','/search','/collections','/toolkits','/compare','/guides','/kits','/finder','/blog','/about','/sources','/editorial-policy','/privacy','/cookies','/terms','/advertising','/contact','/submit','/authors/nabin-kunwar']);
 export async function productionState(path,fetcher=fetch){
  const page=initial(path);page.production=true;page.result=null;page.localResource=null;page.localCount=0;page.articleCards=[];
  if(page.kind==='admin')return page;

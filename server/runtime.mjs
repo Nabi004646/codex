@@ -1,3 +1,4 @@
+import {queryDownloads} from './downloads.mjs';
 import {preferredUiLocale} from '../src/locale-config.mjs';
 import {discoverySnapshot} from './discovery-snapshots.mjs';
 import {findTask} from './finder.mjs';
@@ -23,6 +24,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
     return new Response(url.pathname==='/sitemap.xml'?sitemapIndex(data.groups):sitemapPage(data.urls),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});
    }
    if(url.pathname==='/api/finder')return json(await findTask(url.searchParams.get('task'),p=>production?publishedSearch(p,fetcher):queryPreview(p)));
+   if(url.pathname==='/api/downloads')return json(await queryDownloads(url.searchParams,fetcher));
    if(url.pathname==='/api/live/resources')return json(await queryLive(url.searchParams,fetcher));
    if(url.pathname==='/api/templates')return production?json({error:'Template publication is pending.'},404):json(templateListing(url.searchParams));
    if(url.pathname==='/api/template-draft-download')return json({error:'Local draft files are available only in the local review environment. Published downloads require approved storage records.'},404);

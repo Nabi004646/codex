@@ -231,7 +231,10 @@
       "Application Security",
       "Incident Response",
       "Security Utilities",
-      "Other Security Resources"
+      "Other Security Resources",
+      "Penetration Testing",
+      "Digital Forensics",
+      "Network Analysis"
     ]
   },
   {
@@ -405,7 +408,8 @@
       "Mobile Games",
       "PC Games",
       "Browser Games",
-      "Game Stores & Launchers"
+      "Game Stores & Launchers",
+      "Console Games"
     ]
   }
 ]

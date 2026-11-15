@@ -1,0 +1,229 @@
+{
+  "added": 10000,
+  "sources": {
+    "Kali Linux tool documentation": 164,
+    "F-Droid application catalog": 4088,
+    "Flathub AppStream application catalog": 2563,
+    "Apple App Store software catalog": 3185
+  },
+  "types": {
+    "Desktop software": 2105,
+    "Game": 1816,
+    "Mobile app": 6079
+  },
+  "categories": {
+    "Cybersecurity": 200,
+    "Games & Entertainment": 1862,
+    "Productivity": 2842,
+    "Travel & Maps": 243,
+    "Audio & Music": 631,
+    "Privacy & Communication": 886,
+    "Fitness & Wellbeing": 430,
+    "Finance & Budgeting": 435,
+    "Education & Teaching": 787,
+    "Design & UI": 795,
+    "Video & Film": 575,
+    "Developer Tools": 310,
+    "AI & Machine Learning": 4
+  },
+  "media_references": 154,
+  "skipped": {
+    "existing_identity": 2287,
+    "missing_identity_or_media": 1,
+    "excluded": 5
+  },
+  "sha256": "1fb464c856e456011686327b5e9227f97aba7d6fd9e834fd9db192d7df4750e0",
+  "compressed_bytes": 1203498,
+  "snapshot": "2026-11-15",
+  "media_sha256": "503900baa6bd1d590b885baf4375deb3397b645f00c5999bb594263203d28481",
+  "media_compressed_bytes": 7792,
+  "input_snapshots": {
+    "kali-tools.tar.gz": {
+      "bytes": 13787119,
+      "sha256": "6b63445776e6496754242dfa811b327e2e8cbd36d8e3343c003daac90103efd5"
+    },
+    "fdroid-v1.jar": {
+      "bytes": 17823266,
+      "sha256": "16c76f015fe70d3dcd6010371198464c7bac05fe66886350b2ec716988e87121"
+    },
+    "flathub-xml.gz": {
+      "bytes": 11224090,
+      "sha256": "d32c8162984c5107e8615e2c52c49597f717190d9b0678e98b1d7b2d15e41981"
+    },
+    "flathub.json": {
+      "bytes": 92312,
+      "sha256": "3b5eb551aa81f5986e2c25009652b5cf9873007476e9041749bc828ab13708d8"
+    },
+    "ios-games.json": {
+      "bytes": 2077535,
+      "sha256": "0ed78d65e41cf9770f140c6c189c3483d3b667f467a79e4fac7c07e4b79e4209"
+    },
+    "adventure.json": {
+      "bytes": 1825807,
+      "sha256": "7b8e6200996849ddc58409a9232d2aaaeaac22a7877a3cb1bd88303b77320857"
+    },
+    "arcade.json": {
+      "bytes": 1848517,
+      "sha256": "ad3a1906439677555d5ab3cfc1b758fc53b2372ccec3ac7f7566c880f4e79f80"
+    },
+    "audio-recorder.json": {
+      "bytes": 1779459,
+      "sha256": "8c2ac686ca53b6a562276fa6e5344d0e7bf0f0dc54fc82c6b91b192ebca8f696"
+    },
+    "authenticator.json": {
+      "bytes": 1673150,
+      "sha256": "7e58e1f4f3106020afc1ae4bb7c2226e90d6353be59855b0e38addd1358f927a"
+    },
+    "browser.json": {
+      "bytes": 1867018,
+      "sha256": "9fd9261065c6578dfcf7d61da75b1e5cc3c208a6fb27b0441d3fbbc22b0e0064"
+    },
+    "budget.json": {
+      "bytes": 2063621,
+      "sha256": "ef176dd6d0bed27c49b5a95ac8f7a813000bdc2dc524dea4e81aeb8bfb14da1a"
+    },
+    "business.json": {
+      "bytes": 1876466,
+      "sha256": "6a2ff57204b59ceecb64920ba3c40eeba473f0ce1b1de85eedb620c0e00c1b73"
+    },
+    "calculator.json": {
+      "bytes": 1806336,
+      "sha256": "31fe4b7eb1929dbf11b96864fdc4813058fe3c36bed7092e635ba5982b3ab3ef"
+    },
+    "calendar.json": {
+      "bytes": 1991651,
+      "sha256": "38bc6c2fce608e738058df9536b66907c0f985d87a8545fe370988ceb783db7c"
+    },
+    "chess.json": {
+      "bytes": 1932919,
+      "sha256": "9710c0f857d1f822cc0d74adc0d85951aecfe9223e1ac243466d0ab6e6e3f17c"
+    },
+    "coding.json": {
+      "bytes": 1878137,
+      "sha256": "35245760a656a5a2436b43ca37bf39b063ceb731de927a75a423a91b6aea24e0"
+    },
+    "drawing.json": {
+      "bytes": 1855790,
+      "sha256": "c931bb37c8456be0073aa651de836692a40ff881feb4c25ba569a32955fa330e"
+    },
+    "education.json": {
+      "bytes": 1791739,
+      "sha256": "ebc0211a5bb79d865fa4c7a87a8cbfe9f29415ed2db87bb31081396d14af3406"
+    },
+    "file-manager.json": {
+      "bytes": 1714856,
+      "sha256": "7e099f62eea33247238a88efac0023e6cb9be43523a4530923261a12b5d35df5"
+    },
+    "fitness.json": {
+      "bytes": 2110687,
+      "sha256": "bf9593642b64601efa3452ea07cc5083ca1d98c8753485e54cfd9f58b31cbd10"
+    },
+    "invoice.json": {
+      "bytes": 1938022,
+      "sha256": "4ba638ef7a26042657f3b149e866609ab7c1a337ce9bf6017103aa3c69d8b0ae"
+    },
+    "language-learning.json": {
+      "bytes": 2096023,
+      "sha256": "17de542da93257463bba9817133ae56d9f5bfc81811d2cd2f8afce62fcf99502"
+    },
+    "maps.json": {
+      "bytes": 2021698,
+      "sha256": "757c19bb2d1c605efdf55db90cb61ab52bb2e0bb94bd027c9009b470310b1cbf"
+    },
+    "math.json": {
+      "bytes": 1776192,
+      "sha256": "b36e81e4a4044c02eb01c01857affa09845a5613e51c1b6c2107a8bb3c8a15e3"
+    },
+    "messaging.json": {
+      "bytes": 1889595,
+      "sha256": "7433de4c1b172bf98f290403024aba4f00d0b887102173cd4de39edc40cdd966"
+    },
+    "music.json": {
+      "bytes": 1895321,
+      "sha256": "6f15b4984fc831b24c4cd9cdb028be9ba2703901ee6dcb5d602c127f8b950ad6"
+    },
+    "network-tools.json": {
+      "bytes": 1739807,
+      "sha256": "1f7ba80448e985e2942bdc16c211988e19cb4f34f935e3443b88553df00f1074"
+    },
+    "notes.json": {
+      "bytes": 1945285,
+      "sha256": "e03f9a92166d809a4a42853c5974a3555e9230b2e84827c4a7631daa132123b3"
+    },
+    "nutrition.json": {
+      "bytes": 1973794,
+      "sha256": "64c9dadedf568fa6c1c0c5e8f4ebecc7a78cb9818dbd969862d1b1775505203c"
+    },
+    "office.json": {
+      "bytes": 1696650,
+      "sha256": "8cce5ae2e957f9d71e80ce46572d8fef8dc232c4d163d4a42be679d522c3338b"
+    },
+    "password-manager.json": {
+      "bytes": 1739016,
+      "sha256": "9cfa93782bb2e8f1733bdf11ab9604e680f0740c4f3236b9c07bb263b6fa0d4f"
+    },
+    "pdf.json": {
+      "bytes": 1986828,
+      "sha256": "cab62bccd3f8aa9a408a3791ad750f7a127b20e2135b3569a22f6ccc3217eebf"
+    },
+    "photo-editor.json": {
+      "bytes": 1808620,
+      "sha256": "5e1c338149485d5d7163da707ccab46b5dd3ab33ee74173840819224ab33ba3c"
+    },
+    "productivity.json": {
+      "bytes": 1840064,
+      "sha256": "8202b6d0ba30877ae5245b2ddd93b7ef019ee6cf7b5ec0362154f0d15a6b924a"
+    },
+    "puzzle.json": {
+      "bytes": 2040728,
+      "sha256": "f042599feffc26a14a2be19b26b69d3c8a868ff6775935dee546eceed61d3fa3"
+    },
+    "racing.json": {
+      "bytes": 1938407,
+      "sha256": "f46d1293b5a5ad79c774e5dadb967946f909e927b5f04c1032c13a02b148b61f"
+    },
+    "science.json": {
+      "bytes": 1751023,
+      "sha256": "890c56104c433ac78d143cb0370db76085d60c43562e49c6acc1e1e283187ec9"
+    },
+    "security.json": {
+      "bytes": 1829908,
+      "sha256": "a4bb9ae95f6e0b7fc893bf9127eaaa8e13e1d1caddacd37537671d891b8ab8e9"
+    },
+    "strategy.json": {
+      "bytes": 2015423,
+      "sha256": "eb7d50a9b6f9cb26ed29b81517a8cb391b51902316878e218f354fe67eafe0af"
+    },
+    "task-manager.json": {
+      "bytes": 1776974,
+      "sha256": "e05d07421027f99ed36ffefa7174f988b00ee809a6470ac542c15378bee5ca4e"
+    },
+    "travel.json": {
+      "bytes": 1930192,
+      "sha256": "a2edb64724ec45e8afa501f022e314d89b62f79bf62885916571589290ac7e1a"
+    },
+    "utilities.json": {
+      "bytes": 1734993,
+      "sha256": "2dfb3e2e3b0d7ba1f5be79ac1afdc773ebd1db58770c2551c32c7197c13f1b78"
+    },
+    "video-editor.json": {
+      "bytes": 1898913,
+      "sha256": "6f2f757dd2000180be4fe2533df3393b3d8222456d802a637d80fffd2b538c86"
+    },
+    "weather.json": {
+      "bytes": 1921569,
+      "sha256": "cb59ba65e769b0df0ce90f3cb444daa6faffaf8202f21dbcdd85b9630e580bd3"
+    },
+    "workout.json": {
+      "bytes": 2112068,
+      "sha256": "d5e7a91a96d0df04d033a8e086111368626501f270efc823dce078945c2a9d52"
+    }
+  },
+  "media_sample_audit": {
+    "sampled": 48,
+    "per_source": 12,
+    "valid_image_responses": 48,
+    "failed": 0,
+    "scope": "Deterministic random sample; original host responses returned image Content-Type. This is not an all-10k availability guarantee."
+  }
+}

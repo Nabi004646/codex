@@ -26,3 +26,6 @@ public/catalog/
 
 # Reassembled from verified, tracked source parts before catalog preparation.
 data/discovery-seed.json.gz
+
+__pycache__/
+node_modules

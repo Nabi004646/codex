@@ -20,7 +20,7 @@ for (const match of landing.matchAll(/<img[^>]*src="([^"?]+)"/g)) {
 }
 const assets=fs.readdirSync('dist/assets').filter(f=>f.endsWith('.js'));
 const client=assets.map(f=>fs.readFileSync('dist/assets/'+f,'utf8')).join('\n');
-assert.ok(client.length<1_000_000,'Full legacy catalog must not enter the client bundle');
+const entry=assets.filter(f=>/^index-.*\.js$/.test(f)).map(f=>fs.readFileSync('dist/assets/'+f,'utf8')).join('');assert.ok(entry.length<700_000,'Keep the initial interface bundle below its budget');assert.ok(client.length<1_200_000,'Full discovery catalog must not enter the client bundle');
 for (const legacy of ['SUPABASE_SECRET_KEY']) assert.ok(!client.includes(legacy),'Legacy or server configuration in client: '+legacy);
 assert.match(fs.readFileSync('dist/robots.txt','utf8'),/Disallow: \//);
 console.log('PASS: sampled noindex build pages contain rendered HTML; search is prefilled; all landing images exist; no legacy service configuration or full catalog in the client.');

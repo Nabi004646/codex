@@ -1,7 +1,7 @@
 import {localizedIntent} from './search-language-aliases.mjs';
 
 // Keep product aliases explicit: a short spelling must not rewrite unrelated words.
-export const productAliases={freefire:'free fire','free fire':'free fire','garena free fire':'free fire',pug:'pubg',pubgm:'pubg mobile','pug mobile':'pubg mobile','pug pc':'pubg pc',gta:'grand theft auto v',gta5:'grand theft auto v','gta 5':'grand theft auto v',gtav:'grand theft auto v','gta v':'grand theft auto v',csgo:'counter strike 2','cs go':'counter strike 2',cs2:'counter strike 2',vscode:'visual studio code','vs code':'visual studio code','7zip':'7 zip','cap cut':'capcut'};
+export const productAliases={gta6:'grand theft auto vi','gta 6':'grand theft auto vi','gta vi':'grand theft auto vi',freefire:'free fire','free fire':'free fire','garena free fire':'free fire',pug:'pubg',pubgm:'pubg mobile','pug mobile':'pubg mobile','pug pc':'pubg pc',gta:'grand theft auto v',gta5:'grand theft auto v','gta 5':'grand theft auto v',gtav:'grand theft auto v','gta v':'grand theft auto v',csgo:'counter strike 2','cs go':'counter strike 2',cs2:'counter strike 2',vscode:'visual studio code','vs code':'visual studio code','7zip':'7 zip','cap cut':'capcut'};
 export function searchPlan(query,normalize){
  let text=normalize(localizedIntent(query,normalize));
  text=productAliases[text]||text;
