@@ -1,0 +1,21 @@
+# FreeResourceAtlas
+
+> A directory of software, apps, games, public projects and learning resources with source links and explicit access/review labels.
+
+English is the default. Interface language suggestions are optional; untranslated resource content remains visibly English.
+
+A discovered listing is not automatically reviewed, free, secure, tested or indexed. Follow the original provider for current terms and availability. Paid games and limited free plans are labeled.
+
+## Useful pages
+- [Browse and search](https://freeresourceatlas.com/)
+- [Sources and labels](https://freeresourceatlas.com/sources)
+- [Product alternatives](https://freeresourceatlas.com/alternatives)
+- [Students](https://freeresourceatlas.com/hubs/students)
+- [Creators](https://freeresourceatlas.com/hubs/creators)
+- [Small business](https://freeresourceatlas.com/hubs/small-business)
+- [Task finder](https://freeresourceatlas.com/finder)
+- [Workflow builder](https://freeresourceatlas.com/workflows)
+- [Templates and previews](https://freeresourceatlas.com/templates)
+- [Owner-published download links](https://freeresourceatlas.com/downloads)
+
+Native template files are not published until Storage upload and distribution review succeed. No ranking, security, income or compatibility guarantee is made. This document describes the website; it is not an indexing or AI-citation mechanism.

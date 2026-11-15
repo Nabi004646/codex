@@ -18,6 +18,7 @@ for(const directory of ['assets','brand','fonts','previews','logos','template-pr
  try{await fs.cp('dist/'+directory,'dist/pages/'+directory,{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 }
 await fs.copyFile('.atlas-pages-worker/_worker.js','dist/pages/_worker.js');
+await fs.copyFile('public/llms.txt','dist/pages/llms.txt');
 await fs.copyFile('public/_headers','dist/pages/_headers');
 await fs.writeFile('dist/pages/_routes.json',JSON.stringify({version:1,include:['/*'],exclude:['/assets/*','/brand/*','/fonts/*','/previews/*','/logos/*','/template-previews/*','/catalog/*','/catalog-notices/*']},null,2)+'\n');
 await fs.mkdir('reports',{recursive:true});

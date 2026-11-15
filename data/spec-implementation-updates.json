@@ -1,0 +1,171 @@
+{
+  "checked_on": "2026-11-15",
+  "blockers": [
+    {
+      "id": "backend",
+      "name": "Free-library management access",
+      "detail": "The connected management account does not expose the website’s Free-library project. New schema, Storage policies, protected uploads and new server jobs cannot be activated through that connection."
+    },
+    {
+      "id": "search",
+      "name": "Search Console and Bing",
+      "detail": "Account authorization and real property data are required for API sync and URL Inspection. Manual Search Console Performance CSV analysis is available in this admin."
+    },
+    {
+      "id": "editorial",
+      "name": "Content and distribution review",
+      "detail": "Imported listings, native template distribution and translated pages need their own review. Discovery metadata and UI translations are not proof of verified resource terms or reviewed translated content."
+    },
+    {
+      "id": "delivery",
+      "name": "Submission and email services",
+      "detail": "Live moderation, opt-in email, unsubscribe/deletion and scheduled operational services need a configured backend and delivery provider. No fake successful delivery is shown."
+    }
+  ],
+  "items": {
+    "ML-01": {
+      "status": "implemented",
+      "next": "Keep English as the default. The India prompt offers Hindi without redirecting."
+    },
+    "ML-03": {
+      "status": "implemented",
+      "next": "India country suggestion now works with an English browser; saved language and Keep English take precedence; clear-data removes locale storage and cookie."
+    },
+    "DISC-04": {
+      "status": "implemented",
+      "next": "Eight product-based guides explain candidates, file limitations and migration trials with primary documentation; expand editorial coverage gradually."
+    },
+    "USER-01": {
+      "status": "implemented",
+      "next": "Browser folders now include private notes, ordering and JSON/CSV portability. Account synchronization remains optional and separate."
+    },
+    "USER-02": {
+      "status": "implemented",
+      "next": "Local workflow builder supports ordered steps, resource choices, deliverables, private notes, saved plans, share links and JSON/CSV exports; translated editorial workflows remain a separate review."
+    },
+    "USA-03": {
+      "status": "implemented",
+      "next": "Eight documented product alternatives guides are available; no feature-parity or hands-on test claims are made."
+    },
+    "USA-07": {
+      "status": "partial",
+      "next": "A substantive student hub is added. Scholarship, certification and regional eligibility claims require separate verified data."
+    },
+    "USA-08": {
+      "status": "implemented",
+      "next": "A source-backed creator hub covers an original capture/edit/export workflow and source/asset conditions."
+    },
+    "USA-11": {
+      "status": "partial",
+      "next": "All 240 native assets for 100 templates are restored and pinned. Storage upload and protected publication require access to Free-library."
+    },
+    "USA-12": {
+      "status": "implemented",
+      "next": "Guest folders include notes, ordering and CSV/JSON portability; shared links exclude private notes."
+    },
+    "ADMIN-07": {
+      "status": "partial",
+      "next": "Manual Search Console CSV reporting and a specification audit are available. Global consent-aware telemetry and live integrations remain unconnected."
+    },
+    "USA-01": {
+      "status": "partial",
+      "next": "Country-aware finder UI and worldwide fallback disclosure are implemented. Verified regional availability data still needs editorial evidence."
+    },
+    "USA-06": {
+      "status": "implemented",
+      "next": "A source-backed small-business hub and first-project starter kit are available."
+    },
+    "USA-10": {
+      "status": "partial",
+      "next": "Access labels, free candidate groups and explicit unreviewed-entry choices are available. Commercial permission and trial metadata need further verified records."
+    },
+    "USER-03": {
+      "status": "implemented",
+      "next": "Seven starter kits now include student, creator and small-business first projects linked to detailed guides and the local planning workspace."
+    },
+    "USER-07": {
+      "status": "implemented",
+      "next": "Resource link copying, matching resource social previews and four safe read-only widgets are implemented. Widgets contain no personal toolkit state."
+    },
+    "USA-13": {
+      "status": "partial",
+      "next": "The local planning sheet supports Letter/A4 print. Native template regional/A4 distribution remains in the Storage and editorial release queue."
+    },
+    "27M": {
+      "status": "partial",
+      "next": "Cards show recorded platforms and verified official stores for 14 curated apps, plus source-derived iOS/F-Droid listings. Broader editorial review and DB publication remain separate."
+    },
+    "SEO-03": {
+      "status": "partial",
+      "next": "A limited source-reviewed English inventory is published through canonical XML sitemaps without indexing the discovery catalog. Database-managed publication and Search Console sync still need configuration."
+    },
+    "ADMIN-06": {
+      "status": "partial",
+      "next": "Source inventory, saved metadata review, lifecycle controls and manual Search Console CSV reports are available. Live OAuth/inspection, provider alerts and complete backend activation remain pending."
+    },
+    "DISC-03": {
+      "status": "partial",
+      "next": "The finder searches full discovery metadata after source-reviewed backend candidates, with recorded OS/offline/signup/access constraints and country disclosure. Verified regional availability needs more evidence."
+    },
+    "TRAFFIC-07": {
+      "status": "implemented",
+      "next": "Four public, attributed read-only iframe widgets are available with isolated CSP and no private collection state."
+    },
+    "TRAFFIC-12": {
+      "status": "partial",
+      "next": "A working task/platform/account selector explains its finite recorded-fact shortlist. Broader preferences and comparison content remain separate."
+    },
+    "TRAFFIC-13": {
+      "status": "implemented",
+      "next": "The local planning sheet supports goals, ordered milestones, resource choices, private notes, share links, JSON/CSV and Letter/A4 print."
+    },
+    "24.2": {
+      "status": "implemented",
+      "next": "India can receive an optional Hindi choice with an English browser. English remains the default; saved choices and Keep English take precedence."
+    },
+    "23.3": {
+      "status": "implemented",
+      "next": "Canonical-host robots and XML sitemaps permit a finite reviewed English inventory; private, search, translated UI and preview surfaces remain excluded. An optional truthful llms.txt is available."
+    },
+    "SEO-04": {
+      "status": "partial",
+      "next": "The canonical domain now allows a finite source-approved English cohort while preserving noindex on drafts, arbitrary queries and preview hosts. Database-managed lifecycle acceptance still needs the correct backend."
+    },
+    "AISEO-05": {
+      "status": "partial",
+      "next": "Seventeen source-reviewed canonical pages are crawlable, with sitemap and robots checks and optional llms.txt. Additional editorial and provider reporting work remains separate."
+    },
+    "UX-04": {
+      "status": "partial",
+      "next": "Preference clearing now removes actual locale cookie/storage and local planning data. Consent, persistent submission and protected upload controls are still needed when collection is enabled."
+    },
+    "INDEX-01": {
+      "status": "partial",
+      "next": "A 17-page source-reviewed English inventory is live independently of the database SEO inventory. Database-managed lifecycle and Google index observations remain separate."
+    },
+    "INDEX-02": {
+      "status": "partial",
+      "next": "The exact source-approved cohort has a canonical XML index and child sitemap. Database-generated sitemap publication remains protected and needs live acceptance."
+    },
+    "INDEX-03": {
+      "status": "partial",
+      "next": "Runtime tests check approved canonical HTML/robots/sitemaps, query and locale exclusion, and preview-host noindex. Google crawl observations need actual property data."
+    },
+    "SEO-CRAWL-02": {
+      "status": "partial",
+      "next": "Reviewed source pages are released through a finite English inventory; arbitrary facets remain noindex. Existing six topic routes still need their own substantive editorial release."
+    },
+    "TRAFFIC-01": {
+      "status": "partial",
+      "next": "The private admin can import real Search Console Performance CSV queries/pages/countries/dates/appearance. Live account sync and persistent opportunity assignments remain pending."
+    },
+    "TRAFFIC-08": {
+      "status": "partial",
+      "next": "Actual imported impressions, clicks, computed CTR and position are available to inspect. Controlled title revisions and before/after query-mix comparisons remain pending."
+    },
+    "SEO-MEASURE-01": {
+      "status": "partial",
+      "next": "Manual Search Console Performance CSV analysis reports supplied metrics, source and owner-entered period. Live Search Console/Bing property sync is not configured."
+    }
+  }
+}

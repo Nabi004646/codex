@@ -1,0 +1,942 @@
+{
+  "schema_version": 1,
+  "specification": "FreeResourceAtlas_Master_Specification_v2.5_2026-11-12-1.txt",
+  "audited_source_commit": "11d31dfdf0f2933e884cee8bcdc1665cbc0c80cf",
+  "audit_scope": "Sections19–28 including27A–27M;CURRENTDECISIONS override legacyD1 directions. Source audit,not a claim of authenticated live provider acceptance.",
+  "statuses": [
+    "implemented",
+    "partial",
+    "missing"
+  ],
+  "audit_limitations": [
+    "External Search Console,Storage permissions,WAF,billing and live privileged authorization are not certified by frontend source alone.",
+    "Template source preservation completed as a bounded asset restoration task; Storage upload and publication flags remain unchanged."
+  ],
+  "items": [
+    {
+      "id": "19.1",
+      "feature": "Original design and source preservation",
+      "status": "partial",
+      "evidence": [
+        "source-baseline/nepocore-library/app/globals.css",
+        "src/staging.css",
+        "docs/mobile-search-and-consumer-catalog.md"
+      ],
+      "next": "Retain the original design and maintain a current visual regression gallery; historical source is preserved.",
+      "blockedBy": []
+    },
+    {
+      "id": "19.2",
+      "feature": "Cloudflare frontend and fresh Supabase architecture",
+      "status": "partial",
+      "evidence": [
+        "wrangler.jsonc",
+        "server/worker.ts",
+        "config/backend.public.json",
+        "src/AdminPanel.tsx"
+      ],
+      "next": "Complete authenticated owner acceptance and measured capacity checks on the retained Free-library project.",
+      "blockedBy": [
+        "Privileged Free-library project access for live backend verification"
+      ]
+    },
+    {
+      "id": "19.3",
+      "feature": "Normalized protected content model",
+      "status": "partial",
+      "evidence": [
+        "src/admin-normalize.mjs",
+        "src/model.mjs",
+        "server/published.mjs"
+      ],
+      "next": "Restore migration history from the original checkpoint into the repository and extend only model areas required by working workflows.",
+      "blockedBy": [
+        "Privileged project access to verify deployed schema and RLS"
+      ]
+    },
+    {
+      "id": "19.4",
+      "feature": "Database capacity checkpoints",
+      "status": "missing",
+      "evidence": [
+        "src/CatalogProgress.tsx",
+        "docs/catalog-and-performance.md"
+      ],
+      "next": "Measure representative 1K/10K/100K table/index storage and SQL plans in authorized staging; retain the enforced import checkpoint.",
+      "blockedBy": [
+        "Authorized database measurement access"
+      ]
+    },
+    {
+      "id": "20.1",
+      "feature": "Measured performance budgets",
+      "status": "partial",
+      "evidence": [
+        "scripts/check-build.mjs",
+        "scripts/check-discovery.mjs",
+        "src/catalog-search.worker.ts"
+      ],
+      "next": "Add reproducible latency/load benchmarks and consent-aware field Web Vitals; existing bundle checks do not prove p75/p95 targets.",
+      "blockedBy": []
+    },
+    {
+      "id": "20.2",
+      "feature": "Rendering, caching and invalidation",
+      "status": "partial",
+      "evidence": [
+        "server/runtime.mjs",
+        "server/discovery-snapshots.mjs",
+        "server/production-state.mjs",
+        "src/PublishedHighlights.tsx"
+      ],
+      "next": "Preserve SSR snapshots and add tested publication-aware invalidation without replacing discovery search with an empty backend inventory.",
+      "blockedBy": []
+    },
+    {
+      "id": "20.3",
+      "feature": "Responsive lightweight frontend delivery",
+      "status": "implemented",
+      "evidence": [
+        "src/Library.tsx",
+        "src/network.mjs",
+        "src/smooth.css",
+        "scripts/check-interactions.mjs"
+      ],
+      "next": "Continue representative responsive, keyboard, stale-request and reduced-motion regression checks.",
+      "blockedBy": []
+    },
+    {
+      "id": "20.4",
+      "feature": "Real remotely referenced application media",
+      "status": "partial",
+      "evidence": [
+        "src/resource-images.ts",
+        "src/ResourcePreview.tsx",
+        "data/provider-media.json",
+        "data/apps-expansion-release.json"
+      ],
+      "next": "Keep publisher-specific media and truthful fallbacks; record individual reuse permissions during editorial publication.",
+      "blockedBy": [
+        "Editorial media-rights evidence for each publicly approved resource"
+      ]
+    },
+    {
+      "id": "20.5",
+      "feature": "Operational monitoring and quota alerts",
+      "status": "missing",
+      "evidence": [
+        "src/metrics.mjs",
+        "docs/catalog-and-performance.md"
+      ],
+      "next": "Implement privacy-aware telemetry, incremental link/image health queues and configurable storage/egress/error thresholds.",
+      "blockedBy": [
+        "Authorized provider usage/log access for real quota measurements"
+      ]
+    },
+    {
+      "id": "21.1",
+      "feature": "Smart short-query and synonym search",
+      "status": "implemented",
+      "evidence": [
+        "server/search-intents.mjs",
+        "server/discovery-codec.mjs",
+        "server/search-autocomplete.mjs",
+        "scripts/check-smart-search.mjs"
+      ],
+      "next": "Maintain relevance tests and extend aliases only for genuine catalog matches.",
+      "blockedBy": []
+    },
+    {
+      "id": "21.2",
+      "feature": "Indexed weighted retrieval and analytics",
+      "status": "partial",
+      "evidence": [
+        "scripts/prepare-discovery.mjs",
+        "server/discovery-search.mjs",
+        "src/metrics.mjs"
+      ],
+      "next": "Keep bounded static discovery retrieval; validate backend full-text plans and collect consent-safe real zero-result aggregates.",
+      "blockedBy": [
+        "Database measurement access for live SQL query plans"
+      ]
+    },
+    {
+      "id": "21.3",
+      "feature": "Scalable public search API and benchmarks",
+      "status": "partial",
+      "evidence": [
+        "server/runtime.mjs",
+        "server/discovery-query-key.mjs",
+        "src/catalog-search.ts"
+      ],
+      "next": "Add measured p50/p95 staging benchmarks, route rate controls and backpressure; prepared snapshots currently hand arbitrary searches to the browser worker.",
+      "blockedBy": []
+    },
+    {
+      "id": "21.4",
+      "feature": "Reproducible source expansion and reviewed imports",
+      "status": "partial",
+      "evidence": [
+        "scripts/catalog/fetch-app-catalogs.py",
+        "scripts/catalog/collect-app-expansion.py",
+        "src/AdminDiscoveryImport.tsx",
+        "src/AdminPanel.tsx"
+      ],
+      "next": "Retain source hashes/deduplication and complete owner-authenticated draft import, resume, publication and targeted update acceptance.",
+      "blockedBy": [
+        "Owner-authenticated backend acceptance"
+      ]
+    },
+    {
+      "id": "22.1",
+      "feature": "Full SEO command-center controls",
+      "status": "partial",
+      "evidence": [
+        "src/SeoWorkspace.tsx",
+        "server/metadata.mjs",
+        "server/sitemaps.mjs"
+      ],
+      "next": "Extend saved-revision quality gates with global metadata templates, structured-data review, diagnostics, exports, staged diffs and rollback history.",
+      "blockedBy": []
+    },
+    {
+      "id": "22.2",
+      "feature": "Truthful SEO and ranking claims",
+      "status": "implemented",
+      "evidence": [
+        "src/SeoWorkspace.tsx",
+        "src/model.mjs",
+        "docs/apps-images-downloads-release.md"
+      ],
+      "next": "Preserve clear separation between internal checks, sitemap eligibility and real search-engine observations.",
+      "blockedBy": []
+    },
+    {
+      "id": "23.2",
+      "feature": "Evidence-led answer content and glossary",
+      "status": "partial",
+      "evidence": [
+        "server/public-content.mjs",
+        "src/ResourceDetail.tsx",
+        "src/PublicPages.tsx"
+      ],
+      "next": "Add a useful glossary and substantive reviewed hubs/comparisons; retain source-linked examples and avoid unperformed hands-on claims.",
+      "blockedBy": [
+        "Editorial evidence and review for indexed content"
+      ]
+    },
+    {
+      "id": "23.3",
+      "feature": "Crawler policy and access documentation",
+      "status": "partial",
+      "evidence": [
+        "server/runtime.mjs",
+        "wrangler.jsonc"
+      ],
+      "next": "Finish deliberate production crawl policy and verify approved content is reachable; keep private/search combinations excluded without blanket blocking reviewed pages.",
+      "blockedBy": []
+    },
+    {
+      "id": "23.4",
+      "feature": "Search and AI-discovery measurement",
+      "status": "missing",
+      "evidence": [
+        "src/metrics.mjs",
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Connect authorized real Search Console/Bing reporting; expose unavailable states for unsupported data instead of fabricated AI-citation metrics.",
+      "blockedBy": [
+        "Authorized search-engine property access",
+        "Verified availability of relevant provider reports"
+      ]
+    },
+    {
+      "id": "24.1",
+      "feature": "Language selector and UI localization",
+      "status": "partial",
+      "evidence": [
+        "src/locale-config.mjs",
+        "src/LocaleProvider.tsx",
+        "data/ui-messages.json"
+      ],
+      "next": "Maintain existing eleven UI languages and add further planned locales only after usable reviewed translations.",
+      "blockedBy": []
+    },
+    {
+      "id": "24.2",
+      "feature": "Optional language suggestion with English default",
+      "status": "partial",
+      "evidence": [
+        "src/locale-config.mjs",
+        "src/LocaleProvider.tsx",
+        "server/runtime.mjs"
+      ],
+      "next": "Ensure India can receive an optional Hindi choice even with an English browser preference, without changing default language or overriding a saved choice.",
+      "blockedBy": []
+    },
+    {
+      "id": "24.3",
+      "feature": "Reviewed translated pages and hreflang",
+      "status": "missing",
+      "evidence": [
+        "src/model.mjs",
+        "src/SeoWorkspace.tsx",
+        "server/metadata.mjs"
+      ],
+      "next": "Implement actual reviewed translated content workflow and reciprocal locale URL metadata; keep English fallback explicit until then.",
+      "blockedBy": [
+        "Reviewed page translations",
+        "Backend write access for translation publication"
+      ]
+    },
+    {
+      "id": "25.1",
+      "feature": "Content opportunities and keyword-to-page mapping",
+      "status": "partial",
+      "evidence": [
+        "src/SeoWorkspace.tsx",
+        "server/public-content.mjs",
+        "src/metrics.mjs"
+      ],
+      "next": "Import brainstorm candidates as unverified research, then combine real zero-results and authorized search data into a deduplicated editorial queue.",
+      "blockedBy": [
+        "Authorized Search Console access for demand measurements"
+      ]
+    },
+    {
+      "id": "25.2",
+      "feature": "Returning-visitor and community growth",
+      "status": "partial",
+      "evidence": [
+        "src/ToolkitsWorkspace.tsx",
+        "src/PublicPages.tsx",
+        "src/metrics.mjs"
+      ],
+      "next": "Preserve guest toolkit sharing; connect moderated submissions/corrections and opt-in subscription workflows without sending unsolicited messages.",
+      "blockedBy": [
+        "Configured submission/moderation backend",
+        "Configured opt-in email provider"
+      ]
+    },
+    {
+      "id": "25.3",
+      "feature": "Separate searchable and indexable inventories",
+      "status": "partial",
+      "evidence": [
+        "src/model.mjs",
+        "src/SeoWorkspace.tsx",
+        "server/production-state.mjs"
+      ],
+      "next": "Deliver controlled approved-content publication while preserving the full discovery catalog; importing a listing must not approve a sitemap URL.",
+      "blockedBy": []
+    },
+    {
+      "id": "26.1",
+      "feature": "Authenticated administration and public-data controls",
+      "status": "partial",
+      "evidence": [
+        "src/AdminPanel.tsx",
+        "src/network.mjs",
+        "src/admin-normalize.mjs",
+        "scripts/check-interactions.mjs"
+      ],
+      "next": "Keep MFA/session/revision validation and complete live authorization, upload-policy and rate-control acceptance.",
+      "blockedBy": [
+        "Privileged owner access for deployed RLS/MFA tests",
+        "Cloudflare account access to verify WAF/rate settings"
+      ]
+    },
+    {
+      "id": "26.2",
+      "feature": "Resilience, backup and restore operations",
+      "status": "partial",
+      "evidence": [
+        "scripts/prepare-seed.mjs",
+        "scripts/prepare-template-source.mjs",
+        "docs/cloudflare-pages.md"
+      ],
+      "next": "Retain pinned asset restoration and add documented, tested database backup/restore and incremental maintenance runbooks.",
+      "blockedBy": [
+        "Authorized database backup/restore environment"
+      ]
+    },
+    {
+      "id": "27A",
+      "feature": "SEO smart search landing",
+      "status": "partial",
+      "evidence": [
+        "server/public-content.mjs",
+        "server/preview.mjs",
+        "src/Library.tsx",
+        "scripts/check-public.mjs"
+      ],
+      "next": "Six functional mapped routes need substantive editorial approval and a safe indexable production release; arbitrary search URLs remain noindex.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-01",
+      "feature": "Country-aware resource finder",
+      "status": "partial",
+      "evidence": [
+        "src/Library.tsx",
+        "src/TaskFinder.tsx",
+        "server/finder.mjs",
+        "server/discovery-search.mjs"
+      ],
+      "next": "Add finder country selection and source-backed availability data; continue explicit worldwide/unverified fallback rather than inventing restrictions.",
+      "blockedBy": [
+        "Reviewed country-availability evidence"
+      ]
+    },
+    {
+      "id": "USA-02",
+      "feature": "Google smart search landing integration",
+      "status": "partial",
+      "evidence": [
+        "server/public-content.mjs",
+        "server/preview.mjs",
+        "server/metadata.mjs"
+      ],
+      "next": "Release quality-approved mapped topic routes without pretending to recover a visitor’s hidden Google query.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-03",
+      "feature": "Free alternatives directory",
+      "status": "partial",
+      "evidence": [
+        "server/page-data.mjs",
+        "src/PublicPages.tsx"
+      ],
+      "next": "Add product-based alternatives lookup with useful verified feature gaps, export/migration constraints and platform/privacy notes.",
+      "blockedBy": [
+        "Verified product comparison evidence"
+      ]
+    },
+    {
+      "id": "USA-04",
+      "feature": "Detailed resource comparison pages",
+      "status": "partial",
+      "evidence": [
+        "src/PublicPages.tsx",
+        "source-baseline/nepocore-library/components/CompareFromBrowser.tsx"
+      ],
+      "next": "Extend working 2–4-resource facts comparison with reviewed conclusions and substantive curated comparisons.",
+      "blockedBy": [
+        "Editorial comparison evidence"
+      ]
+    },
+    {
+      "id": "USA-05",
+      "feature": "Problem-solving guides",
+      "status": "partial",
+      "evidence": [
+        "server/public-content.mjs",
+        "src/PublicPages.tsx"
+      ],
+      "next": "Review and publish substantive original guides; existing sixteen guides remain staging drafts.",
+      "blockedBy": [
+        "Editorial content review"
+      ]
+    },
+    {
+      "id": "USA-06",
+      "feature": "Small-business resource collections",
+      "status": "missing",
+      "evidence": [
+        "server/public-content.mjs",
+        "data/taxonomy.json"
+      ],
+      "next": "Add a focused small-business starter collection covering linked CRM, invoicing, communication and operations workflows with honest limits.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-07",
+      "feature": "Student resource center",
+      "status": "partial",
+      "evidence": [
+        "data/taxonomy.json",
+        "server/public-content.mjs"
+      ],
+      "next": "Add a dedicated student center using lawful courses/books/study resources; verify scholarships or deadlines individually before including claims.",
+      "blockedBy": [
+        "Primary institutional evidence for changing scholarship/eligibility claims"
+      ]
+    },
+    {
+      "id": "USA-08",
+      "feature": "Creator resource hub",
+      "status": "partial",
+      "evidence": [
+        "server/public-content.mjs",
+        "data/taxonomy.json"
+      ],
+      "next": "Build a focused creator hub linking editing, captioning, thumbnails, lawful media and license-review workflows.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-09",
+      "feature": "No-signup filtering",
+      "status": "implemented",
+      "evidence": [
+        "src/Library.tsx",
+        "server/discovery-search.mjs",
+        "src/admin-normalize.mjs"
+      ],
+      "next": "Keep filtering only recorded account requirements and add stale-data review as maintenance work.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-10",
+      "feature": "Free-use and licensing distinctions",
+      "status": "partial",
+      "evidence": [
+        "src/Library.tsx",
+        "src/model.mjs",
+        "server/published.mjs"
+      ],
+      "next": "Retain honest Free/Open source/Free plan/Paid labels; expose trial/commercial-use facets only when supported by verified facts.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-11",
+      "feature": "One hundred original downloadable templates",
+      "status": "partial",
+      "evidence": [
+        "data/template-drafts.json",
+        "data/template-source.parts.json",
+        "scripts/prepare-template-source.mjs",
+        "server/templates.mjs"
+      ],
+      "next": "The 100 templates and 240 native companions are pinned as draft source assets. Complete protected Storage upload, file mappings and actual publication.",
+      "blockedBy": [
+        "Free-library Storage/admin write access",
+        "Editorial/distribution-rights publication review"
+      ]
+    },
+    {
+      "id": "USA-12",
+      "feature": "Personalized guest toolkits",
+      "status": "implemented",
+      "evidence": [
+        "src/ToolkitsWorkspace.tsx",
+        "source-baseline/nepocore-library/lib/browser-collections.ts"
+      ],
+      "next": "Maintain named folders, export/import and shareable public-resource links; account sync is a later optional enhancement.",
+      "blockedBy": []
+    },
+    {
+      "id": "USA-13",
+      "feature": "Regional English and print conventions",
+      "status": "partial",
+      "evidence": [
+        "data/template-drafts.json",
+        "src/TemplateWorkbench.tsx"
+      ],
+      "next": "Retain genuine regional template variants and browser Letter/A4 options; verify native document layouts and region-specific hub terminology.",
+      "blockedBy": [
+        "Regional content review"
+      ]
+    },
+    {
+      "id": "USA-14",
+      "feature": "Verified dates and correction controls",
+      "status": "partial",
+      "evidence": [
+        "server/catalog.mjs",
+        "src/ResourceDetail.tsx",
+        "src/PublicPages.tsx"
+      ],
+      "next": "Retain 25 source-checked editorial entries and unknown labels elsewhere; connect correction delivery and incremental source rechecks.",
+      "blockedBy": [
+        "Source/editorial rechecking",
+        "Configured correction delivery backend"
+      ]
+    },
+    {
+      "id": "USA-15",
+      "feature": "Country-based search and SEO analytics",
+      "status": "missing",
+      "evidence": [
+        "src/metrics.mjs",
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Implement privacy-safe aggregates and authorized country-level Search Console reporting; recordEvent is currently a deliberate no-op.",
+      "blockedBy": [
+        "Authorized Search Console property access",
+        "Configured consent-aware analytics collection"
+      ]
+    },
+    {
+      "id": "27C",
+      "feature": "Native template pack generation and QA",
+      "status": "partial",
+      "evidence": [
+        "data/template-drafts.json",
+        "data/template-source.parts.json",
+        "scripts/prepare-template-source.mjs"
+      ],
+      "next": "Preserve the existing 100 distinct drafts: 60 DOCX,40 XLSX,100 PDF,40 CSV. Source integrity is verified; finish publishable packaging and owner content/rights review.",
+      "blockedBy": [
+        "Final publication review"
+      ]
+    },
+    {
+      "id": "27D",
+      "feature": "Template delivery security and usage budgets",
+      "status": "missing",
+      "evidence": [
+        "server/templates.mjs",
+        "src/TemplatePages.tsx"
+      ],
+      "next": "Implement protected MIME-verified upload/publication and actual storage/egress measurement before enabling hosted downloads.",
+      "blockedBy": [
+        "Privileged Storage access",
+        "Actual provider usage telemetry"
+      ]
+    },
+    {
+      "id": "27E",
+      "feature": "Supabase Storage with lean file mappings",
+      "status": "partial",
+      "evidence": [
+        "data/template-drafts.json",
+        "src/admin-normalize.mjs"
+      ],
+      "next": "Reuse existing backend resource_files schema and create protected approved/draft Storage buckets; files stay outside PostgreSQL.",
+      "blockedBy": [
+        "Free-library project access for bucket policies,upload and resource_files writes"
+      ]
+    },
+    {
+      "id": "SEO-QUALITY-01",
+      "feature": "Separate editorial and index approval gates",
+      "status": "partial",
+      "evidence": [
+        "src/SeoWorkspace.tsx",
+        "src/model.mjs",
+        "server/production-state.mjs"
+      ],
+      "next": "Keep independent saved-revision index approval and complete live acceptance of approval,retirement and publication workflows.",
+      "blockedBy": [
+        "Owner-authenticated backend acceptance"
+      ]
+    },
+    {
+      "id": "SEO-QUALITY-02",
+      "feature": "Substantive verified resource pages",
+      "status": "partial",
+      "evidence": [
+        "src/ResourceDetail.tsx",
+        "server/catalog.mjs"
+      ],
+      "next": "Expand original purpose,audience,use cases,limits and verified sources before indexing; most discovery records intentionally have no local SEO detail page.",
+      "blockedBy": [
+        "Editorial evidence and source verification"
+      ]
+    },
+    {
+      "id": "SEO-QUALITY-03",
+      "feature": "Comparison methodology and editorial trust",
+      "status": "partial",
+      "evidence": [
+        "src/PublicPages.tsx",
+        "server/public-content.mjs"
+      ],
+      "next": "Keep clear documentary-review limitations and add substantive comparison methodology, real corrections delivery and relevant original evidence.",
+      "blockedBy": []
+    },
+    {
+      "id": "SEO-QUALITY-04",
+      "feature": "Useful template landing pages",
+      "status": "partial",
+      "evidence": [
+        "src/TemplatePages.tsx",
+        "data/template-drafts.json"
+      ],
+      "next": "Connect actual approved files with format/size metadata,usage instructions and one canonical landing page per useful topic.",
+      "blockedBy": [
+        "Protected Storage publication",
+        "Editorial release approval"
+      ]
+    },
+    {
+      "id": "SEO-QUALITY-05",
+      "feature": "Reviewed first content cohort",
+      "status": "partial",
+      "evidence": [
+        "server/public-content.mjs",
+        "server/catalog.mjs"
+      ],
+      "next": "Prioritize a finite meaningful hub/resource review cohort; do not equate source-record volume with original indexed page quality.",
+      "blockedBy": [
+        "Editorial review"
+      ]
+    },
+    {
+      "id": "SEO-CRAWL-01",
+      "feature": "Separate catalog count from indexable pages",
+      "status": "implemented",
+      "evidence": [
+        "src/CatalogProgress.tsx",
+        "src/SeoWorkspace.tsx",
+        "server/discovery-search.mjs"
+      ],
+      "next": "Keep searchable discovery entries distinct from approved canonical URLs and externally reported indexing.",
+      "blockedBy": []
+    },
+    {
+      "id": "SEO-CRAWL-02",
+      "feature": "Controlled smart landings and search facets",
+      "status": "partial",
+      "evidence": [
+        "server/routes.mjs",
+        "server/metadata.mjs",
+        "server/runtime.mjs"
+      ],
+      "next": "Retain finite mapped landings and noindex arbitrary facets; replace the global staging robots block only through an approved production policy.",
+      "blockedBy": []
+    },
+    {
+      "id": "SEO-CRAWL-03",
+      "feature": "Correct URL lifecycle and canonicals",
+      "status": "partial",
+      "evidence": [
+        "server/runtime.mjs",
+        "server/sitemaps.mjs",
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Keep direct redirect/410 validation and verify real approved URL publication,unpublication and sitemap transitions.",
+      "blockedBy": [
+        "Backend publication acceptance"
+      ]
+    },
+    {
+      "id": "SEO-CRAWL-04",
+      "feature": "Genuine country and language content",
+      "status": "partial",
+      "evidence": [
+        "src/LocaleProvider.tsx",
+        "server/metadata.mjs"
+      ],
+      "next": "Publish distinct reviewed regional or translated pages only; do not generate duplicated locale URLs.",
+      "blockedBy": [
+        "Reviewed localized content"
+      ]
+    },
+    {
+      "id": "SEO-MEASURE-01",
+      "feature": "Verified organic search measurements",
+      "status": "missing",
+      "evidence": [
+        "src/metrics.mjs",
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Connect actual Search Console/Bing property reporting and label date windows,sources and unavailable states.",
+      "blockedBy": [
+        "Authorized provider property access"
+      ]
+    },
+    {
+      "id": "SEO-MEASURE-02",
+      "feature": "Generative AI report measurements",
+      "status": "missing",
+      "evidence": [
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Verify actual available provider reports before implementing imports; do not invent endpoints or citation totals.",
+      "blockedBy": [
+        "Verified report availability",
+        "Authorized Search Console access"
+      ]
+    },
+    {
+      "id": "SEO-MEASURE-03",
+      "feature": "Multimodal discovery measurements",
+      "status": "missing",
+      "evidence": [
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Inspect actual supported reporting when meaningful data exists; otherwise retain unavailable status.",
+      "blockedBy": [
+        "Verified report availability",
+        "Authorized Search Console access"
+      ]
+    },
+    {
+      "id": "SEO-MEASURE-04",
+      "feature": "Honest measurement without ranking promises",
+      "status": "implemented",
+      "evidence": [
+        "src/SeoWorkspace.tsx",
+        "docs/apps-images-downloads-release.md"
+      ],
+      "next": "Maintain the distinction between internal technical checks and actual indexing,rankings,AI referrals or revenue.",
+      "blockedBy": []
+    },
+    {
+      "id": "27I",
+      "feature": "Complete SEO release acceptance",
+      "status": "partial",
+      "evidence": [
+        "scripts/check-public.mjs",
+        "scripts/check-runtime-http.mjs",
+        "scripts/check-pages.mjs"
+      ],
+      "next": "Existing automated source/runtime tests pass; complete reviewed production indexing, live security,provider authorization and measured performance acceptance.",
+      "blockedBy": [
+        "Editorial release",
+        "Authorized backend/search-engine access"
+      ]
+    },
+    {
+      "id": "INDEX-01",
+      "feature": "Approved canonical URL inventory",
+      "status": "partial",
+      "evidence": [
+        "src/SeoWorkspace.tsx",
+        "src/model.mjs",
+        "server/production-state.mjs"
+      ],
+      "next": "Retain the protected separate inventory and complete a real approved content cohort without replacing discovery search.",
+      "blockedBy": [
+        "Backend publication access and editorial acceptance"
+      ]
+    },
+    {
+      "id": "INDEX-02",
+      "feature": "Sitemap generator and validator",
+      "status": "partial",
+      "evidence": [
+        "server/sitemaps.mjs",
+        "server/runtime.mjs"
+      ],
+      "next": "Existing1000-URL child generation validates host,dates and route bounds; complete real approved inventory publication and endpoint verification.",
+      "blockedBy": [
+        "Published approved canonical inventory"
+      ]
+    },
+    {
+      "id": "INDEX-03",
+      "feature": "Indexability and discoverability checks",
+      "status": "partial",
+      "evidence": [
+        "scripts/check-public.mjs",
+        "scripts/check-pages.mjs",
+        "server/metadata.mjs"
+      ],
+      "next": "Add approved production HTTP/link/robots audits and finite inventory diagnostics; current global staging pages remain noindex.",
+      "blockedBy": []
+    },
+    {
+      "id": "INDEX-04",
+      "feature": "Actual Search Console integration",
+      "status": "missing",
+      "evidence": [
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Implement secure authorized synchronization and bounded sampled inspections; current integration status is not a working OAuth/sync pipeline.",
+      "blockedBy": [
+        "Verified Search Console property authorization",
+        "Server-side credentials storage"
+      ]
+    },
+    {
+      "id": "INDEX-05",
+      "feature": "Editor-facing indexing diagnostics and export",
+      "status": "partial",
+      "evidence": [
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Add useful HTTP/canonical/sitemap/internal-link diagnostics,audit CSV,orphans,last observations and queue actions without fabricating Google status.",
+      "blockedBy": []
+    },
+    {
+      "id": "INDEX-06",
+      "feature": "Incremental maintenance and automation",
+      "status": "missing",
+      "evidence": [
+        "server/sitemaps.mjs",
+        "src/metrics.mjs"
+      ],
+      "next": "Implement bounded idempotent jobs,backoff and affected-subset invalidation with protected provider credentials.",
+      "blockedBy": [
+        "Authorized scheduler/backend deployment access"
+      ]
+    },
+    {
+      "id": "INDEX-07",
+      "feature": "Indexing acceptance and measurement",
+      "status": "partial",
+      "evidence": [
+        "scripts/check-public.mjs",
+        "scripts/check-runtime-http.mjs",
+        "scripts/check-discovery.mjs"
+      ],
+      "next": "Verify approve/unpublish/replace transitions,real sitemap behavior and sampled observations under a representative controlled catalog.",
+      "blockedBy": [
+        "Authorized backend and Search Console acceptance"
+      ]
+    },
+    {
+      "id": "27K",
+      "feature": "Large-catalog risk mitigations",
+      "status": "partial",
+      "evidence": [
+        "scripts/check-discovery.mjs",
+        "scripts/check-build.mjs",
+        "server/runtime.mjs",
+        "docs/catalog-200k-release.md"
+      ],
+      "next": "Keep sharded discovery and finite SSR output; add measured database/egress budgets,WAF review,link maintenance and actual rollback exercises.",
+      "blockedBy": [
+        "Authorized provider/account measurements"
+      ]
+    },
+    {
+      "id": "27L",
+      "feature": "Safe rollout architecture and launch gates",
+      "status": "partial",
+      "evidence": [
+        "wrangler.jsonc",
+        "server/production-state.mjs",
+        "docs/cloudflare-pages.md"
+      ],
+      "next": "Complete a hybrid approved-content release,canonical inventory and small measured canary; a production flag alone is insufficient.",
+      "blockedBy": [
+        "Editorial approval",
+        "Authorized backend/provider acceptance"
+      ]
+    },
+    {
+      "id": "27M",
+      "feature": "Mobile apps as validated first-class resources",
+      "status": "partial",
+      "evidence": [
+        "src/model.mjs",
+        "src/admin-normalize.mjs",
+        "src/AdminPanel.tsx",
+        "src/ResourceDetail.tsx",
+        "server/catalog.mjs"
+      ],
+      "next": "Add clear mobile platform chips and validated official store actions; most curated multi-platform apps and discovery imports lack structured verified store mappings. Preserve broader app/game catalog requests without falsely labelling everything free.",
+      "blockedBy": [
+        "Verified per-platform storefront/access data",
+        "Live owner import/publication acceptance"
+      ]
+    },
+    {
+      "id": "28",
+      "feature": "Unverified keyword research backlog",
+      "status": "missing",
+      "evidence": [
+        "server/public-content.mjs",
+        "src/SeoWorkspace.tsx"
+      ],
+      "next": "Import2849 brainstorm candidates as unverified research,cluster by intent and map to substantive pages; do not create one page per phrase.",
+      "blockedBy": [
+        "Real demand evidence for prioritization"
+      ]
+    }
+  ]
+}

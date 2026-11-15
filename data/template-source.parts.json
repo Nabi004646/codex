@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "encoding": "tar+gzip",
+  "format": "ustar",
+  "metadata": "data/template-drafts.json",
+  "destination": "outputs/atlas-templates-20261113",
+  "resources": 100,
+  "files": 240,
+  "asset_bytes": 7476312,
+  "tar_bytes": 7680000,
+  "bytes": 6346470,
+  "sha256": "90b9602c91915907ab5fd9280995503af92533f5561da8811a23eb70ee437c16",
+  "inventory_sha256": "e24e2b0d02bae8a278f659cd1a4ca1931c0dd9ae10b11eef37cac1111c6a301d",
+  "publication": "draft",
+  "storage_upload": "not_performed",
+  "rights_review": "owner_review_pending",
+  "parts": [
+    {
+      "path": "data/template-source/part-000.bin",
+      "bytes": 1250000,
+      "sha256": "2d8484f8e0623691755f550aa950f046e7c9e42df95fc0d406ab61e3984e43cd"
+    },
+    {
+      "path": "data/template-source/part-001.bin",
+      "bytes": 1250000,
+      "sha256": "b1177e0784f008c44892dc68597174923b457f88ef6a44dea5f1808fdaea7d3d"
+    },
+    {
+      "path": "data/template-source/part-002.bin",
+      "bytes": 1250000,
+      "sha256": "1181b60e2f8dd5133f52bb3a065138bee9898384ea9c4f5979f3f39bef0f912d"
+    },
+    {
+      "path": "data/template-source/part-003.bin",
+      "bytes": 1250000,
+      "sha256": "c3dd27df3b5e070c8036001c88b8fce659c0af580e85098ea9424ceae5cad93f"
+    },
+    {
+      "path": "data/template-source/part-004.bin",
+      "bytes": 1250000,
+      "sha256": "27dbe590d8332910d972fb185c490eccda7a1fab8fdacd8d42a7b5e900958971"
+    },
+    {
+      "path": "data/template-source/part-005.bin",
+      "bytes": 96470,
+      "sha256": "5301f32edadfb2998f37ea6671b8e699a233561a5146934c2e65ab64b2fb4949"
+    }
+  ]
+}

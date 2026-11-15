@@ -4606,5 +4606,53 @@
     "ja": "ネットワーク分析",
     "vi": "Phân tích mạng",
     "ne": "नेटवर्क विश्लेषण"
+  },
+  "Copy link": {
+    "es": "Copiar enlace",
+    "pt-br": "Copiar link",
+    "hi": "लिंक कॉपी करें",
+    "id": "Salin tautan",
+    "fr": "Copier le lien",
+    "de": "Link kopieren",
+    "ar": "نسخ الرابط",
+    "ja": "リンクをコピー",
+    "vi": "Sao chép liên kết",
+    "ne": "लिङ्क कपी गर्नुहोस्"
+  },
+  "Copy {name} link": {
+    "es": "Copiar enlace de {name}",
+    "pt-br": "Copiar link de {name}",
+    "hi": "{name} का लिंक कॉपी करें",
+    "id": "Salin tautan {name}",
+    "fr": "Copier le lien de {name}",
+    "de": "Link zu {name} kopieren",
+    "ar": "نسخ رابط {name}",
+    "ja": "{name} のリンクをコピー",
+    "vi": "Sao chép liên kết {name}",
+    "ne": "{name} को लिङ्क कपी गर्नुहोस्"
+  },
+  "Resource link copied.": {
+    "es": "Enlace del recurso copiado.",
+    "pt-br": "Link do recurso copiado.",
+    "hi": "संसाधन का लिंक कॉपी हो गया।",
+    "id": "Tautan sumber daya disalin.",
+    "fr": "Lien de la ressource copié.",
+    "de": "Ressourcenlink kopiert.",
+    "ar": "تم نسخ رابط المورد.",
+    "ja": "リソースのリンクをコピーしました。",
+    "vi": "Đã sao chép liên kết tài nguyên.",
+    "ne": "स्रोतको लिङ्क कपी भयो।"
+  },
+  "Your browser could not copy the link.": {
+    "es": "Tu navegador no pudo copiar el enlace.",
+    "pt-br": "Seu navegador não conseguiu copiar o link.",
+    "hi": "आपका ब्राउज़र लिंक कॉपी नहीं कर सका।",
+    "id": "Browser Anda tidak dapat menyalin tautan.",
+    "fr": "Votre navigateur n’a pas pu copier le lien.",
+    "de": "Dein Browser konnte den Link nicht kopieren.",
+    "ar": "تعذر على متصفحك نسخ الرابط.",
+    "ja": "ブラウザーでリンクをコピーできませんでした。",
+    "vi": "Trình duyệt không thể sao chép liên kết.",
+    "ne": "तपाईंको ब्राउजरले लिङ्क कपी गर्न सकेन।"
   }
 }

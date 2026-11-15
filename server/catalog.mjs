@@ -1,3 +1,4 @@
+import mobileStores from '../data/mobile-store-links.json' with {type:'json'};
 import providerMedia from '../data/provider-media.json' with {type:'json'};
 import gtaRelease from '../data/gta6-release.json' with {type:'json'};
 import {createHash} from 'node:crypto';
@@ -20,6 +21,7 @@ const consumer=consumerEntries.map(([name,url,category,subcategory,pricing,platf
  editorial:{license:pricing==='Open source'?'See the official project license':'Provider terms; not a redistribution license',source_urls:[url],source_verified_at:checked,review_type:checked?'Official base-access offer reviewed':'Provider-linked catalog entry; current terms need review',example:'Open the official provider page, choose your platform and check its current access conditions before installing or purchasing.',tradeoff:limits,details:limits}};
 });
 export const catalog=[...old,...fresh,...consumer].map(r=>{const media=providerMedia[r.url];if(r.name==='Grand Theft Auto VI')return {...r,image_url:gtaRelease.hero,image_kind:'publisher',image_source_url:gtaRelease.official_url};if(!media?.image_url||['ComfyUI','Activepieces','Actual','Blender','wger','React Bits'].includes(r.name))return r;return {...r,image_url:media.image_url,image_kind:media.image_kind,image_source_url:media.source_url};});
+for(const r of catalog){const stores=mobileStores[r.name];if(!stores)continue;r.mobile={};for(const p of ['android','ios'])if(stores[p])r.mobile[p]={url:stores[p].url,verified_at:stores.checked_at};r.mobile_platforms=Object.keys(r.mobile);}
 const mobileEntry=catalog.find(r=>r.name==='wger');
 mobileEntry.kind='Mobile app';mobileEntry.mobile_platforms=['android','ios'];mobileEntry.mobile={android:{url:'https://play.google.com/store/apps/details?id=de.wger.flutter',verified_at:'2026-11-13'},ios:{url:'https://apps.apple.com/us/app/wger-workout-manager/id6502226792',verified_at:'2026-11-13'}};mobileEntry.editorial.source_urls=[...mobileEntry.editorial.source_urls,mobileEntry.mobile.android.url,mobileEntry.mobile.ios.url];
 export const byId=new Map(catalog.map(r=>[r.id,r]));

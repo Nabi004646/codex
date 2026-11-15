@@ -1,0 +1,296 @@
+{
+  "Free Fire": {
+    "source_urls": [
+      "https://ff.garena.com/en/",
+      "https://play.google.com/store/apps/details?id=com.dts.freefireth",
+      "https://apps.apple.com/us/app/free-fire-x-naruto-shippuden/id1300146617",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.dts.freefireth",
+      "title": "Free Fire: 9th Anniversary",
+      "publisher": "GARENA INTERNATIONAL I",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.dts.freefireth"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/free-fire-x-naruto-shippuden/id1300146617",
+      "title": "Free Fire x NARUTO SHIPPUDEN",
+      "publisher": "GARENA INTERNATIONAL I PRIVATE LIMITED",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "PUBG MOBILE": {
+    "source_urls": [
+      "https://www.pubgmobile.com/en-US/home.shtml",
+      "https://play.google.com/store/apps/details?id=com.tencent.ig",
+      "https://apps.apple.com/us/app/pubg-mobile/id1330123889",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.tencent.ig",
+      "title": "PUBG MOBILE",
+      "publisher": "Level Infinite",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.tencent.ig"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/pubg-mobile/id1330123889",
+      "title": "PUBG MOBILE",
+      "publisher": "Tencent Mobile International Limited",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "CapCut": {
+    "source_urls": [
+      "https://www.capcut.com/",
+      "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",
+      "https://apps.apple.com/us/app/capcut-photo-video-editor/id1500855883",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",
+      "title": "CapCut - Video Editor",
+      "publisher": "Bytedance Pte. Ltd.",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/capcut-photo-video-editor/id1500855883",
+      "title": "CapCut: Photo & Video Editor",
+      "publisher": "Bytedance Pte. Ltd",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Duolingo": {
+    "source_urls": [
+      "https://www.duolingo.com/",
+      "https://play.google.com/store/apps/details?id=com.duolingo",
+      "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.duolingo",
+      "title": "Duolingo: Learn Languages",
+      "publisher": "Duolingo",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.duolingo"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/duolingo-learn-languages/id570060128",
+      "title": "Duolingo: Learn Languages",
+      "publisher": "Duolingo",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Khan Academy": {
+    "source_urls": [
+      "https://support.khanacademy.org/hc/en-us/articles/202487540-Does-Khan-Academy-have-an-official-mobile-app",
+      "https://play.google.com/store/apps/details?id=org.khanacademy.android",
+      "https://apps.apple.com/us/app/khan-academy/id469863705",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=org.khanacademy.android",
+      "title": "Khan Academy",
+      "publisher": "Khan Academy",
+      "evidence_url": "https://play.google.com/store/apps/details?id=org.khanacademy.android"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/khan-academy/id469863705",
+      "title": "Khan Academy",
+      "publisher": "Khan Academy",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Google Maps": {
+    "source_urls": [
+      "https://www.google.com/maps/about/",
+      "https://play.google.com/store/apps/details?id=com.google.android.apps.maps",
+      "https://apps.apple.com/us/app/google-maps/id585027354",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.maps",
+      "title": "Google Maps",
+      "publisher": "Google LLC",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.google.android.apps.maps"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/google-maps/id585027354",
+      "title": "Google Maps",
+      "publisher": "Google",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Organic Maps": {
+    "source_urls": [
+      "https://organicmaps.app/",
+      "https://play.google.com/store/apps/details?id=app.organicmaps",
+      "https://apps.apple.com/us/app/organic-maps-offline-maps-gps/id1567437057",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=app.organicmaps",
+      "title": "Organic Maps・Offline Map & GPS",
+      "publisher": "Organic Maps",
+      "evidence_url": "https://play.google.com/store/apps/details?id=app.organicmaps"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/organic-maps-offline-maps-gps/id1567437057",
+      "title": "Organic Maps・Offline Maps, GPS",
+      "publisher": "Organic Maps",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Spotify": {
+    "source_urls": [
+      "https://www.spotify.com/download/",
+      "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.spotify.music",
+      "title": "Spotify: Music and Podcasts",
+      "publisher": "Spotify AB",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.spotify.music"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580",
+      "title": "Spotify: Music and Podcasts",
+      "publisher": "Spotify",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Adobe Acrobat Reader": {
+    "source_urls": [
+      "https://www.adobe.com/in/acrobat/pdf-reader.html",
+      "https://play.google.com/store/apps/details?id=com.adobe.reader",
+      "https://apps.apple.com/us/app/acrobat-reader-pdf-editor/id469337564",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.adobe.reader",
+      "title": "Acrobat Reader: PDF Converter",
+      "publisher": "Adobe",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.adobe.reader"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/acrobat-reader-pdf-editor/id469337564",
+      "title": "Acrobat Reader: PDF Editor",
+      "publisher": "Adobe Inc.",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Discord": {
+    "source_urls": [
+      "https://discord.com/download",
+      "https://play.google.com/store/apps/details?id=com.discord",
+      "https://apps.apple.com/us/app/discord-talk-play-hang-out/id985746746",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.discord",
+      "title": "Discord - Talk, Play, Hang Out",
+      "publisher": "Discord Inc.",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.discord"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/discord-talk-play-hang-out/id985746746",
+      "title": "Discord - Talk, Play, Hang Out",
+      "publisher": "Discord Inc.",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Telegram": {
+    "source_urls": [
+      "https://telegram.org/apps",
+      "https://play.google.com/store/apps/details?id=org.telegram.messenger",
+      "https://apps.apple.com/us/app/telegram-messenger/id686449807",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=org.telegram.messenger",
+      "title": "Telegram",
+      "publisher": "Telegram FZ-LLC",
+      "evidence_url": "https://play.google.com/store/apps/details?id=org.telegram.messenger"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/telegram-messenger/id686449807",
+      "title": "Telegram Messenger",
+      "publisher": "Telegram FZ-LLC",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Signal": {
+    "source_urls": [
+      "https://signal.org/download/",
+      "https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms",
+      "https://apps.apple.com/us/app/signal-private-messenger/id874139669",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms",
+      "title": "Signal Private Messenger",
+      "publisher": "Signal Foundation",
+      "evidence_url": "https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/signal-private-messenger/id874139669",
+      "title": "Signal - Private Messenger",
+      "publisher": "Signal Messenger, LLC",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "WhatsApp": {
+    "source_urls": [
+      "https://www.whatsapp.com/download/mobile",
+      "https://play.google.com/store/apps/details?id=com.whatsapp",
+      "https://apps.apple.com/us/app/whatsapp/id310633997",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.whatsapp",
+      "title": "WhatsApp",
+      "publisher": "WhatsApp LLC",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.whatsapp"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/whatsapp/id310633997",
+      "title": "WhatsApp",
+      "publisher": "WhatsApp Inc.",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  },
+  "Bitwarden": {
+    "source_urls": [
+      "https://bitwarden.com/download/",
+      "https://play.google.com/store/apps/details?id=com.x8bit.bitwarden",
+      "https://apps.apple.com/us/app/bitwarden-password-manager/id1137397744",
+      "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    ],
+    "checked_at": "2026-11-15",
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.x8bit.bitwarden",
+      "title": "Bitwarden Password Manager",
+      "publisher": "Bitwarden Inc.",
+      "evidence_url": "https://play.google.com/store/apps/details?id=com.x8bit.bitwarden"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/bitwarden-password-manager/id1137397744",
+      "title": "Bitwarden Password Manager",
+      "publisher": "Bitwarden Inc",
+      "evidence_url": "https://itunes.apple.com/lookup?id=1300146617,1330123889,1500855883,570060128,469863705,585027354,1567437057,324684580,469337564,985746746,686449807,874139669,310633997,1137397744&country=us"
+    }
+  }
+}
