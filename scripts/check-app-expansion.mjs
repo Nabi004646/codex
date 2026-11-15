@@ -8,6 +8,7 @@ import {resourceImage} from '../src/resource-images.ts';
 import {queryDiscovery,discoveryByIds} from '../server/discovery-search.mjs';
 import {downloadDraft,validDownloadLinks,storedDownloadLinks,downloadTitle,DOWNLOAD_TAG} from '../src/download-links.mjs';
 import {queryDownloads} from '../server/downloads.mjs';
+import {publicRows,publicRpc} from '../server/published.mjs';
 import {CatalogInputError} from '../server/discovery-query-key.mjs';
 const read=path=>fs.readFile('public'+path,'utf8').then(JSON.parse),search=(q,params={})=>queryDiscovery(new URLSearchParams({q,...params}),read);
 test('10,000 additional application identities have related media and supported taxonomy',async()=>{
@@ -35,4 +36,8 @@ test('download drafts preserve mirrors, validation and existing saved-revision r
 test('public download queries select tagged published records and bound pagination',async()=>{
  let requested;const result=await queryDownloads(new URLSearchParams({q:'notes,*.()%','page':'2'}),async url=>{requested=new URL(url);return Response.json([{id:'r_notes',display_name:'Download: Linux notes',canonical_url:'https://drive.google.com/file/d/notes/view',source_urls:['https://www.mediafire.com/file/notes/file'],short_summary:'Original notes'}]);});
  assert.equal(requested.searchParams.get('publication'),'eq.published');assert.equal(requested.searchParams.get('tags'),'cs.{"atlas-download"}');assert.equal(requested.searchParams.get('offset'),'24');assert.equal(requested.searchParams.get('limit'),'25');assert.equal(requested.searchParams.get('or'),'(display_name.ilike.*notes*,short_summary.ilike.*notes*)');assert.equal(result.resources[0].title,'Linux notes');assert.equal(result.resources[0].download_links.length,2);assert.equal(result.hasMore,false);await assert.rejects(queryDownloads(new URLSearchParams({page:'-1'})),CatalogInputError);
+});
+
+test('public data adapters use Worker-supported redirect handling and never follow redirects',async()=>{
+ for(const invoke of [f=>publicRows('resources',{select:'id'},f),f=>publicRpc('catalog_stats',{},f)]){let calls=0;await assert.rejects(invoke(async(url,options)=>{calls++;assert.equal(options.redirect,'manual');return new Response('',{status:302,headers:{Location:'https://another-host.org/'}});}));assert.equal(calls,1);}
 });

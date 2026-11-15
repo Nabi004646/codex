@@ -5,7 +5,7 @@ import templates from '../data/template-drafts.json' with {type:'json'};
 const originalFetch=globalThis.fetch;
 const calls=[],assetReads=[];
 globalThis.fetch=async(raw,options={})=>{
- const url=new URL(raw);calls.push(url.pathname);
+ const url=new URL(raw);calls.push(url.pathname);assert.notEqual(options.redirect,'error','Cloudflare does not implement the error redirect mode');
  if(url.pathname.endsWith('/rest/v1/resources')&&url.searchParams.get('tags')==='cs.{"atlas-download"}')return Response.json([]);
  if(url.pathname.endsWith('/rpc/catalog_stats'))return Response.json({total:0,categories:[],revision:'empty'});
  if(url.pathname.endsWith('/rpc/resource_search_v2'))return Response.json({items:[],has_more:false,next_cursor:null});
