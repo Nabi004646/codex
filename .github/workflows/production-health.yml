@@ -1,0 +1,26 @@
+name: Production health
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/monitor-production.py
+      - .github/workflows/production-health.yml
+permissions: {}
+concurrency:
+  group: production-health
+  cancel-in-progress: false
+jobs:
+  public-site:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - name: Check the public site
+        env:
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          curl --fail --silent --show-error --max-time 30 "https://raw.githubusercontent.com/${SOURCE_REPOSITORY}/${SOURCE_COMMIT}/scripts/monitor-production.py" -o "$RUNNER_TEMP/monitor-production.py"
+          python3 "$RUNNER_TEMP/monitor-production.py"

@@ -14,7 +14,7 @@ import CatalogProgress from './CatalogProgress';
 import PasswordSettings from './PasswordSettings';
 import {useEffect,useRef,useState} from 'react';
 import {flushSync} from 'react-dom';
-import {boundedFetch,assertCurrentSession,safeAuthError} from './network.mjs';
+import {boundedFetch,assertCurrentSession,safeAuthError,revokeProviderSession,leavesAdminDocument} from './network.mjs';
 import {createClient} from '@supabase/supabase-js';
 import config from '../config/backend.public.json';
 import {Mark} from './Icons';
@@ -31,13 +31,14 @@ export default function AdminPanel(){
   operation.current=false;
   const prior={authorization:token.current,grant:grant.current,action:'revoke'};generation.current++;abort.current.abort();abort.current=new AbortController();const oldClient=client.current;client.current=null;grant.current='';token.current='';deadline.current=0;
   if(prior.authorization&&prior.grant){const body=JSON.stringify(prior);try{if(!navigator.sendBeacon(endpoint,new Blob([body],{type:'text/plain;charset=UTF-8'})))void fetch(endpoint,{method:'POST',body,headers:{'Content-Type':'text/plain'},keepalive:true}).catch(()=>{});}catch{}}
-  void oldClient?.auth.stopAutoRefresh().catch(()=>{});void oldClient?.auth.signOut({scope:'local'}).catch(()=>{});
+  void oldClient?.auth.stopAutoRefresh().catch(()=>{});
+  void revokeProviderSession(prior.authorization,{url:config.url,publishableKey:config.publishableKey});
  }
  function lock(message='Admin locked. Sign in and verify your authenticator again.'){
   releaseAccess();
   flushSync(()=>{setPhase('login');setKeyboard('');setPassword('');setCode('');setQr('');setNonce('');setFactor('');setBusy(false);setError(message);});
  }
- useEffect(()=>{const hide=()=>{if(document.hidden)lock();},leave=()=>lock(),timer=setInterval(()=>{if(grant.current){const seconds=Math.max(0,Math.floor((Math.min(deadline.current,lastRequest.current+300000)-Date.now())/1000));setRemaining(seconds);if(!seconds)lock();}},1000);document.addEventListener('visibilitychange',hide);window.addEventListener('pagehide',leave);window.addEventListener('popstate',leave);return()=>{clearInterval(timer);document.removeEventListener('visibilitychange',hide);window.removeEventListener('pagehide',leave);window.removeEventListener('popstate',leave);releaseAccess();};},[]);
+ useEffect(()=>{const initialHref=window.location.href,hide=()=>{if(document.hidden)lock();},leave=()=>lock(),history=()=>{if(leavesAdminDocument(initialHref,window.location.href))lock();},timer=setInterval(()=>{if(grant.current){const seconds=Math.max(0,Math.floor((Math.min(deadline.current,lastRequest.current+300000)-Date.now())/1000));setRemaining(seconds);if(!seconds)lock();}},1000);document.addEventListener('visibilitychange',hide);window.addEventListener('pagehide',leave);window.addEventListener('popstate',history);return()=>{clearInterval(timer);document.removeEventListener('visibilitychange',hide);window.removeEventListener('pagehide',leave);window.removeEventListener('popstate',history);releaseAccess();};},[]);
  async function call(action:string,payload:any={},extra:any={}){
   const active=client.current,current=generation.current;
   assertCurrentSession(active,client.current,current,generation.current);

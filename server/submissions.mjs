@@ -23,7 +23,8 @@ export async function submissionResponse(request,{fetcher=fetch}={}){
    if(summary.length<10||summary.length>2000||evidence.length<10||evidence.length>4000)return reply({error:'Provide a summary and supporting evidence within the form limits.'},400);
    Object.assign(body,{p_kind:data.kind,p_url:url,p_summary:summary,p_evidence:evidence});
   }
-  const upstream=await fetcher(config.url+'/rest/v1/rpc/'+(withdraw?'atlas_withdraw':'atlas_submit'),{method:'POST',headers:{apikey:config.publishableKey,'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store',redirect:'error',signal:AbortSignal.timeout(15000)});
+  const upstream=await fetcher(config.url+'/rest/v1/rpc/'+(withdraw?'atlas_withdraw':'atlas_submit'),{method:'POST',headers:{apikey:config.publishableKey,'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store',redirect:'manual',signal:AbortSignal.timeout(15000)});
+  if(upstream.status>=300&&upstream.status<400)return reply({error:'The review queue is temporarily unavailable. Please try again later.'},503);
   const value=await upstream.json();
   if(!upstream.ok){if(value.code==='54000')return reply({error:'The review queue is busy. Please try again later.'},429);if(['22023','23514','23502'].includes(value.code))return reply({error:'Check the URL, summary and evidence.'},400);return reply({error:'The review queue is temporarily unavailable. Your form has not been cleared; try again.'},503);}
   if(withdraw){if(typeof value.withdrawn!=='boolean')throw Error('Incomplete response');return reply({withdrawn:value.withdrawn},200);}

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {boundedFetch,RequestTimeoutError,assertCurrentSession,safeAuthError} from '../src/network.mjs';
+import {boundedFetch,RequestTimeoutError,assertCurrentSession,safeAuthError,revokeProviderSession,leavesAdminDocument} from '../src/network.mjs';
 import {observeSidebarPosition} from '../src/sidebar-position.mjs';
 
 test('a stalled request times out once without repeating a submission',async()=>{
@@ -17,6 +17,15 @@ test('an already locked session cannot send a new request',async()=>{
  const owner=new AbortController();owner.abort();let calls=0;
  await assert.rejects(boundedFetch('https://test.invalid',{}, {signal:owner.signal,fetcher:async()=>{calls++;return Response.json({});}}),{name:'AbortError'});
  assert.equal(calls,0);
+});
+test('provider logout survives cancellation of the protected SDK transport',async()=>{
+ const owner=new AbortController();owner.abort();let sdkCalls=0,logoutCalls=0;
+ await assert.rejects(boundedFetch('https://project.invalid/auth/v1/logout',{}, {signal:owner.signal,fetcher:async()=>{sdkCalls++;return new Response();}}),{name:'AbortError'});
+ assert.equal(sdkCalls,0);
+ const result=await revokeProviderSession('isolated-token',{url:'https://project.invalid',publishableKey:'isolated-public-key',fetcher:async(url,options)=>{
+  logoutCalls++;assert.equal(url,'https://project.invalid/auth/v1/logout?scope=local');assert.equal(options.signal.aborted,false);assert.equal(options.keepalive,true);assert.equal(options.redirect,'manual');assert.equal(options.headers.Authorization,'Bearer isolated-token');return new Response(null,{status:204});
+ }});
+ assert.equal(result,true);assert.equal(logoutCalls,1);
 });
 test('caller cancellation remains connected to the fetch',async()=>{
  const request=new AbortController();let fetched;
@@ -36,6 +45,13 @@ test('late authentication results cannot restore a locked or replaced client',()
  assert.throws(()=>assertCurrentSession(old,null,1,2),{name:'AbortError'});
  assert.throws(()=>assertCurrentSession(old,next,1,1),{name:'AbortError'});
  assert.throws(()=>assertCurrentSession(old,old,1,2),{name:'AbortError'});
+});
+test('admin section links and their history preserve access, while leaving locks it',()=>{
+ const initial='https://freeresourceatlas.com/admin#template-staging';
+ for(const path of ['/admin','/admin#editable-resources','/admin#submission-queue'])assert.equal(leavesAdminDocument(initial,'https://freeresourceatlas.com'+path),false);
+ for(const path of ['/','/admin?other=1','/admin/other'])assert.equal(leavesAdminDocument(initial,'https://freeresourceatlas.com'+path),true);
+ assert.equal(leavesAdminDocument(initial,'https://other.example/admin'),true);
+ assert.equal(leavesAdminDocument(initial,'invalid'),true);
 });
 test('a network failure is not mislabeled as a wrong password',()=>{
  assert.match(safeAuthError(new TypeError('Failed to fetch')),/connection/);

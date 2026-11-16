@@ -60,7 +60,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    if(cacheable&&cache){const hit=await cache.match(key);if(hit){if(!publicDiscovery)return hit;const headers=new Headers(hit.headers);headers.set('Cache-Control','private, no-store');return new Response(hit.body,{status:hit.status,headers});}}
    const page=await render(url.pathname+url.search,{production,publicDiscovery,fetcher,hosted:true,uiLocale:preferredUiLocale(request.headers.get('Cookie'),url.searchParams.get('ui')),countryHint:request.cf?.country||'',discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
    const nonce=crypto.randomUUID().replaceAll('-','');
-   let html=template.replace('<!--ATLAS_HEAD-->',page.head).replace('<!--ATLAS_HTML-->',page.html).replace('/*ATLAS_STATE*/null',page.state);
+   let html=template.replace('<!--ATLAS_HEAD-->',()=>page.head).replace('<!--ATLAS_HTML-->',()=>page.html).replace('/*ATLAS_STATE*/null',()=>page.state);
    if(production||publicDiscovery)html=html.replace('<meta name="robots" content="noindex,nofollow">','<meta name="robots" content="'+page.metadata.robots+'">');
    html=html.replace(/<html[^>]*>/,'<html lang="'+(page.uiLocale||'en')+'" dir="'+(page.uiLocale==='ar'?'rtl':'ltr')+'">');
    html=html.replace(/<script(?=\s|>)/g,'<script nonce="'+nonce+'"');

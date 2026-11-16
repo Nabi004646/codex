@@ -1,0 +1,3 @@
+import {createAdminHandler} from './core.mjs';
+const key=(name:string,legacy:string)=>{try{return JSON.parse(Deno.env.get(name)||'{}').default||Deno.env.get(legacy)||'';}catch{return '';}};
+Deno.serve(createAdminHandler({projectUrl:(Deno.env.get('SUPABASE_URL')||'').replace(/\/$/,''),serviceKey:key('SUPABASE_SECRET_KEYS','SUPABASE_SERVICE_ROLE_KEY'),publishableKey:key('SUPABASE_PUBLISHABLE_KEYS','SUPABASE_ANON_KEY'),allowedOrigins:(Deno.env.get('ATLAS_ALLOWED_ORIGINS')||'https://freeresourceatlas.com,https://www.freeresourceatlas.com,http://127.0.0.1:4173,http://localhost:4173').split(',').map(s=>s.trim()).filter(Boolean)}));

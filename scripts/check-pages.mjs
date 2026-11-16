@@ -6,6 +6,8 @@ const originalFetch=globalThis.fetch;
 const calls=[],assetReads=[];
 globalThis.fetch=async(raw,options={})=>{
  const url=new URL(raw);calls.push(url.pathname);assert.notEqual(options.redirect,'error','Cloudflare does not implement the error redirect mode');
+ if(url.pathname.endsWith('/rpc/atlas_submit')){const data=JSON.parse(options.body);if(data.p_summary==='redirect fixture check')return new Response(null,{status:302,headers:{Location:'https://other.example/queue'}});return Response.json({received:true,id:'00000000-0000-4000-8000-000000000001',state:'pending'});}
+ if(url.pathname.endsWith('/rpc/atlas_withdraw'))return Response.json({withdrawn:true});
  if(url.pathname.endsWith('/rest/v1/resources')&&url.searchParams.get('tags')==='cs.{"atlas-download"}')return Response.json([]);
  if(url.pathname.endsWith('/rpc/catalog_stats'))return Response.json({total:0,categories:[],revision:'empty'});
  if(url.pathname.endsWith('/rpc/resource_search_v2'))return Response.json({items:[],has_more:false,next_cursor:null});
@@ -15,7 +17,13 @@ try{
  const {default:worker}=await import('../dist/pages/_worker.js');
  const env={ATLAS_MODE:'staging',ASSETS:{fetch:async request=>{const pathname=new URL(request.url).pathname;assetReads.push(pathname);if(pathname.startsWith('/catalog/'))return new Response(fs.readFileSync('dist/pages'+pathname),{headers:{'Content-Type':'application/json'}});return new Response('asset fixture',{headers:{'Content-Type':'image/webp'}});}}};
  const request=(path,init)=>new Request('https://atlas-preview.pages.dev'+path,init);
+ const intake={token:'a'.repeat(64),kind:'correction',url:'https://example.com/page',summary:'Compiled worker intake check',evidence:'Isolated acceptance check; no real visitor or hosted data.'},post=body=>({method:'POST',headers:{origin:'https://atlas-preview.pages.dev','Content-Type':'application/json'},body:JSON.stringify(body)});
+ const sent=await worker.fetch(request('/api/submissions',post(intake)),env);assert.equal(sent.status,201);assert.equal((await sent.json()).received,true);
+ const withdrawn=await worker.fetch(request('/api/submissions/withdraw',post({token:intake.token})),env);assert.equal(withdrawn.status,200);assert.equal((await withdrawn.json()).withdrawn,true);
+ assert.equal((await worker.fetch(request('/api/submissions',post({...intake,summary:'redirect fixture check'})),env)).status,503,'Upstream redirects are rejected without forwarding credentials');
+ assert.equal((await worker.fetch(request('/api/submissions',{...post(intake),headers:{origin:'https://other.example','Content-Type':'application/json'}}),env)).status,403);
  const home=await worker.fetch(request('/'),env);assert.equal(home.status,200);assert.match(home.headers.get('X-Robots-Tag'),/noindex/);const html=await home.text();assert.match(html,/Free Resources/);assert.match(html,/nonce="[a-f0-9]+"/);assert.ok(!html.includes('/src/main.tsx'));
+ for(const q of ["$'",'$&','$`']){const page=await worker.fetch(request('/search?q='+encodeURIComponent(q)),env);assert.equal(page.status,200);const text=await page.text(),bootstrap=text.match(/window\.__ATLAS_PAGE__=(.*?);<\/script>/s);assert.ok(bootstrap);assert.equal(JSON.parse(bootstrap[1]).params.q,q,'SSR preserves literal dollar sequences in search and bootstrap content');}
  for(const kind of ['AI model','Dataset','AI demo','Game','Desktop software']){const response=await worker.fetch(request('/api/resources?'+new URLSearchParams({kind})),env);assert.equal(response.status,200);const result=await response.json();assert.ok(result.total>0);assert.ok(result.resources.every(r=>r.kind===kind));assert.ok(html.includes('value=\"'+kind+'\"'));}
  for(const [q,name,price]of [['freefire','Free Fire','Free'],['PUG','PUBG MOBILE','Free'],['GTA','Grand Theft Auto V','Paid']]){const response=await worker.fetch(request('/api/resources?'+new URLSearchParams({q})),env);assert.equal(response.status,200);const result=await response.json();assert.equal(result.resources[0].name,name);assert.equal(result.resources[0].pricing,price);}
  for(const [path,title]of [['/downloads','Downloads, with the details.'],['/games/gta-6','Grand Theft Auto VI']]){const response=await worker.fetch(request(path),env);assert.equal(response.status,200);const body=await response.text();assert.ok(body.includes(title));assert.ok(body.includes('<h1>'));if(path==='/games/gta-6'){assert.ok(body.includes('rockstargames.com/VI/'));assert.ok(body.includes('A PC release date is not listed'));assert.ok(!body.includes('GTA 6 PC download'));}}
