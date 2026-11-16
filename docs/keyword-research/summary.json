@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-16",
+  "input_files": 5,
+  "source_rows": 696,
+  "unique_keywords": 555,
+  "duplicate_rows": 141,
+  "duplicate_files": [
+    [
+      "KeywordStats_11_16_2026 (3).csv",
+      "KeywordStats_11_16_2026.csv"
+    ]
+  ],
+  "counts": {
+    "mapped": 484,
+    "excluded": 71
+  },
+  "mapped_pages": 21,
+  "metric_note": "Impressions is the label in the supplied exports. It is not verified site traffic, monthly search volume, ranking or Search Console data. Duplicate exports are not summed."
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "mit-free-courses",
+    "path": "/guides/mit-free-courses",
+    "title": "MIT OpenCourseWare: free courses and a study plan",
+    "description": "Find MIT OCW course materials, understand certificates and build a realistic independent study plan.",
+    "category": "Learning"
+  },
+  {
+    "slug": "learn-english-free",
+    "path": "/guides/learn-english-free",
+    "title": "Free English learning resources from the British Council",
+    "description": "Choose British Council LearnEnglish practice by level and skill, with a simple reading, listening and grammar routine.",
+    "category": "Learning"
+  },
+  {
+    "slug": "teaching-resources",
+    "path": "/guides/teaching-resources",
+    "title": "Free teaching resources, classroom printables and homeschool materials",
+    "description": "Compare TPT, Twinkl and open course materials by lesson objective, age, license and printing requirements.",
+    "category": "Education"
+  },
+  {
+    "slug": "free-books-and-libraries",
+    "path": "/guides/free-books-and-libraries",
+    "title": "Free books, ebooks and online libraries: reading and borrowing",
+    "description": "Find legitimate ebook sources and distinguish a catalog record, a borrowable book and a downloadable public-domain edition.",
+    "category": "Learning"
+  },
+  {
+    "slug": "free-images-and-assets",
+    "path": "/guides/free-images-and-assets",
+    "title": "Free images and pictures: choose a source and check the license",
+    "description": "Find Pixabay images and other reusable media while checking attribution, people, brands and redistribution limits.",
+    "category": "Design"
+  },
+  {
+    "slug": "free-online-games",
+    "path": "/guides/free-online-games",
+    "title": "Free online games: browser games, solitaire and puzzles",
+    "description": "Find browser games and distinguish free play, ads, optional purchases and a paid game with a free demo.",
+    "category": "Games"
+  },
+  {
+    "slug": "free-fire-downloads",
+    "path": "/guides/free-fire-downloads",
+    "title": "Free Fire and Free Fire MAX: official downloads and availability",
+    "description": "Find Garena’s official Free Fire links, understand optional purchases and check the correct regional store listing.",
+    "category": "Games"
+  },
+  {
+    "slug": "free-ai-chat-tools",
+    "path": "/guides/free-ai-chat-tools",
+    "title": "Free AI chat tools: ChatGPT, Claude and Gemini",
+    "description": "Find official AI chat services and compare free access, plan limits, privacy settings and practical output checks.",
+    "category": "AI"
+  },
+  {
+    "slug": "ai-writing-and-detection",
+    "path": "/guides/ai-writing-and-detection",
+    "title": "AI writing, humanizers and detectors: a practical review workflow",
+    "description": "Improve writing with source checks and edit history; understand why a detector score is not proof of authorship.",
+    "category": "AI"
+  },
+  {
+    "slug": "free-office-and-pdf",
+    "path": "/guides/free-office-and-pdf",
+    "title": "Free Word alternatives, office documents and PDF tools",
+    "description": "Compare Microsoft 365 for the web and LibreOffice, then test document compatibility and PDF output.",
+    "category": "Software"
+  },
+  {
+    "slug": "free-utilities",
+    "path": "/guides/free-utilities",
+    "title": "Free software downloads, converters and everyday utilities",
+    "description": "Find official software sources, choose the correct platform and test converters, download managers and disk utilities.",
+    "category": "Software"
+  },
+  {
+    "slug": "email-and-file-sharing",
+    "path": "/guides/email-and-file-sharing",
+    "title": "Free email, webmail and file sharing: find the right service",
+    "description": "Choose an email or file-sharing service and distinguish hosted accounts, an organization’s webmail and self-hosted software.",
+    "category": "Software"
+  },
+  {
+    "slug": "free-streaming-and-music",
+    "path": "/guides/free-streaming-and-music",
+    "title": "Free movies, TV, music and radio: official streaming options",
+    "description": "Find official Tubi, Pluto TV, YouTube and radio services while checking country access, ads and offline-use conditions.",
+    "category": "Entertainment"
+  },
+  {
+    "slug": "free-vpn-and-security",
+    "path": "/guides/free-vpn-and-security",
+    "title": "Free VPN and security tools: compare the actual limits",
+    "description": "Check official VPN and antivirus editions, privacy terms and platform support without assuming that free means unlimited protection.",
+    "category": "Cybersecurity"
+  },
+  {
+    "slug": "cybersecurity-learning",
+    "path": "/guides/cybersecurity-learning",
+    "title": "Free cybersecurity and ethical hacking learning resources",
+    "description": "Build a beginner web-security learning path using PortSwigger Academy, OWASP Juice Shop and official Kali documentation.",
+    "category": "Cybersecurity"
+  },
+  {
+    "slug": "paid-work-and-surveys",
+    "path": "/guides/paid-work-and-surveys",
+    "title": "Paid surveys, product testing and online work: check an offer",
+    "description": "Evaluate paid-work and survey offers using official terms, eligibility, payout rules and job-scam checks.",
+    "category": "Work"
+  },
+  {
+    "slug": "paid-leave-official-resources",
+    "path": "/guides/paid-leave-official-resources",
+    "title": "Paid leave portals: find the official state resource",
+    "description": "Official starting links for Minnesota, Connecticut, Oregon and Washington paid leave, with a checklist for locating the right portal.",
+    "category": "Public resources"
+  },
+  {
+    "slug": "paid-or-payed",
+    "path": "/guides/paid-or-payed",
+    "title": "Paid or payed? English practice for payment-related writing",
+    "description": "Practice payment-related English and use dictionary context to choose the right word without turning an example into financial advice.",
+    "category": "Learning"
+  },
+  {
+    "slug": "paid-search-and-social",
+    "path": "/guides/paid-search-and-social",
+    "title": "Paid search, paid social and SEO: plan a small marketing test",
+    "description": "Separate advertising from organic discovery and plan a measurable campaign without promising rankings or sales.",
+    "category": "Marketing"
+  },
+  {
+    "slug": "find-community-resources",
+    "path": "/guides/find-community-resources",
+    "title": "Find local help and community resources online",
+    "description": "Use a location-based directory as a starting point and confirm each organization’s service area and eligibility directly.",
+    "category": "Public resources"
+  },
+  {
+    "path": "/games/gta-6",
+    "title": "GTA 6 release date, platforms and official links",
+    "description": "Confirmed publisher information, regional purchase checks and answers to release questions."
+  },
+  {
+    "path": "/guides",
+    "title": "Resource guides by task",
+    "description": "Find source-linked guides and practical projects."
+  }
+]

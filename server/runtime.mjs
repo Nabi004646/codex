@@ -1,3 +1,4 @@
+import {publicRobots} from './robots.mjs';
 import {nativeTemplateDocument,nativeTemplateDownload,nativeTemplateApprovals} from './template-publication.mjs';
 import {submissionResponse} from './submissions.mjs';
 import {publishedOverrides,publishedResource} from './catalog-overrides.mjs';
@@ -28,7 +29,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
   const readAsset=async path=>{if(!env.ASSETS)throw Error('Catalog assets unavailable');const response=await env.ASSETS.fetch(new Request(url.origin+path));if(!response.ok)throw Error('Catalog asset unavailable');return response.json();};
   const search=params=>production?publishedSearch(params,fetcher):discovery?discoverySnapshot(params,readAsset):queryPreview(params);
   if(/^\/preview(?:\/|$)/.test(url.pathname))return new Response('Not found',{status:404,headers:{...security,'X-Robots-Tag':'noindex','Cache-Control':'private, no-store'}});
-  if(url.pathname==='/robots.txt')return new Response(production||publicDiscovery?'User-agent: *\nDisallow: /admin\nDisallow: /api/\nDisallow: /preview/\nSitemap: https://freeresourceatlas.com/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{...security,'Content-Type':'text/plain','Cache-Control':'public, max-age=60'}});
+  if(url.pathname==='/robots.txt')return new Response(production||publicDiscovery?publicRobots():'User-agent: *\nDisallow: /\n',{headers:{...security,'Content-Type':'text/plain','Cache-Control':'public, max-age=60'}});
   try{
    if(url.pathname==='/_media')return await mediaResponse(request,{fetcher,cache,waitUntil:promise=>ctx.waitUntil(promise)});
    if(url.pathname==='/sitemap.xml'||url.pathname.startsWith('/sitemaps/')){

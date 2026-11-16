@@ -21,4 +21,27 @@ A discovered listing is not automatically reviewed, free, secure, tested or inde
 - [Templates and previews](https://freeresourceatlas.com/templates)
 - [Owner-published download links](https://freeresourceatlas.com/downloads)
 
-Native template files are not published until Storage upload and distribution review succeed. No ranking, security, income or compatibility guarantee is made. This document describes the website; it is not an indexing or AI-citation mechanism.
+The original template collection has 100 published templates with 240 licensed native files. Use the live template pages for available formats and download links. No ranking, security, income or compatibility guarantee is made. This document describes the website; it is not an indexing or AI-citation mechanism.
+
+## Resource guides
+- [MIT OpenCourseWare: free courses and a study plan](https://freeresourceatlas.com/guides/mit-free-courses)
+- [Free English learning resources from the British Council](https://freeresourceatlas.com/guides/learn-english-free)
+- [Free teaching resources, classroom printables and homeschool materials](https://freeresourceatlas.com/guides/teaching-resources)
+- [Free books, ebooks and online libraries: reading and borrowing](https://freeresourceatlas.com/guides/free-books-and-libraries)
+- [Free images and pictures: choose a source and check the license](https://freeresourceatlas.com/guides/free-images-and-assets)
+- [Free online games: browser games, solitaire and puzzles](https://freeresourceatlas.com/guides/free-online-games)
+- [Free Fire and Free Fire MAX: official downloads and availability](https://freeresourceatlas.com/guides/free-fire-downloads)
+- [Free AI chat tools: ChatGPT, Claude and Gemini](https://freeresourceatlas.com/guides/free-ai-chat-tools)
+- [AI writing, humanizers and detectors: a practical review workflow](https://freeresourceatlas.com/guides/ai-writing-and-detection)
+- [Free Word alternatives, office documents and PDF tools](https://freeresourceatlas.com/guides/free-office-and-pdf)
+- [Free software downloads, converters and everyday utilities](https://freeresourceatlas.com/guides/free-utilities)
+- [Free email, webmail and file sharing: find the right service](https://freeresourceatlas.com/guides/email-and-file-sharing)
+- [Free movies, TV, music and radio: official streaming options](https://freeresourceatlas.com/guides/free-streaming-and-music)
+- [Free VPN and security tools: compare the actual limits](https://freeresourceatlas.com/guides/free-vpn-and-security)
+- [Free cybersecurity and ethical hacking learning resources](https://freeresourceatlas.com/guides/cybersecurity-learning)
+- [Paid surveys, product testing and online work: check an offer](https://freeresourceatlas.com/guides/paid-work-and-surveys)
+- [Paid leave portals: find the official state resource](https://freeresourceatlas.com/guides/paid-leave-official-resources)
+- [Paid or payed? English practice for payment-related writing](https://freeresourceatlas.com/guides/paid-or-payed)
+- [Paid search, paid social and SEO: plan a small marketing test](https://freeresourceatlas.com/guides/paid-search-and-social)
+- [Find local help and community resources online](https://freeresourceatlas.com/guides/find-community-resources)
+- [GTA 6 release and platform questions](https://freeresourceatlas.com/games/gta-6)

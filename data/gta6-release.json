@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-15",
+  "checked_on": "2026-11-16",
   "release_date": "2026-11-19",
   "platforms": [
     "PS5",
@@ -20,6 +20,42 @@
     {
       "title": "Rockstar — official purchase options",
       "url": "https://store.rockstargames.com/game/buy-gta-vi"
+    },
+    {
+      "title": "Rockstar Support — regional pre-load and release times",
+      "url": "https://support.rockstargames.com/articles/29jV3Cv2cCgvwM1XgtMO5o/grand-theft-auto-vi-regional-pre-load-and-release-times-on-playstation-5-and-xbox-series-x-or-s"
+    }
+  ],
+  "questions": [
+    {
+      "id": "release",
+      "title": "When does GTA 6 come out?",
+      "answer": "Rockstar lists November 19, 2026 for PlayStation 5 and Xbox Series X|S. The linked support notice describes a midnight local-time release. Older 2025 and May 2026 dates are not the current announced date. Check Rockstar for any subsequent change."
+    },
+    {
+      "id": "platforms",
+      "title": "Is GTA 6 coming to PC, PS4 or Xbox One?",
+      "answer": "The checked official game page lists PS5 and Xbox Series X|S. A PC release date is not listed in the checked announcement. Do not infer a Steam, PS4 or Xbox One release from an unofficial store listing or a download advertisement."
+    },
+    {
+      "id": "price",
+      "title": "How much is GTA 6 and where can I pre-order?",
+      "answer": "GTA VI is a paid game. Use Rockstar’s official purchase page and your console store to check the actual edition, country, currency, taxes and physical or digital format. This directory does not invent regional prices, retailer stock, Ultimate or collector editions, or bundled controllers."
+    },
+    {
+      "id": "download",
+      "title": "When can I preload GTA 6 and how big is the download?",
+      "answer": "The linked Rockstar Support notice gives November 10, 2026 as the start of console preloading, with platform-specific timing. Check the notice and your own console’s store for current requirements. We have not independently confirmed a universal download size. This site does not distribute the game or offer a PC installer."
+    },
+    {
+      "id": "media",
+      "title": "Where are official trailers, screenshots, characters and map details?",
+      "answer": "Use Rockstar’s game page for its released trailers, screenshots and character information. Separate publisher material from fan mapping projects, Reddit discussion and alleged leaks. We do not present unverified map boundaries, radio lists, budget estimates, frame rates, merchandise or pre-release reviews as confirmed facts."
+    },
+    {
+      "id": "online",
+      "title": "Does the console launch date also confirm every GTA Online detail?",
+      "answer": "A date for the base game does not establish every online mode, feature or platform schedule. Follow Rockstar’s own announcements for those details. This page records the checked announcement and does not turn a rumor into a confirmed launch feature."
     }
   ]
 }

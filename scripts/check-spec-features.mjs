@@ -65,7 +65,7 @@ test('widgets are lightweight, isolated public HTML and reject inherited names',
  for(const name of ['__proto__','constructor','not-a-topic'])assert.equal(widgetResponse(name).status,404);
 });
 test('public approval inventory is narrow, English-only and never equated with Google indexing',()=>{
- assert.equal(publicApprovals.length,62);assert.equal(publicInventory().google_indexed,null);
+ assert.equal(publicApprovals.length,82);assert.equal(publicInventory().google_indexed,null);
  assert.ok(publicApproval('/'));assert.ok(publicApproval('/templates'));for(const path of ['/?q=games','/search','/admin','/resource/'+catalog[0].id,'/toolkits','/planner'])assert.equal(publicApproval(path),null);
  assert.equal(publicApproval('/','hi'),null);assert.equal(publicApproval('https://another-site.org/'),null);
  assert.ok(publicApprovals.every(p=>p.evidence.length&&p.publication==='published'));
@@ -80,7 +80,7 @@ test('canonical-domain launch preserves discovery and partitions cached language
  await Promise.all(waits);assert.equal(memory.size,2);
  const hindi=await runtime(request('/','IN',{Cookie:'atlas-ui=hi'}),env,ctx);assert.match(hindi.headers.get('X-Robots-Tag'),/noindex/);assert.match(await hindi.text(),/<html lang="hi"/);
  const sitemap=await(await runtime(request('/sitemap.xml'),env,ctx)).text();assert.match(sitemap,/pages_en_0.xml/);
- const child=await(await runtime(request('/sitemaps/pages_en_0.xml'),env,ctx)).text();assert.equal((child.match(/<url>/g)||[]).length,62);assert.ok(!child.includes('/resource/'));assert.ok(child.includes('/templates/quick/'));assert.ok(templateDrafts.every(t=>!child.includes('/templates/'+t.slug+'</loc>')));
+ const child=await(await runtime(request('/sitemaps/pages_en_0.xml'),env,ctx)).text();assert.equal((child.match(/<url>/g)||[]).length,82);assert.ok(!child.includes('/resource/'));assert.ok(child.includes('/templates/quick/'));assert.ok(templateDrafts.every(t=>!child.includes('/templates/'+t.slug+'</loc>')));
  const preview=await runtime(new Request('https://preview.pages.dev/'),env,ctx);assert.match(preview.headers.get('X-Robots-Tag'),/noindex/);
  const drafts=await runtime(request('/api/template-draft-download?id=1&format=pdf'),env,ctx);assert.equal(drafts.status,404);
 });

@@ -1,4 +1,5 @@
 import {audienceHubs} from '../data/audience-hubs.mjs';
+import {keywordGuides,keywordGuideSummaries} from '../data/keyword-guides.mjs';
 import {alternativeGuides} from '../data/alternatives-guides.mjs';
 import {templateData} from './templates.mjs';
 import {articles,kits,policies} from './public-content.mjs';
@@ -6,6 +7,7 @@ import {catalog} from './catalog.mjs';
 const summaries=articles.map(({slug,title,description,category,resourceNames,created_at})=>({slug,title,description,category,resourceNames,created_at,cover_url:'/article-covers/'+slug+'.svg'}));
 const resources=names=>names.map(n=>catalog.find(r=>r.name===n)).filter(Boolean);
 export function publicData(path,params={}){
+ const keywordGuide=keywordGuides.find(g=>g.path===path);if(keywordGuide)return {path,type:'keyword-guide',keywordGuide,relatedGuides:keywordGuideSummaries.filter(g=>keywordGuide.related.includes(g.slug))};
  if(path==='/selector')return {path,type:'selector',resources:catalog.filter(r=>['Free','Open source','Free plan'].includes(r.pricing))};if(path==='/widgets')return {path,type:'widgets'};
  const hub=audienceHubs.find(h=>h.path===path);if(hub)return {path,type:'audience-hub',hub,resources:hub.resourceNames.map(name=>catalog.find(r=>r.name===name)).filter(Boolean)};
  if(path==='/alternatives'||path.startsWith('/alternatives/')){const guide=alternativeGuides.find(g=>'/alternatives/'+g.slug===path);return {path,type:'alternative-guides',guides:alternativeGuides.map(({slug,name,aliases,intro})=>({slug,name,aliases,intro})),guide,resources:guide?guide.alternatives.map(a=>catalog.find(r=>r.name===a.name)).filter(Boolean):[]};}
@@ -15,7 +17,7 @@ export function publicData(path,params={}){
  const p=path.replace(/\/$/,''),parts=p.split('/').filter(Boolean),page={path:p,articleCards:summaries};
  if(parts[0]==='blog'&&parts[1])return {...page,type:'article',article:articles.find(a=>a.slug===parts[1]),resources:resources(articles.find(a=>a.slug===parts[1])?.resourceNames||[])};
  if(p==='/blog')return {...page,type:'blog'};
- if(p==='/guides'||p==='/guides/free-tools-open-source-resources')return {...page,type:'guides'};
+ if(p==='/guides'||p==='/guides/free-tools-open-source-resources')return {...page,type:'guides',keywordGuides:keywordGuideSummaries};
  if(parts[0]==='kits'){const kit=kits.find(k=>k.slug===parts[1]);return {...page,type:kit?'kit':'kits',kits,kit,resources:kit?resources(kit.names):[]};}
  if(p==='/finder')return {...page,type:'finder'};
  if(p==='/toolkits')return {...page,type:'toolkits'};

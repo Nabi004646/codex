@@ -33,3 +33,7 @@
 /publisher-media/*
   Cache-Control: public, max-age=31536000, immutable
   X-Robots-Tag: max-image-preview:large
+
+/social/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  X-Robots-Tag: max-image-preview:large
