@@ -4,7 +4,7 @@
     {
       "id": "search",
       "name": "Search Console and Bing",
-      "detail": "The FreeResourceAtlas domain is verified in Google Search Console. On November 16, Google processed the submitted sitemap and discovered 61 pages. Website background API sync is not connected. Bing still requires its own authorized property connection."
+      "detail": "The FreeResourceAtlas domain is verified in Google Search Console. On November 16, Google processed the submitted sitemap and discovered 61 pages. Website background API sync is not connected. Bing property verification is tracked separately from its background reporting API connection."
     },
     {
       "id": "editorial",
