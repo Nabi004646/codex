@@ -1,0 +1,9 @@
+import {useState,useRef,useEffect} from 'react';
+import {searchCatalog} from './catalog-search';
+export default function AdminCatalogSearch({busy,onChoose}:any){
+ const [query,setQuery]=useState(''),[rows,setRows]=useState<any[]>([]),[loading,setLoading]=useState(false),[error,setError]=useState(''),[searched,setSearched]=useState(false);
+ const abort=useRef<AbortController|null>(null);
+ useEffect(()=>()=>abort.current?.abort(),[]);
+ async function search(event:any){event.preventDefault();abort.current?.abort();const controller=new AbortController();abort.current=controller;setLoading(true);setError('');setSearched(false);try{const result:any=await searchCatalog(new URLSearchParams({q:query.trim()}),{signal:controller.signal});if(!controller.signal.aborted){setRows(result.resources||[]);setSearched(true);}}catch(e:any){if(!controller.signal.aborted)setError(e.message);}finally{if(!controller.signal.aborted)setLoading(false);}}
+ return <div className="admin-public-search"><h3>Find a public catalog listing to edit</h3><p>Search the discovery catalog, create an editable draft, then review and publish it. A published edit takes priority over its discovery version.</p><form className="main-search" onSubmit={search}><input required minLength={2} maxLength={120} aria-label="Search public catalog to edit" value={query} onChange={e=>setQuery(e.target.value)} placeholder="App, game or resource name"/><button className="search-submit" disabled={loading||busy}>{loading?'Searching…':'Find listing'}</button></form>{error&&<p role="alert">{error}</p>}{searched&&!rows.length&&<p>No matching listings. Try another name.</p>}<ul>{rows.slice(0,12).map(row=><li key={row.id}><div><strong>{row.name}</strong><small>{row.category} · {row.pricing}</small></div><button type="button" disabled={busy} onClick={()=>onChoose(row)}>Edit listing</button></li>)}</ul></div>;
+}

@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-11-15",
+  "rules": [
+    {
+      "urls": ["https://www.spotify.com/free/"],
+      "available": ["US", "GB", "CA", "AU", "IN", "NP", "DE", "FR", "BR", "JP", "KR", "SG", "NZ", "ZA"],
+      "unavailable": ["CN", "RU"],
+      "source": "https://support.spotify.com/uk/article/where-spotify-is-available/",
+      "note": "Spotify lists these supported signup locations. Plans, features and music catalogs can differ by country. China and Russia are not on the provider's list."
+    },
+    {
+      "urls": ["https://ff.garena.com/en/"],
+      "available": [],
+      "unavailable": ["IN"],
+      "source": "https://support-freefireind.garena.com/ind/articles/free_fire_india_faq",
+      "note": "Garena directs India-region accounts to the separate Free Fire India client. This entry links to the global edition."
+    }
+  ]
+}

@@ -14,7 +14,7 @@ const id=catalog[0].id;assert.deepEqual(query({ids:id}).resources.map(r=>r.id),[
 assert.ok(query({category:'Video & Film',subcategory:'Screen Recording'}).resources.every(r=>r.subcategory==='Screen Recording'));
 assert.ok(query({platform:'Linux',signup:'Not required'}).resources.every(r=>r.free_details.platforms.includes('Linux')&&r.free_details.signup==='Not required'));
 assert.ok(query({ram:'4',workload:'4K'}).resources.every(r=>r.device_details.workload_ram_gb['4K']<=4));assert.ok(!query({ram:'4',workload:'4K'}).resources.some(r=>r.name==='Shotcut'));
-assert.equal(query({country:'US'}).total,0);
+assert.ok(query({country:'US'}).total>0);assert.equal(query({country:'CA',availability:'confirmed'}).resources[0].name,'Spotify');
 assert.equal(query({mobile:'both'}).resources[0].name,'wger');assert.ok(query({mobile:'both'}).resources.every(r=>r.mobile_platforms.includes('android')&&r.mobile_platforms.includes('ios')));assert.ok(query({q:'Android',ids:catalog.find(r=>r.name==='wger').id}).resources.some(r=>r.name==='wger'));assert.equal(query({view:'saved'}).total,0);
 assert.deepEqual(query({sort:'az'}).resources.map(r=>r.name),catalog.map(r=>r.name).sort((a,b)=>a.localeCompare(b,'en')).slice(0,24));
 assert.equal(query({page:'NaN'}).page,1);

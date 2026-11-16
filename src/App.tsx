@@ -6,6 +6,7 @@ import Library from './Library';
 import SiteFooter from './SiteFooter';
 import {CompareTray} from './ResourceActions';
 import {observeSidebarPosition} from './sidebar-position.mjs';
+import {validCountry} from './country-availability.mjs';
 const AdminPanel=lazy(()=>import('./AdminPanel'));
 function AdminRoute(){
  const [mounted,setMounted]=useState(false);
@@ -18,7 +19,7 @@ function AdminRoute(){
 export default function App({page}:any){
  const [country,setCountry]=useState(page.params.country||'');
  const changeCountry=(value:string)=>{setCountry(value);try{localStorage.setItem('atlas-country',value);}catch{}};
- useEffect(()=>{try{if(!Object.hasOwn(page.params,'country')){const saved=localStorage.getItem('atlas-country');if(saved!==null&&['','US','GB','CA','AU'].includes(saved))setCountry(saved);}}catch{}},[]);
+ useEffect(()=>{try{if(!Object.hasOwn(page.params,'country')){const saved=localStorage.getItem('atlas-country');if(saved!==null&&validCountry(saved))setCountry(saved);}}catch{}},[]);
  useEffect(()=>observeSidebarPosition(window,document),[country,page.path]);
  let content;
  if(page.kind==='admin')content=<AdminRoute/>;

@@ -1,6 +1,6 @@
 // Local dev can reuse a prepared index; production builds always regenerate it.
 import fs from 'node:fs/promises';
-const inputs=['data/mobile-store-links.json','data/apps-expansion.json.gz','data/source-media-overrides.json.gz','data/provider-media.json','data/gta6-release.json','server/catalog.mjs','data/editorial-catalog.mjs','data/consumer-catalog.mjs','data/preview-resources.json','data/starter-facts.json','data/device-facts.json','data/taxonomy.json','data/discovery-seed.parts.json','server/discovery-codec.mjs','server/discovery-search.mjs','server/search-intents.mjs','server/search-autocomplete.mjs','server/search-language-aliases.mjs','scripts/prepare-discovery.mjs','scripts/prepare-discovery-snapshots.mjs'];
+const inputs=['data/country-availability.json','src/country-availability.mjs','server/discovery-query-key.mjs','data/mobile-store-links.json','data/apps-expansion.json.gz','data/source-media-overrides.json.gz','data/provider-media.json','data/gta6-release.json','server/catalog.mjs','data/editorial-catalog.mjs','data/consumer-catalog.mjs','data/preview-resources.json','data/starter-facts.json','data/device-facts.json','data/taxonomy.json','data/discovery-seed.parts.json','server/discovery-codec.mjs','server/discovery-search.mjs','server/search-intents.mjs','server/search-autocomplete.mjs','server/search-language-aliases.mjs','scripts/prepare-discovery.mjs','scripts/prepare-discovery-snapshots.mjs'];
 let prepared=false;
 try{
  const manifest=JSON.parse(await fs.readFile('data/discovery-manifest.json','utf8'));

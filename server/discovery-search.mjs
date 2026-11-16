@@ -1,3 +1,4 @@
+import {countryAvailability} from '../src/country-availability.mjs';
 import manifest from '../data/discovery-runtime.json' with {type:'json'};
 import {searchPlan,editDistance} from './search-intents.mjs';
 import {bucket,normalize,searchTerms,unpackPostings,isPublicLink} from './discovery-codec.mjs';
@@ -30,7 +31,7 @@ export async function queryDiscovery(params=new URLSearchParams(),read){
  if(plan.pricing==='free')eligible=intersect(eligible,['Free','Open source','Free plan'].flatMap(p=>filters.pricing[p]||[]));
  if(['reels','video editing'].includes(terms.intent))apply('intent','video');
  if(terms.intent==='seo')apply('intent','seo');
- // Country is a preference, not evidence of a verified country restriction.
+ // Only documented country facts may exclude or confirm a listing.
  if(params.get('mobile'))apply('mobile',params.get('mobile'));
  if(params.get('ram')){const n=Number(params.get('ram')),ram=params.get('workload')?filters.workload_ram[params.get('workload')]||{}:filters.ram;eligible=intersect(eligible,Object.entries(ram).filter(([value])=>Number(value)<=n).flatMap(([,ids])=>ids));}
  if(params.has('ids'))eligible=intersect(eligible,await positions(params.get('ids').split(','),read));
@@ -58,6 +59,13 @@ export async function queryDiscovery(params=new URLSearchParams(),read){
   }
  }
  let indices=query&&!pureScope?[...scores.keys()]:eligible?[...eligible]:Array.from({length:manifest.total},(_,i)=>i);
+ const country=params.get('country')||'',availability=params.get('availability')||'include-unknown';
+ if(country&&!/^[A-Z]{2}$/.test(country))throw Error('Choose a valid country.');
+ if(!['include-unknown','confirmed'].includes(availability))throw Error('Choose an available country filter.');
+ const confirmed=new Set(filters.countryAvailable?.[country]||[]),excluded=new Set(filters.countryUnavailable?.[country]||[]);
+ const countrySummary=country?{country,mode:availability,confirmed:indices.filter(id=>confirmed.has(id)).length,unchecked:indices.filter(id=>!confirmed.has(id)&&!excluded.has(id)).length,excluded:indices.filter(id=>excluded.has(id)).length}:null;
+ if(countrySummary?.excluded){const restricted=await records(indices.filter(id=>excluded.has(id)).slice(0,8),read);countrySummary.restrictions=restricted.map(resource=>({name:resource.name,...countryAvailability(resource,country)}));}
+ if(country)indices=indices.filter(id=>availability==='confirmed'?confirmed.has(id):!excluded.has(id));
  const sort=params.get('sort')||'featured';
  if(!['featured','az','name','newest','recent','saved'].includes(sort))throw Error('Choose an available sort order.');
  const savedOrder=sort==='saved'&&params.has('ids')?new Map((await positions(params.get('ids').split(','),read)).map((id,index)=>[id,index])):null;
@@ -65,6 +73,6 @@ export async function queryDiscovery(params=new URLSearchParams(),read){
  const total=indices.length,pages=Math.max(1,Math.ceil(total/24)),page=Math.min(requested,pages),rows=await records(indices.slice((page-1)*24,page*24),read);
  if(correctedQuery)correctedQuery=rows[0]?.name||correctedQuery;
  if(query&&sort==='featured'){const exact=normalize(plan.text);rows.sort((a,b)=>Number(normalize(b.name)===exact)-Number(normalize(a.name)===exact));}
- return {resources:rows,total,totalCatalog:manifest.total,page,pages,categories:manifest.categories,suggestions:correctedQuery?[correctedQuery]:!total&&query?suggestions(query):[],correctedQuery:correctedQuery||undefined,offline:false,catalogMode:'discovery',catalogLabel:'discovered listings',countryAvailability:'unverified',relatedQuery:terms.related,discoveryVersion:manifest.version};
+ return {resources:rows,total,totalCatalog:manifest.total,page,pages,categories:manifest.categories,suggestions:correctedQuery?[correctedQuery]:!total&&query?suggestions(query):[],correctedQuery:correctedQuery||undefined,offline:false,catalogMode:'discovery',catalogLabel:'discovered listings',countryAvailability:country?'filtered':'worldwide',countrySummary,relatedQuery:terms.related,discoveryVersion:manifest.version};
 }
 export {manifest as discoveryManifest};

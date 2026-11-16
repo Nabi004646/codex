@@ -2,6 +2,7 @@ import taxonomy from '../data/taxonomy.json' with {type:'json'};
 import {catalog as rows,byId,detailResource} from './catalog.mjs';
 import {routeState} from './routes.mjs';
 import {topics} from './public-content.mjs';
+import {countryAvailability} from '../src/country-availability.mjs';
 export const previews=rows;
 const originalOrder=new Map(rows.map((r,i)=>[r.id,i]));
 export const slug=s=>String(s).toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -12,8 +13,7 @@ function distance(a,b){const d=Array.from({length:b.length+1},(_,i)=>i);for(let 
 export function queryPreview(params=new URLSearchParams()){
  const raw=(params.get('q')||'').slice(0,160),q=clean(raw),ids=params.has('ids')?new Set((params.get('ids')||'').split(',').filter(v=>/^[A-Za-z0-9_-]{1,80}$/.test(v)).slice(0,500)):null;
  let matches=rows.map(r=>({r,score:score(r,q)})).filter(({r,score})=>score>0&&(!params.get('reviewed')||!!r.editorial.source_verified_at)&&(!ids||ids.has(r.id))&&(!params.get('category')||r.category===params.get('category'))&&(!params.get('subcategory')||r.subcategory===params.get('subcategory'))&&(!params.get('kind')||r.kind===params.get('kind'))&&(!params.get('pricing')||r.pricing===params.get('pricing'))&&(!params.get('platform')||r.free_details.platforms.includes(params.get('platform')))&&(!params.get('signup')||r.free_details.signup===params.get('signup'))&&(!params.get('offline')||r.device_details?.offline===params.get('offline'))&&(!params.get('gpu')||r.device_details?.dedicated_gpu===params.get('gpu'))&&(!params.get('ram')||(()=>{const f=r.device_details,required=params.get('workload')?f?.workload_ram_gb?.[params.get('workload')]:f?.minimum_ram_gb;return Number.isFinite(required)&&required<=Number(params.get('ram'));})()));
- // Country availability is not inferred from language or the provider's origin.
- if(params.get('country'))matches=[];
+ if(params.get('country'))matches=matches.filter(({r})=>{const status=countryAvailability(r,params.get('country')).status;return params.get('availability')==='confirmed'?status==='available':status!=='unavailable';});
  if(params.get('mobile'))matches=matches.filter(({r})=>params.get('mobile')==='both'?['android','ios'].every(p=>r.mobile_platforms?.includes(p)):r.mobile_platforms?.includes(params.get('mobile')));
  if(params.get('view')==='saved'&&!params.has('ids'))matches=[];
  const sort=params.get('sort');matches.sort((a,b)=>['name','az'].includes(sort)?a.r.name.localeCompare(b.r.name,'en'):['recent','newest'].includes(sort)?String(b.r.editorial.source_verified_at||'').localeCompare(String(a.r.editorial.source_verified_at||''))||a.r.name.localeCompare(b.r.name,'en'):b.score-a.score||Number(b.r.featured)-Number(a.r.featured)||(q?a.r.name.localeCompare(b.r.name,'en'):originalOrder.get(a.r.id)-originalOrder.get(b.r.id)));

@@ -26,6 +26,7 @@ test('actual publisher media replaces game illustrations and unknown images have
  assert.match(resourceImage({name:'Nmap',url:'https://github.com/nmap/nmap'}).src,/githubassets\.com\/1\/nmap\/nmap$/);
  assert.equal(resourceImage({name:'Unknown app',url:'https://a-provider.org/'}).src,null);
 });
+test('an approved published image overrides the packaged publisher preview',()=>{const row=catalog.find(r=>r.name==='ComfyUI');assert.equal(resourceImage({...row,status:'published',image_url:'https://images.example/app.webp',image_alt:'Updated application screenshot'}).src,'https://images.example/app.webp');});
 test('security aliases and GTA VI searches find their intended resources',async()=>{for(const q of ['ethical hacking','pentesting','cyber security'])assert.ok((await search(q)).total>200,q);assert.equal((await search('gta6')).resources[0]?.name,'Grand Theft Auto VI');});
 test('download drafts preserve mirrors, validation and existing saved-revision review fields',async()=>{
  const record=await downloadDraft({title:'Linux lab notes',description:'A collection of original Linux lab notes and practice worksheets.',links:['https://drive.google.com/file/d/notes/view','https://www.mediafire.com/file/notes/archive.zip/file','https://drive.google.com/file/d/notes/view'],platforms:['Linux'],source_verified_at:'2026-11-14'});

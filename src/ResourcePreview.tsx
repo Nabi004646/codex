@@ -1,7 +1,7 @@
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {resourceImage,resourceImageCandidates} from './resource-images';
 export default function ResourcePreview({resource:r,eager=false,caption=false}:any){
- const candidates=useMemo(()=>resourceImageCandidates(r),[r.id,r.url,r.image_url,r.name]),key=r.id+'|'+r.url+'|'+r.image_url;
+ const candidates=useMemo(()=>resourceImageCandidates(r),[r.id,r.url,r.image_url,r.name,r.status]),key=r.id+'|'+r.url+'|'+r.image_url+'|'+r.status;
  const [attempt,setAttempt]=useState(0),[loaded,setLoaded]=useState(false),[near,setNear]=useState(eager),ref=useRef<HTMLImageElement|null>(null),box=useRef<HTMLDivElement|null>(null),image=candidates[attempt];
  useEffect(()=>{setAttempt(0);setLoaded(false);},[key]);
  useEffect(()=>{if(eager||!('IntersectionObserver' in window)){setNear(true);return;}const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){setNear(true);observer.disconnect();}},{rootMargin:'350px'});if(box.current)observer.observe(box.current);return()=>observer.disconnect();},[key,eager]);

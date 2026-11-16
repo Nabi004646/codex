@@ -1,3 +1,4 @@
+import {publishedOverrides,publishedResource} from './catalog-overrides.mjs';
 import {widgetResponse} from './widgets.mjs';
 import {isPublicAsset} from './public-assets.mjs';
 import {mediaResponse} from './media.mjs';
@@ -38,6 +39,8 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    if(url.pathname==='/api/page-inventory')return json(publicInventory());
    if(url.pathname==='/api/finder')return json(await findTask(url.searchParams.get('task'),p=>publishedSearch(p,fetcher),{country:url.searchParams.get('country')||'',includeCommunity:url.searchParams.get('community')==='1'}));
    if(url.pathname==='/api/downloads')return json(await queryDownloads(url.searchParams,fetcher));
+   if(url.pathname==='/api/catalog-overrides')return json(await publishedOverrides(url.searchParams,fetcher));
+   if(url.pathname==='/api/published-resource'){const result=await publishedResource(url.searchParams,fetcher);return json(result,result.resource?200:404);}
    if(url.pathname==='/api/live/resources')return json(await queryLive(url.searchParams,fetcher));
    if(url.pathname==='/api/templates')return production?json({error:'Template publication is pending.'},404):json(templateListing(url.searchParams));
    if(url.pathname==='/api/template-draft-download')return json({error:'Local draft files are available only in the local review environment. Published downloads require approved storage records.'},404);
@@ -50,7 +53,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
     if(redirect){if(redirect.status===410)return new Response('This page has been permanently removed.',{status:410,headers:{...security,'X-Robots-Tag':'noindex','Cache-Control':'public, max-age=60'}});return new Response(null,{status:redirect.status,headers:{...security,Location:redirect.target_path,'Cache-Control':'public, max-age=60'}});}
    }
    const countryCode=/^[A-Z]{2}$/.test(request.cf?.country||'')?request.cf.country:'XX';
-   const cacheable=request.method==='GET'&&(production||publicDiscovery)&&!privatePath&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname+'?'+new URLSearchParams({__atlas_revision:htmlRevision,...(publicDiscovery?{__atlas_country:countryCode}:{})}));
+   const cacheable=request.method==='GET'&&(production||publicDiscovery)&&!privatePath&&!url.pathname.startsWith('/resource/')&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname+'?'+new URLSearchParams({__atlas_revision:htmlRevision,...(publicDiscovery?{__atlas_country:countryCode}:{})}));
    if(cacheable&&cache){const hit=await cache.match(key);if(hit){if(!publicDiscovery)return hit;const headers=new Headers(hit.headers);headers.set('Cache-Control','private, no-store');return new Response(hit.body,{status:hit.status,headers});}}
    const page=await render(url.pathname+url.search,{production,publicDiscovery,fetcher,hosted:true,uiLocale:preferredUiLocale(request.headers.get('Cookie'),url.searchParams.get('ui')),countryHint:request.cf?.country||'',discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
    const nonce=crypto.randomUUID().replaceAll('-','');

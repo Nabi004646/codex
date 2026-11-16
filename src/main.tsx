@@ -5,4 +5,5 @@ import './smooth.css';
 import './search.css';
 import './media.css';
 import './downloads.css';
+import './usability.css';
 hydrateRoot(document.getElementById('root')!,<RecoveryBoundary><App page={(window as any).__ATLAS_PAGE__}/></RecoveryBoundary>);
