@@ -2,3 +2,7 @@
 # including owner membership, AAL2, live provider session and admin grant.
 [functions.atlas-stage-originals]
 verify_jwt = false
+
+# Custom owner/MFA/grant validation and an existing service-role maintenance path.
+[functions.atlas-release-originals]
+verify_jwt = true

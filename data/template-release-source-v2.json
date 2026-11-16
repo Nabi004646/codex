@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "encoding": "tar+gzip",
+  "format": "ustar",
+  "metadata": "data/template-release-v2.json",
+  "destination": "outputs/atlas-templates-20261116",
+  "resources": 100,
+  "files": 240,
+  "asset_bytes": 7520458,
+  "tar_bytes": 7710720,
+  "bytes": 6377420,
+  "sha256": "a069bc0a3f79015aac6c937105bed95bd01d8a90e0fd13749e8bc88756e4fa42",
+  "inventory_sha256": "df9d8fa715157f67c6b9fa2cb8b27d7e3754a3b5dc8dfeb0e4b0f81403f0749c",
+  "license": "CC BY 4.0",
+  "release_archive": {
+    "path": "review-packs/native-templates-20261116-v2.zip",
+    "bytes": 6504310,
+    "sha256": "87a5e7140b03d8c4137792c710ca09b609bec68b8b92641ef828dc1a6048f818"
+  },
+  "parts": [
+    {
+      "path": "data/template-release-source-v2/part-000.bin",
+      "bytes": 1250000,
+      "sha256": "64c1f62e495f64e61f41ed35a9f142a45d78cd8149bd06efbe081171f4ca1b3f"
+    },
+    {
+      "path": "data/template-release-source-v2/part-001.bin",
+      "bytes": 1250000,
+      "sha256": "c87f128356b92f545b1e25c816da191b2ea20f3f8fdf73481947ce53edb33882"
+    },
+    {
+      "path": "data/template-release-source-v2/part-002.bin",
+      "bytes": 1250000,
+      "sha256": "5e72eccaee32c6ba73bcfda6e7294778839230d8dc5998ff77c6cc175bc1c5fb"
+    },
+    {
+      "path": "data/template-release-source-v2/part-003.bin",
+      "bytes": 1250000,
+      "sha256": "c3da133acda751ae1257be12ab0c3dc0faca0b9e7af7bbf61cb6ae0e65461418"
+    },
+    {
+      "path": "data/template-release-source-v2/part-004.bin",
+      "bytes": 1250000,
+      "sha256": "6767113d5326c41d8e42e6586634f89488d17bd0965c1cc0796ee16eea917d23"
+    },
+    {
+      "path": "data/template-release-source-v2/part-005.bin",
+      "bytes": 127420,
+      "sha256": "c63c909e0d1ef338f169d6b732e367c4708e1ab7a80653ed72d09a0749d03a57"
+    }
+  ]
+}

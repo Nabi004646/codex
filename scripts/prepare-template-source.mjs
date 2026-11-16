@@ -6,11 +6,13 @@ import crypto from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 
 const root=path.resolve(import.meta.dirname,'..');
-const manifest=JSON.parse(await fs.readFile(path.join(root,'data/template-source.parts.json'),'utf8'));
-const metadata=JSON.parse(await fs.readFile(path.join(root,'data/template-drafts.json'),'utf8'));
+if(process.argv.length>3||process.argv[2]&&process.argv[2]!=='--release-v2')throw Error('Unsupported template source selection.');
+const release=process.argv[2]==='--release-v2',version=release?2:1,metadataPath=release?'data/template-release-v2.json':'data/template-drafts.json',destination=release?'outputs/atlas-templates-20261116':'outputs/atlas-templates-20261113',partsPath=release?'data/template-release-source-v2':'data/template-source';
+const manifest=JSON.parse(await fs.readFile(path.join(root,release?'data/template-release-source-v2.json':'data/template-source.parts.json'),'utf8'));
+const metadata=JSON.parse(await fs.readFile(path.join(root,metadataPath),'utf8'));
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 const fail=message=>{throw Error(message);};
-if(manifest.version!==1||manifest.encoding!=='tar+gzip'||manifest.format!=='ustar'||manifest.metadata!=='data/template-drafts.json'||manifest.destination!=='outputs/atlas-templates-20261113')fail('Unsupported template source manifest.');
+if(manifest.version!==version||manifest.encoding!=='tar+gzip'||manifest.format!=='ustar'||manifest.metadata!==metadataPath||manifest.destination!==destination)fail('Unsupported template source manifest.');
 if(!Array.isArray(metadata)||metadata.length!==100||manifest.resources!==100||new Set(metadata.map(r=>r.id)).size!==100)fail('Expected 100 distinct template records.');
 if(!Array.isArray(manifest.parts)||manifest.parts.length<1||manifest.parts.length>32||!Number.isSafeInteger(manifest.bytes)||manifest.bytes<1||manifest.bytes>32*1024*1024||!Number.isSafeInteger(manifest.tar_bytes)||manifest.tar_bytes<1||manifest.tar_bytes>64*1024*1024)fail('Template archive exceeds its source budget.');
 
@@ -27,7 +29,7 @@ inventory.sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0);
 if(inventory.length!==240||manifest.files!==240||new Set(inventory.map(f=>f.path)).size!==240||inventory.reduce((n,f)=>n+f.bytes,0)!==manifest.asset_bytes||hash(JSON.stringify(inventory))!==manifest.inventory_sha256)fail('Registered template inventory does not match the pinned source.');
 const expected=new Map(inventory.map(f=>[f.path,f])),chunks=[];
 for(const [index,part]of manifest.parts.entries()){
- if(part.path!=='data/template-source/part-'+String(index).padStart(3,'0')+'.bin'||!Number.isSafeInteger(part.bytes)||part.bytes<1||part.bytes>1_500_000)fail('Unexpected template source part.');
+ if(part.path!==partsPath+'/part-'+String(index).padStart(3,'0')+'.bin'||!Number.isSafeInteger(part.bytes)||part.bytes<1||part.bytes>1_500_000)fail('Unexpected template source part.');
  const bytes=await fs.readFile(path.join(root,part.path));
  if(bytes.length!==part.bytes||hash(bytes)!==part.sha256)fail('Template source part failed verification: '+part.path);
  chunks.push(bytes);
@@ -76,4 +78,4 @@ for(const file of inventory){
  try{await fs.writeFile(temporary,assets.get(file.path),{flag:'wx',mode:0o644});await fs.rename(temporary,target);restored++;}finally{await fs.rm(temporary,{force:true});}
 }
 for(const file of inventory){const bytes=await fs.readFile(path.join(root,manifest.destination,file.path));if(bytes.length!==file.bytes||hash(bytes)!==file.sha256)fail('Restored template verification failed: '+file.path);}
-console.log('Verified 100 draft templates / 240 native files ('+manifest.asset_bytes+' bytes); restored '+restored+'. No Storage upload or publication performed.');
+console.log('Verified 100 '+(release?'release v2':'draft')+' templates / 240 native files ('+manifest.asset_bytes+' bytes); restored '+restored+'. No Storage upload or publication performed.');

@@ -1,3 +1,4 @@
+import {nativeTemplateDocument,nativeTemplateDownload,nativeTemplateApprovals} from './template-publication.mjs';
 import {submissionResponse} from './submissions.mjs';
 import {publishedOverrides,publishedResource} from './catalog-overrides.mjs';
 import {widgetResponse} from './widgets.mjs';
@@ -31,7 +32,15 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
   try{
    if(url.pathname==='/_media')return await mediaResponse(request,{fetcher,cache,waitUntil:promise=>ctx.waitUntil(promise)});
    if(url.pathname==='/sitemap.xml'||url.pathname.startsWith('/sitemaps/')){
-    if(publicDiscovery){if(url.pathname==='/sitemap.xml')return new Response(sitemapIndex([{sitemap_group:'pages',locale:'en',count:publicApprovals.length}]),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});const route=sitemapRoute(url.pathname);if(!route||route.p_group!=='pages'||route.p_locale!=='en'||route.p_page>=Math.ceil(publicApprovals.length/1000))return new Response('Not found',{status:404,headers:security});return new Response(sitemapPage(publicApprovals.slice(route.p_page*1000,(route.p_page+1)*1000)),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});}
+    if(publicDiscovery){
+     const requestedRoute=url.pathname==='/sitemap.xml'?null:sitemapRoute(url.pathname);
+     if(url.pathname!=='/sitemap.xml'&&(!requestedRoute||requestedRoute.p_group!=='pages'||requestedRoute.p_locale!=='en'||requestedRoute.p_page>=Math.ceil((publicApprovals.length+100)/1000)))return new Response('Not found',{status:404,headers:security});
+     let native=[];try{native=await nativeTemplateApprovals(fetcher);}catch{/* Close native indexing when publication cannot be checked. */}
+     const approved=[...publicApprovals,...native];
+     if(url.pathname==='/sitemap.xml')return new Response(sitemapIndex([{sitemap_group:'pages',locale:'en',count:approved.length}]),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});
+     const route=sitemapRoute(url.pathname);if(!route||route.p_group!=='pages'||route.p_locale!=='en'||route.p_page>=Math.ceil(approved.length/1000))return new Response('Not found',{status:404,headers:security});
+     return new Response(sitemapPage(approved.slice(route.p_page*1000,(route.p_page+1)*1000)),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});
+    }
     if(!production)return new Response(sitemapPage([]),{headers:{...security,'Content-Type':'application/xml','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
     const route=sitemapRoute(url.pathname);if(url.pathname!=='/sitemap.xml'&&!route)return new Response('Not found',{status:404,headers:security});
     const data=await publicRpc('sitemap_snapshot',route||{},fetcher);
@@ -45,7 +54,8 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    if(url.pathname==='/api/published-resource'){const result=await publishedResource(url.searchParams,fetcher);return json(result,result.resource?200:404);}
    if(url.pathname==='/api/live/resources')return json(await queryLive(url.searchParams,fetcher));
    if(url.pathname==='/api/template-staging-source')return json(templateStagingSource());
-   if(url.pathname==='/api/templates')return production?json({error:'Template publication is pending.'},404):json(templateListing(url.searchParams));
+   if(url.pathname==='/api/template-download')return nativeTemplateDownload(request,{fetcher});
+   if(url.pathname==='/api/templates'){const listing=templateListing(url.searchParams);return json(production||publicDiscovery?(await nativeTemplateDocument({listing},fetcher)).listing:listing);}
    if(url.pathname==='/api/template-draft-download')return json({error:'Local draft files are available only in the local review environment. Published downloads require approved storage records.'},404);
    if(url.pathname==='/api/resources'){const result=await search(url.searchParams);return json(result,result.clientRequired?409:200);}
    if(url.pathname.startsWith('/api/'))return json({error:'Endpoint not found.'},404);
@@ -56,7 +66,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
     if(redirect){if(redirect.status===410)return new Response('This page has been permanently removed.',{status:410,headers:{...security,'X-Robots-Tag':'noindex','Cache-Control':'public, max-age=60'}});return new Response(null,{status:redirect.status,headers:{...security,Location:redirect.target_path,'Cache-Control':'public, max-age=60'}});}
    }
    const countryCode=/^[A-Z]{2}$/.test(request.cf?.country||'')?request.cf.country:'XX';
-   const cacheable=request.method==='GET'&&(production||publicDiscovery)&&!privatePath&&!url.pathname.startsWith('/resource/')&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname+'?'+new URLSearchParams({__atlas_revision:htmlRevision,...(publicDiscovery?{__atlas_country:countryCode}:{})}));
+   const cacheable=request.method==='GET'&&(production||publicDiscovery)&&!privatePath&&!url.pathname.startsWith('/resource/')&&!url.pathname.startsWith('/templates')&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname+'?'+new URLSearchParams({__atlas_revision:htmlRevision,...(publicDiscovery?{__atlas_country:countryCode}:{})}));
    if(cacheable&&cache){const hit=await cache.match(key);if(hit){if(!publicDiscovery)return hit;const headers=new Headers(hit.headers);headers.set('Cache-Control','private, no-store');return new Response(hit.body,{status:hit.status,headers});}}
    const page=await render(url.pathname+url.search,{production,publicDiscovery,fetcher,hosted:true,uiLocale:preferredUiLocale(request.headers.get('Cookie'),url.searchParams.get('ui')),countryHint:request.cf?.country||'',discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
    const nonce=crypto.randomUUID().replaceAll('-','');

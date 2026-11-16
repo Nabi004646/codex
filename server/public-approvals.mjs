@@ -6,6 +6,7 @@ import {workspaceHelp} from '../data/workspace-help.mjs';
 const ORIGIN='https://freeresourceatlas.com',REVIEWED='2026-11-16T00:00:00.000Z';
 const record=(path,title,description,evidence)=>({path,title,description,locale:'en',publication:'published',index_intent:'index',canonical_url:ORIGIN+path,last_meaningful_change:REVIEWED,reviewed_at:REVIEWED,review_type:'Original editorial content and source documentation reviewed; no hands-on benchmark claimed',evidence});
 export const publicApprovals=[
+ record('/templates','Original editable templates and checklists','Browse 100 original templates with PDF previews and editable document or spreadsheet sources. Check each template’s live download availability and CC BY 4.0 attribution terms.',['data/template-release-v2.json','src/TemplatePages.tsx']),
  record('/','FreeResourceAtlas — useful apps, games and free resources','Find apps, games, software and learning resources. Check access labels, recorded platforms, original sources and practical workflow guides.',['server/catalog.mjs','data/discovery-manifest.json']),
  record('/about','About FreeResourceAtlas and its maintainer','Learn how FreeResourceAtlas separates discovered listings, documented facts and reviewed content while helping people choose useful resources.',['server/public-content.mjs']),
  record('/sources','Resource sources, access labels and review methods','Understand source attribution, free and paid access labels, platform evidence and the limits of documentation-based reviews.',['server/public-content.mjs','data/discovery-credits.json']),

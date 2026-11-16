@@ -1,4 +1,5 @@
 import {initial} from './preview.mjs';import {publicData,summaries} from './page-data.mjs';import {publishedSearch,publishedDetail,publishedMetadata,publicRows,publishedCard} from './published.mjs';
+import {nativeTemplateDocument} from './template-publication.mjs';
 const staticUtility=new Set(['/workflows','/planner','/downloads','/games/gta-6','/','/search','/collections','/toolkits','/compare','/guides','/kits','/finder','/blog','/about','/sources','/editorial-policy','/privacy','/cookies','/terms','/advertising','/contact','/submit','/authors/nabin-kunwar']);
 export async function productionState(path,fetcher=fetch){
  const page=initial(path);page.production=true;page.result=null;page.localResource=null;page.localCount=0;page.articleCards=[];
@@ -14,7 +15,11 @@ export async function productionState(path,fetcher=fetch){
  const approved=await publicRows('seo_pages',{publication:'eq.published',index_intent:'eq.index',path:'like./blog/*',select:'path,title,description,last_meaningful_change',limit:'100'},fetcher);
  page.articleCards=summaries.filter(a=>approved.some(p=>p.path==='/blog/'+a.slug)).map(a=>{const p=approved.find(p=>p.path==='/blog/'+a.slug);return {...a,title:p.title,description:p.description};});
  if(page.kind==='public'){
-  if(page.path.startsWith('/templates')){page.kind='missing';page.status=404;return page;}
+  if(page.path==='/templates'||page.path.startsWith('/templates/')){
+   page.document=await nativeTemplateDocument(publicData(page.path,page.params),fetcher);
+   if(!page.document.quick&&!page.document.listing&&!page.document.template){page.kind='missing';page.status=404;}
+   return page;
+  }
   if(!staticUtility.has(page.path)&&!metadata){page.kind='missing';page.status=404;return page;}
   page.document=publicData(page.path,page.params);page.document.articleCards=page.articleCards;
   if(page.document.article)page.document.article={...page.document.article,state:'published',updated_at:metadata.last_meaningful_change};

@@ -2,12 +2,18 @@ import manifest from '../data/discovery-manifest.json' with {type:'json'};
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import templates from '../data/template-drafts.json' with {type:'json'};
+import native from '../data/template-release-v2.json' with {type:'json'};
+let nativePublished=false;
 const originalFetch=globalThis.fetch;
 const calls=[],assetReads=[];
 globalThis.fetch=async(raw,options={})=>{
  const url=new URL(raw);calls.push(url.pathname);assert.notEqual(options.redirect,'error','Cloudflare does not implement the error redirect mode');
  if(url.pathname.endsWith('/rpc/atlas_submit')){const data=JSON.parse(options.body);if(data.p_summary==='redirect fixture check')return new Response(null,{status:302,headers:{Location:'https://other.example/queue'}});return Response.json({received:true,id:'00000000-0000-4000-8000-000000000001',state:'pending'});}
  if(url.pathname.endsWith('/rpc/atlas_withdraw'))return Response.json({withdrawn:true});
+ if(url.pathname.endsWith('/rest/v1/resources')&&url.searchParams.has('id'))return Response.json(nativePublished?[{id:native[0].resource_id,display_name:native[0].title,short_summary:native[0].purpose,editorial_description:native[0].description,license:'CC BY 4.0',revision:2}]:[]);
+ if(url.pathname.endsWith('/rest/v1/resource_files'))return Response.json(nativePublished?native[0].files.filter(f=>!url.searchParams.get('format')||url.searchParams.get('format')==='eq.'+f.format).map(f=>({resource_id:native[0].resource_id,bucket_id:'fra-public-templates',object_key:f.object_path,format:f.format,version:2,bytes:f.bytes,sha256:f.sha256,publication:'published',license_approved:true})):[]);
+ if(url.pathname.endsWith('/rest/v1/seo_pages'))return Response.json(nativePublished?[{resource_id:native[0].resource_id,path:'/templates/'+native[0].slug,canonical_url:'https://freeresourceatlas.com/templates/'+native[0].slug,title:native[0].title,description:native[0].purpose,publication:'published',index_intent:'index',last_meaningful_change:'2026-11-16T00:00:00.000Z',locale:'en'}]:[]);
+ if(url.pathname.startsWith('/storage/v1/object/authenticated/fra-public-templates/'))return new Response(fs.readFileSync(native[0].files.find(f=>url.pathname.endsWith(f.object_path)).local_path));
  if(url.pathname.endsWith('/rest/v1/resources')&&url.searchParams.get('tags')==='cs.{"atlas-download"}')return Response.json([]);
  if(url.pathname.endsWith('/rpc/catalog_stats'))return Response.json({total:0,categories:[],revision:'empty'});
  if(url.pathname.endsWith('/rpc/resource_search_v2'))return Response.json({items:[],has_more:false,next_cursor:null});
@@ -49,6 +55,12 @@ try{
  assert.equal((await worker.fetch(request('/_worker.js'),env)).status,404);
  assert.equal((await worker.fetch(request('/api/resources',{method:'POST'}),env)).status,405);
  const sitemap=await(await worker.fetch(request('/sitemap.xml'),env)).text();assert.ok(!sitemap.includes('<url>'));
+ nativePublished=true;
+ const liveEnv={...env,ATLAS_MODE:'public-discovery'},publicRequest=path=>new Request('https://freeresourceatlas.com'+path);
+ const publishedTemplate=await worker.fetch(publicRequest('/templates/'+native[0].slug),liveEnv),publishedHtml=await publishedTemplate.text();assert.equal(publishedTemplate.status,200);assert.match(publishedHtml,/CC BY 4.0/);assert.ok(publishedHtml.includes('href="/api/template-download?id=1&amp;format=pdf"'));
+ const file=await worker.fetch(publicRequest('/api/template-download?id=1&format=pdf'),liveEnv);assert.equal(file.status,200);assert.deepEqual(Buffer.from(await file.arrayBuffer()),fs.readFileSync(native[0].files.find(f=>f.format==='pdf').local_path));
+ const nativeSitemap=await(await worker.fetch(publicRequest('/sitemaps/pages_en_0.xml'),liveEnv)).text();assert.ok(nativeSitemap.includes('/templates/'+native[0].slug+'</loc>'));
+ nativePublished=false;assert.equal((await worker.fetch(publicRequest('/api/template-download?id=1&format=pdf'),liveEnv)).status,404);
  const routes=JSON.parse(fs.readFileSync('dist/pages/_routes.json'));assert.deepEqual(routes.include,['/*']);assert.ok(routes.exclude.includes('/assets/*'));assert.ok(!routes.exclude.includes('/admin'));
  fs.mkdirSync('reports',{recursive:true});fs.writeFileSync('reports/pages-validation.json',JSON.stringify({checked_at:new Date().toISOString(),scope:'actual compiled standalone Pages module; isolated read-only provider',passed:['SSR homepage and built assets','dynamic resource search','dynamic template filtering','hosted draft download buttons withheld','new hosted search RPC adapter','private uncached admin route','no Worker source exposure','staging noindex and empty sitemap','write requests denied'],public_cloudflare_deployment:'verified separately through the exact GitHub commit deployment check'},null,2)+'\n');
  console.log('PASS: standalone Cloudflare Pages frontend, live search adapter, template filtering, review gates and private admin headers.');
