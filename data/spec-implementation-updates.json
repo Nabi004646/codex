@@ -2,14 +2,9 @@
   "checked_on": "2026-11-16",
   "blockers": [
     {
-      "id": "backend",
-      "name": "Free-library management access",
-      "detail": "The connected management account does not expose the website’s Free-library project. New schema, Storage policies, protected uploads and new server jobs cannot be activated through that connection."
-    },
-    {
       "id": "search",
       "name": "Search Console and Bing",
-      "detail": "Account authorization and real property data are required for API sync and URL Inspection. Manual Search Console Performance CSV analysis is available in this admin."
+      "detail": "The FreeResourceAtlas domain is verified in Google Search Console. On November 16, Google processed the submitted sitemap and discovered 61 pages. Website background API sync is not connected. Bing still requires its own authorized property connection."
     },
     {
       "id": "editorial",
@@ -18,8 +13,8 @@
     },
     {
       "id": "delivery",
-      "name": "Submission and email services",
-      "detail": "Live moderation, opt-in email, unsubscribe/deletion and scheduled operational services need a configured backend and delivery provider. No fake successful delivery is shown."
+      "name": "Email and scheduled operations",
+      "detail": "Suggestion and correction forms now write to a private database queue, with owner moderation and receipt withdrawal. Email subscriptions, verified sender delivery and scheduled operational jobs remain unconfigured."
     }
   ],
   "items": {
@@ -174,6 +169,18 @@
     "UX-02": {
       "status": "partial",
       "next": "Explore now closes on outside pointer/focus, Escape and link selection, and fits short viewports. Mobile, keyboard and image-failure checks cover this release; a complete WCAG audit remains separate."
+    },
+    "27D": {
+      "status": "partial",
+      "next": "Private Storage buckets, owner/AAL2/session-grant upload policies, source checksum verification and post-upload readback are implemented. Native downloads remain closed pending owner content and distribution approval."
+    },
+    "27E": {
+      "status": "partial",
+      "next": "Two private buckets are active in Free-library. The owner can stage and register original native files without public exposure. Public delivery remains a separate reviewed release."
+    },
+    "INDEX-04": {
+      "status": "partial",
+      "next": "Verified domain property inspected in the owner browser; sitemap processed with 61 discovered pages on 2026-11-16. Background API authorization and automatic sync are still pending. Indexing is not inferred from discovery."
     }
   }
 }

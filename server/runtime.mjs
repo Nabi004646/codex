@@ -1,3 +1,4 @@
+import {submissionResponse} from './submissions.mjs';
 import {publishedOverrides,publishedResource} from './catalog-overrides.mjs';
 import {widgetResponse} from './widgets.mjs';
 import {isPublicAsset} from './public-assets.mjs';
@@ -9,7 +10,7 @@ import {preferredUiLocale} from '../src/locale-config.mjs';
 import {discoverySnapshot} from './discovery-snapshots.mjs';
 import {findTask} from './finder.mjs';
 import {queryLive} from './live.mjs';
-import {templateListing} from './templates.mjs';
+import {templateListing,templateStagingSource} from './templates.mjs';
 import {queryPreview} from './preview.mjs';import {publishedSearch,publicRows,publicRpc} from './published.mjs';import {sitemapIndex,sitemapPage,sitemapRoute} from './sitemaps.mjs';
 const security={'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Permissions-Policy':'camera=(), microphone=(), geolocation=()'};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{...security,'Content-Type':'application/json','Cache-Control':'no-store'}});
@@ -17,6 +18,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
  const htmlRevision=template.match(/src="\/assets\/([^"/]+)"/)?.[1]||'local';
  return async function handle(request,env={},ctx={waitUntil:()=>{}}){
   const url=new URL(request.url),production=env.ATLAS_MODE==='production',privatePath=/^\/admin(?:\/|$)/.test(url.pathname);
+  if(['/api/submissions','/api/submissions/withdraw'].includes(url.pathname))return submissionResponse(request,{fetcher});
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET, HEAD','Cache-Control':'no-store'}});
   const publicDiscovery=env.ATLAS_MODE==='public-discovery'&&url.hostname==='freeresourceatlas.com';
   if(env.ATLAS_MODE==='public-discovery'&&url.hostname==='www.freeresourceatlas.com')return new Response(null,{status:308,headers:{Location:'https://freeresourceatlas.com'+url.pathname+url.search,'Cache-Control':'public, max-age=3600'}});
@@ -42,6 +44,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    if(url.pathname==='/api/catalog-overrides')return json(await publishedOverrides(url.searchParams,fetcher));
    if(url.pathname==='/api/published-resource'){const result=await publishedResource(url.searchParams,fetcher);return json(result,result.resource?200:404);}
    if(url.pathname==='/api/live/resources')return json(await queryLive(url.searchParams,fetcher));
+   if(url.pathname==='/api/template-staging-source')return json(templateStagingSource());
    if(url.pathname==='/api/templates')return production?json({error:'Template publication is pending.'},404):json(templateListing(url.searchParams));
    if(url.pathname==='/api/template-draft-download')return json({error:'Local draft files are available only in the local review environment. Published downloads require approved storage records.'},404);
    if(url.pathname==='/api/resources'){const result=await search(url.searchParams);return json(result,result.clientRequired?409:200);}

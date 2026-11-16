@@ -11,3 +11,5 @@ export function templateListing(params=new URLSearchParams()){
 export function templateDraftFile(id,format){if(!/^\d{1,3}$/.test(String(id))||!['pdf','docx','xlsx','csv'].includes(format))return null;return rows.find(r=>r.id===Number(id))?.files.find(f=>f.format===format)||null;}
 export const templatePaths=['/templates',...rows.map(r=>'/templates/'+r.slug),...quickTemplates.map(r=>'/templates/quick/'+r.slug)];
 export function templateData(path,params={}){if(path.startsWith('/templates/quick/'))return {type:'templates',quick:quickTemplates.find(r=>r.slug===path.split('/')[3])};const slug=path.split('/')[2],template=slug?rows.find(r=>r.slug===slug):null;return {type:'templates',template,listing:template?null:templateListing(new URLSearchParams(params))};}
+
+export function templateStagingSource(){return {items:rows.map(t=>({resource_id:t.resource_id,slug:t.slug,title:t.title,purpose:t.purpose,description:t.description,category_slug:t.category_slug,files:t.files.map(f=>({object_path:f.object_path,format:f.format,version:f.version,bytes:f.bytes,sha256:f.sha256,content_type:f.content_type}))}))};}

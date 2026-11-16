@@ -1,0 +1,4 @@
+# The staging function validates JWTs through the protected database RPC,
+# including owner membership, AAL2, live provider session and admin grant.
+[functions.atlas-stage-originals]
+verify_jwt = false
