@@ -9,7 +9,7 @@
     {
       "id": "editorial",
       "name": "Content and distribution review",
-      "detail": "Imported listings, native template distribution and translated pages need their own review. Discovery metadata and UI translations are not proof of verified resource terms or reviewed translated content."
+      "detail": "Imported listings and translated pages need their own evidence checks. Discovery metadata and UI translations are not proof of verified resource terms or reviewed translated content. The original version 2 template release has separate owner-approved CC BY 4.0 terms."
     },
     {
       "id": "delivery",
@@ -51,12 +51,8 @@
       "next": "A source-backed creator hub covers an original capture/edit/export workflow and source/asset conditions."
     },
     "USA-11": {
-      "status": "partial",
-      "next": "All 240 native files for 100 templates are privately uploaded, checksum-verified and registered. Owner content/distribution terms and public download publication remain separate.",
-      "blockedBy": [
-        "Owner review of content and distribution terms",
-        "Reviewed public download release"
-      ]
+      "status": "implemented",
+      "next": "100 version 2 originals and 240 native files are checksum-pinned, reviewed, and owner-approved under CC BY 4.0. Public downloads and native sitemap entries follow current database publication; version 1 review files remain private."
     },
     "USA-12": {
       "status": "implemented",

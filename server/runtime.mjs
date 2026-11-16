@@ -47,7 +47,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
     return new Response(url.pathname==='/sitemap.xml'?sitemapIndex(data.groups):sitemapPage(data.urls),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});
    }
    if(url.pathname.startsWith('/embed/'))return widgetResponse(url.pathname.slice(7));
-   if(url.pathname==='/api/page-inventory')return json(publicInventory());
+   if(url.pathname==='/api/page-inventory'){const inventory=publicInventory();if(production||publicDiscovery)try{const native=await nativeTemplateApprovals(fetcher);return json({...inventory,approved_urls:inventory.approved_urls+native.length,native_template_urls:native.length,pages:[...inventory.pages,...native]});}catch{return json({...inventory,native_template_urls:null,native_check:'unavailable'});}return json(inventory);}
    if(url.pathname==='/api/finder')return json(await findTask(url.searchParams.get('task'),p=>publishedSearch(p,fetcher),{country:url.searchParams.get('country')||'',includeCommunity:url.searchParams.get('community')==='1'}));
    if(url.pathname==='/api/downloads')return json(await queryDownloads(url.searchParams,fetcher));
    if(url.pathname==='/api/catalog-overrides')return json(await publishedOverrides(url.searchParams,fetcher));

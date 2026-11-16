@@ -4,7 +4,7 @@ import {boundedFetch} from './network.mjs';
 export default function TemplateRelease({transfer,onChange}:any){
  const [published,setPublished]=useState<number|null>(null),[busy,setBusy]=useState(false),[message,setMessage]=useState(''),[error,setError]=useState('');
  const mounted=useRef(true),pending=useRef(false);
- async function refresh(){const response=await boundedFetch('/api/templates',{cache:'no-store'});if(!response.ok)throw Error('Published template availability could not be checked.');const data=await response.json();if(!Number.isInteger(data.publishedCount))throw Error('Published counts are unavailable.');if(mounted.current)setPublished(data.publishedCount);}
+ async function refresh(){const response=await boundedFetch('/api/templates',{cache:'no-store'});if(!response.ok)throw Error('Published template availability could not be checked.');const data=await response.json();if(!Number.isInteger(data.publishedCount))throw Error('Published counts are unavailable.');if(mounted.current)setPublished(data.publishedCount);return data.publishedCount;}
  useEffect(()=>{mounted.current=true;void refresh().catch(e=>setError(e.message));return()=>{mounted.current=false;};},[]);
  async function release(){
   if(pending.current)return;pending.current=true;setBusy(true);setError('');
@@ -17,7 +17,7 @@ export default function TemplateRelease({transfer,onChange}:any){
     if(!Number.isInteger(result.next_offset)||result.next_offset<=offset||result.next_offset>100||result.total!==100||result.license!=='CC BY 4.0'||result.version!==2)throw Error('Release progress could not be verified. Existing published templates remain available.');
     offset=result.next_offset;
    }
-   await refresh();await onChange();if(mounted.current)setMessage('All 100 originals released. Their 240 native files and public availability were verified.');
+   const count=await refresh();if(count!==100)throw Error('The release finished, but not all 100 downloads could be confirmed publicly. Check availability before retrying.');await onChange();if(mounted.current)setMessage('All 100 originals released. Their 240 native files and public availability were verified.');
   }catch(e:any){if(mounted.current)setError(e.message||'Release paused. Refresh availability, then resume.');}
   finally{pending.current=false;if(mounted.current)setBusy(false);}
  }

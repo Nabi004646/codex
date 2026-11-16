@@ -26,6 +26,11 @@ def check(path):
         assert status == 404, "Missing URLs must return 404"
     else:
         assert status == 200, "HTTP " + str(status)
+    if path in ("/", "/admin"):
+        bootstrap = re.search(r'<script[^>]*id="atlas-page-data"[^>]*>(.*?)</script>', body.decode(), re.S)
+        assert bootstrap, "Inert page data was not found"
+        state = json.loads(bootstrap.group(1))
+        assert isinstance(state.get("params"), dict) and state.get("path") == path, "Page data is incomplete"
     if path == "/":
         html = body.decode()
         assert "FreeResourceAtlas" in html and "<h1" in html
