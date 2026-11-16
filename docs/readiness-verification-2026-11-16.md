@@ -13,6 +13,10 @@
   sessions, private owner configuration and visitor submissions were excluded.
 - The six application migrations rebuild successfully; the original owner,
   verified-factor, provider-session, idle and revision guards were exercised.
+- After deployment, the real production correction form received the operational
+  report and confirmed receipt-based withdrawal. The dollar-sign query retained
+  its exact input. Cloudflare deployment and the first scheduled monitor run
+  both completed successfully for commit `6972da6`.
 
 ## Corrected production failures
 

@@ -14,7 +14,7 @@
     {
       "id": "delivery",
       "name": "Email and scheduled operations",
-      "detail": "Suggestion and correction forms now write to a private database queue, with owner moderation and receipt withdrawal. Email subscriptions, verified sender delivery and scheduled operational jobs remain unconfigured."
+      "detail": "Suggestion and correction forms write to a private database queue, with owner moderation and receipt withdrawal. Public-site health checks run every six hours. Email subscriptions, verified sender delivery, full unattended backups and operational quota alerts still require secure setup."
     }
   ],
   "items": {
@@ -52,7 +52,11 @@
     },
     "USA-11": {
       "status": "partial",
-      "next": "All 240 native assets for 100 templates are restored and pinned. Storage upload and protected publication require access to Free-library."
+      "next": "All 240 native files for 100 templates are privately uploaded, checksum-verified and registered. Owner content/distribution terms and public download publication remain separate.",
+      "blockedBy": [
+        "Owner review of content and distribution terms",
+        "Reviewed public download release"
+      ]
     },
     "USA-12": {
       "status": "implemented",
@@ -132,7 +136,7 @@
     },
     "UX-04": {
       "status": "partial",
-      "next": "Preference clearing now removes actual locale cookie/storage and local planning data. Consent, persistent submission and protected upload controls are still needed when collection is enabled."
+      "next": "Preference clearing and private submission/receipt withdrawal are implemented. Original uploads require owner/MFA access. Email consent and provider delivery still require a verified sender setup."
     },
     "INDEX-01": {
       "status": "partial",
@@ -176,11 +180,38 @@
     },
     "27E": {
       "status": "partial",
-      "next": "Two private buckets are active in Free-library. The owner can stage and register original native files without public exposure. Public delivery remains a separate reviewed release."
+      "next": "Two private buckets are active; the owner session verified 241 objects and 240 native file mappings. No native public download release is claimed before reviewed publication.",
+      "blockedBy": [
+        "Reviewed public download release"
+      ]
     },
     "INDEX-04": {
       "status": "partial",
       "next": "Verified domain property inspected in the owner browser; sitemap processed with 61 discovered pages on 2026-11-16. Background API authorization and automatic sync are still pending. Indexing is not inferred from discovery."
+    },
+    "ADMIN-09": {
+      "status": "partial",
+      "next": "Six application migrations rebuild in isolated PostgreSQL. A live content backup restored 391 rows and matched all 23 deployed function definitions. Add unattended off-site backups covering private operations and platform recovery separately.",
+      "blockedBy": [
+        "Secure unattended off-site destination",
+        "Private operational and platform recovery scope"
+      ]
+    },
+    "26.2": {
+      "status": "partial",
+      "next": "Pinned native source restoration, full application-schema reconstruction and live content restore are verified. Full unattended backups and private operational/platform recovery still need secure configuration.",
+      "blockedBy": [
+        "Secure unattended off-site destination",
+        "Private operational and platform recovery scope"
+      ]
+    },
+    "20.5": {
+      "status": "partial",
+      "next": "A dependency-free public health monitor runs every six hours in GitHub Actions; its first run passed. Quota trends, private error telemetry and consented alert delivery remain separate.",
+      "blockedBy": [
+        "Provider usage/log access for quota measurements",
+        "Consented alert delivery setup"
+      ]
     }
   }
 }
