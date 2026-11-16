@@ -18,7 +18,7 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 .explore-menu{position:relative;text-align:left}
 .explore-menu>summary{cursor:pointer;list-style:none;min-height:38px;display:flex;align-items:center;gap:7px;font-size:12px}
 .explore-menu>summary::after{content:'⌄';font-size:14px}
-.explore-menu>div{position:absolute;top:calc(100% + 12px);right:0;z-index:90;min-width:240px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 28px #20252214;display:grid}
+.explore-menu>div{position:absolute;top:calc(100% + 12px);right:0;z-index:90;min-width:240px;max-width:calc(100vw - 24px);max-height:min(640px,calc(100dvh - 100px));overflow-y:auto;overscroll-behavior:contain;padding:8px;background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 28px #20252214;display:grid}
 .explore-menu a{display:block;padding:11px 13px;font-size:13px;border-radius:3px;white-space:nowrap}
 .explore-menu a:hover,.explore-menu a:focus-visible{background:#fff4cb}
 .explore-features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0 15px}
@@ -62,3 +62,8 @@ button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
 .article-cover{margin:24px 0 30px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f8f4e8}
 .article-cover img{display:block;width:100%;height:auto;aspect-ratio:1000/420;object-fit:cover}
 .article-cover figcaption{font-size:11px;color:var(--muted);padding:9px 13px;background:#fff}
+
+@media(max-height:500px){.explore-menu>div{max-height:calc(100dvh - 82px)}}
+
+.resource-card,.toolkit-content,.article-layout>article,.public-page,.atlas-resource{min-width:0}.public-page img,.atlas-resource img{max-width:100%;height:auto}.article-sources a,.source-links a,.atlas-resource-facts dd,.workspace-help p{overflow-wrap:anywhere}.site-header>nav{min-width:0}.article-toc{max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:700px){.article-cover{margin-inline:0}.resource-tools{flex-wrap:wrap}.resource-store-actions{gap:8px}.workflow-actions>button{max-width:100%;white-space:normal}.public-page .primary-button{max-width:100%;white-space:normal;text-align:center}}

@@ -1,8 +1,12 @@
-import {useEffect,useRef,useState} from 'react';
-import {resourceImage} from './resource-images';
+import {useEffect,useMemo,useRef,useState} from 'react';
+import {resourceImage,resourceImageCandidates} from './resource-images';
 export default function ResourcePreview({resource:r,eager=false,caption=false}:any){
- const [failed,setFailed]=useState(false),ref=useRef<HTMLImageElement|null>(null),image=resourceImage(r);
- useEffect(()=>{setFailed(false);if(ref.current?.complete&&!ref.current.naturalWidth)setFailed(true);},[image.src]);
- const available=!!image.src&&!failed;
- return <><div className={'resource-preview publisher-preview preview-'+(available?image.kind:'unavailable')}>{available?<img ref={ref} src={image.src!} alt={image.alt} width={1000} height={560} loading={eager?'eager':'lazy'} decoding="async" referrerPolicy="no-referrer" onError={()=>setFailed(true)}/>:<div className="source-preview-unavailable"><span>{r.subcategory||r.category}</span><strong>{r.name}</strong><small>Publisher image unavailable</small></div>}</div>{caption&&<figcaption>{available?image.label:'Publisher image unavailable'} · <a href={image.source} target="_blank" rel="noopener noreferrer">Image source ↗</a></figcaption>}</>;
+ const candidates=useMemo(()=>resourceImageCandidates(r),[r.id,r.url,r.image_url,r.name]),key=r.id+'|'+r.url+'|'+r.image_url;
+ const [attempt,setAttempt]=useState(0),[loaded,setLoaded]=useState(false),[near,setNear]=useState(eager),ref=useRef<HTMLImageElement|null>(null),box=useRef<HTMLDivElement|null>(null),image=candidates[attempt];
+ useEffect(()=>{setAttempt(0);setLoaded(false);},[key]);
+ useEffect(()=>{if(eager||!('IntersectionObserver' in window)){setNear(true);return;}const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){setNear(true);observer.disconnect();}},{rootMargin:'350px'});if(box.current)observer.observe(box.current);return()=>observer.disconnect();},[key,eager]);
+ useEffect(()=>{setLoaded(false);},[image?.src]);
+ useEffect(()=>{if(!image||!near||loaded)return;if(ref.current?.complete&&ref.current.naturalWidth){setLoaded(true);return;}if(ref.current?.complete&&ref.current.currentSrc&&!ref.current.naturalWidth){setAttempt(i=>i===attempt?i+1:i);return;}const timer=setTimeout(()=>setAttempt(i=>i===attempt?i+1:i),5000);return()=>clearTimeout(timer);},[image?.src,near,loaded]);
+ const original=resourceImage(r),advance=()=>{setLoaded(false);setAttempt(i=>i===attempt?i+1:i);};
+ return <><div ref={box} className={'resource-preview publisher-preview preview-'+(image?image.kind:'unavailable')+(image&&!loaded?' preview-loading':'')}>{image?<><img key={image.src} ref={ref} src={image.src} srcSet={image.srcSet} sizes="(max-width:700px) 100vw, (max-width:1100px) 50vw, 33vw" alt={image.alt} width={1000} height={560} loading={eager?'eager':'lazy'} fetchPriority={eager?'high':'low'} decoding="async" referrerPolicy="no-referrer" onLoad={()=>setLoaded(true)} onError={advance}/>{!loaded&&<span className="preview-loading-label" aria-hidden="true">Loading publisher image…</span>}</>:<div className="source-preview-unavailable"><span>{r.subcategory||r.category}</span><strong>{r.name}</strong><small>{(original as any).notice||'View the original source for its current preview'}</small></div>}</div>{caption&&<figcaption>{image?image.label:'Publisher image unavailable'} · <a href={original.source} target="_blank" rel="noopener noreferrer">Image source ↗</a></figcaption>}</>;
 }

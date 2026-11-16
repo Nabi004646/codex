@@ -1,4 +1,7 @@
 import {widgetResponse} from './widgets.mjs';
+import {isPublicAsset} from './public-assets.mjs';
+import {mediaResponse} from './media.mjs';
+import {canonicalPathname} from './routes.mjs';
 import {publicApprovals,publicInventory} from './public-approvals.mjs';
 import {queryDownloads} from './downloads.mjs';
 import {preferredUiLocale} from '../src/locale-config.mjs';
@@ -10,18 +13,22 @@ import {queryPreview} from './preview.mjs';import {publishedSearch,publicRows,pu
 const security={'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Permissions-Policy':'camera=(), microphone=(), geolocation=()'};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{...security,'Content-Type':'application/json','Cache-Control':'no-store'}});
 export function createRuntime({render,template,fetcher=fetch,cache=null}){
+ const htmlRevision=template.match(/src="\/assets\/([^"/]+)"/)?.[1]||'local';
  return async function handle(request,env={},ctx={waitUntil:()=>{}}){
   const url=new URL(request.url),production=env.ATLAS_MODE==='production',privatePath=/^\/admin(?:\/|$)/.test(url.pathname);
+  if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET, HEAD','Cache-Control':'no-store'}});
   const publicDiscovery=env.ATLAS_MODE==='public-discovery'&&url.hostname==='freeresourceatlas.com';
+  if(env.ATLAS_MODE==='public-discovery'&&url.hostname==='www.freeresourceatlas.com')return new Response(null,{status:308,headers:{Location:'https://freeresourceatlas.com'+url.pathname+url.search,'Cache-Control':'public, max-age=3600'}});
+  if(publicDiscovery&&!privatePath){const canonical=canonicalPathname(url.pathname);if(canonical!==url.pathname)return new Response(null,{status:308,headers:{Location:canonical+url.search,'Cache-Control':'public, max-age=3600'}});}
   const discovery=!production&&env.ATLAS_CATALOG==='discovery';
   const readAsset=async path=>{if(!env.ASSETS)throw Error('Catalog assets unavailable');const response=await env.ASSETS.fetch(new Request(url.origin+path));if(!response.ok)throw Error('Catalog asset unavailable');return response.json();};
   const search=params=>production?publishedSearch(params,fetcher):discovery?discoverySnapshot(params,readAsset):queryPreview(params);
-  if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET, HEAD','Cache-Control':'no-store'}});
   if(/^\/preview(?:\/|$)/.test(url.pathname))return new Response('Not found',{status:404,headers:{...security,'X-Robots-Tag':'noindex','Cache-Control':'private, no-store'}});
-  if(url.pathname==='/robots.txt')return new Response(production||publicDiscovery?'User-agent: *\nDisallow: /admin\nDisallow: /api/\nDisallow: /search\nDisallow: /preview/\nSitemap: https://freeresourceatlas.com/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{...security,'Content-Type':'text/plain','Cache-Control':'public, max-age=60'}});
+  if(url.pathname==='/robots.txt')return new Response(production||publicDiscovery?'User-agent: *\nDisallow: /admin\nDisallow: /api/\nDisallow: /preview/\nSitemap: https://freeresourceatlas.com/sitemap.xml\n':'User-agent: *\nDisallow: /\n',{headers:{...security,'Content-Type':'text/plain','Cache-Control':'public, max-age=60'}});
   try{
+   if(url.pathname==='/_media')return await mediaResponse(request,{fetcher,cache,waitUntil:promise=>ctx.waitUntil(promise)});
    if(url.pathname==='/sitemap.xml'||url.pathname.startsWith('/sitemaps/')){
-    if(publicDiscovery){if(url.pathname==='/sitemap.xml')return new Response(sitemapIndex([{sitemap_group:'pages',locale:'en',count:publicApprovals.length}]),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});const route=sitemapRoute(url.pathname);if(!route||route.p_group!=='pages'||route.p_locale!=='en')return new Response('Not found',{status:404,headers:security});return new Response(sitemapPage(publicApprovals.slice(route.p_page*1000,(route.p_page+1)*1000)),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});}
+    if(publicDiscovery){if(url.pathname==='/sitemap.xml')return new Response(sitemapIndex([{sitemap_group:'pages',locale:'en',count:publicApprovals.length}]),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});const route=sitemapRoute(url.pathname);if(!route||route.p_group!=='pages'||route.p_locale!=='en'||route.p_page>=Math.ceil(publicApprovals.length/1000))return new Response('Not found',{status:404,headers:security});return new Response(sitemapPage(publicApprovals.slice(route.p_page*1000,(route.p_page+1)*1000)),{headers:{...security,'Content-Type':'application/xml','Cache-Control':'public, max-age=60'}});}
     if(!production)return new Response(sitemapPage([]),{headers:{...security,'Content-Type':'application/xml','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
     const route=sitemapRoute(url.pathname);if(url.pathname!=='/sitemap.xml'&&!route)return new Response('Not found',{status:404,headers:security});
     const data=await publicRpc('sitemap_snapshot',route||{},fetcher);
@@ -36,14 +43,14 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
    if(url.pathname==='/api/template-draft-download')return json({error:'Local draft files are available only in the local review environment. Published downloads require approved storage records.'},404);
    if(url.pathname==='/api/resources'){const result=await search(url.searchParams);return json(result,result.clientRequired?409:200);}
    if(url.pathname.startsWith('/api/'))return json({error:'Endpoint not found.'},404);
-   const asset=/^\/(?:assets|brand|fonts|previews|logos|template-previews|catalog|catalog-notices)\//.test(url.pathname)||/\.(?:ico|png|jpg|webp|svg|woff2?|ttf)$/.test(url.pathname)||['/manifest.json','/site.webmanifest','/llms.txt'].includes(url.pathname);
+   const asset=isPublicAsset(url.pathname);
    if(asset)return env.ASSETS?env.ASSETS.fetch(request):new Response('Not found',{status:404,headers:security});
    if(production&&!privatePath){
     const [redirect]=await publicRows('site_redirects',{source_path:'eq.'+url.pathname,select:'target_path,status',limit:'1'},fetcher);
     if(redirect){if(redirect.status===410)return new Response('This page has been permanently removed.',{status:410,headers:{...security,'X-Robots-Tag':'noindex','Cache-Control':'public, max-age=60'}});return new Response(null,{status:redirect.status,headers:{...security,Location:redirect.target_path,'Cache-Control':'public, max-age=60'}});}
    }
    const countryCode=/^[A-Z]{2}$/.test(request.cf?.country||'')?request.cf.country:'XX';
-   const cacheable=request.method==='GET'&&(production||publicDiscovery)&&!privatePath&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname+(publicDiscovery?'?__atlas_country='+countryCode:''));
+   const cacheable=request.method==='GET'&&(production||publicDiscovery)&&!privatePath&&!url.search&&!request.headers.has('Authorization')&&!request.headers.has('Cookie'),key=new Request(url.origin+url.pathname+'?'+new URLSearchParams({__atlas_revision:htmlRevision,...(publicDiscovery?{__atlas_country:countryCode}:{})}));
    if(cacheable&&cache){const hit=await cache.match(key);if(hit){if(!publicDiscovery)return hit;const headers=new Headers(hit.headers);headers.set('Cache-Control','private, no-store');return new Response(hit.body,{status:hit.status,headers});}}
    const page=await render(url.pathname+url.search,{production,publicDiscovery,fetcher,hosted:true,uiLocale:preferredUiLocale(request.headers.get('Cookie'),url.searchParams.get('ui')),countryHint:request.cf?.country||'',discoverySearch:discovery?params=>discoverySnapshot(params,readAsset):null});
    const nonce=crypto.randomUUID().replaceAll('-','');

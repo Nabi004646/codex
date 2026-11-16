@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-15",
+  "checked_on": "2026-11-16",
   "blockers": [
     {
       "id": "backend",
@@ -97,7 +97,7 @@
     },
     "SEO-03": {
       "status": "partial",
-      "next": "A limited source-reviewed English inventory is published through canonical XML sitemaps without indexing the discovery catalog. Database-managed publication and Search Console sync still need configuration."
+      "next": "A 61-page source-reviewed English inventory now covers reviewed guides, usable browser tools, starter kits and ready-to-use templates. Unreviewed catalog pages, draft native files and private state remain excluded; database publication and Search Console sync are separate."
     },
     "ADMIN-06": {
       "status": "partial",
@@ -166,6 +166,14 @@
     "SEO-MEASURE-01": {
       "status": "partial",
       "next": "Manual Search Console Performance CSV analysis reports supplied metrics, source and owner-entered period. Live Search Console/Bing property sync is not configured."
+    },
+    "USA-05": {
+      "status": "implemented",
+      "next": "Sixteen original practical guides were checked against primary documentation, corrected for production and released with source dates, direct answers and proposed exercises; no hands-on benchmarks are claimed."
+    },
+    "UX-02": {
+      "status": "partial",
+      "next": "Explore now closes on outside pointer/focus, Escape and link selection, and fits short viewports. Mobile, keyboard and image-failure checks cover this release; a complete WCAG audit remains separate."
     }
   }
 }

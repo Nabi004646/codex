@@ -9,6 +9,9 @@ A discovered listing is not automatically reviewed, free, secure, tested or inde
 ## Useful pages
 - [Browse and search](https://freeresourceatlas.com/)
 - [Sources and labels](https://freeresourceatlas.com/sources)
+- [Practical guides](https://freeresourceatlas.com/blog)
+- [Start here](https://freeresourceatlas.com/guides)
+- [Ready-to-use weekly study template](https://freeresourceatlas.com/templates/quick/weekly-study-plan)
 - [Product alternatives](https://freeresourceatlas.com/alternatives)
 - [Students](https://freeresourceatlas.com/hubs/students)
 - [Creators](https://freeresourceatlas.com/hubs/creators)

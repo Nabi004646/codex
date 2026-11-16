@@ -1,0 +1,762 @@
+{
+  "https://designmodo.github.io/Flat-UI": {
+    "src": "/publisher-media/flat-ui-480-067b273386f2.webp",
+    "srcset": "/publisher-media/flat-ui-480-067b273386f2.webp 480w, /publisher-media/flat-ui-800-3c39ea75e30d.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://designmodo.com/wp-content/uploads/2013/03/flat-ui-free.png",
+    "source_url": "https://designmodo.com/flat-free/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/flat-ui-480-067b273386f2.webp",
+        "width": 480,
+        "height": 368,
+        "bytes": 14160,
+        "sha256": "067b273386f2694134b523f114f374eb027590b50458ba3243f2a09c4d56b009"
+      },
+      {
+        "path": "/publisher-media/flat-ui-800-3c39ea75e30d.webp",
+        "width": 800,
+        "height": 613,
+        "bytes": 25648,
+        "sha256": "3c39ea75e30dedcb1740074cd659f28a52b90fcc6a2c8c92db5d73c38bf0e50a"
+      }
+    ],
+    "crop_notes": "Top component area: Basic Elements, buttons and menu examples; actual publisher pixels retained. Tall unused remainder omitted.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://designrevision.com/downloads/shards": {
+    "src": "/publisher-media/shards-480-89a52730a8cd.webp",
+    "srcset": "/publisher-media/shards-480-89a52730a8cd.webp 480w, /publisher-media/shards-800-7d3d7a16aedd.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://designrevision.com/app/uploads/edd/Shards-Main-Dribbble-Shot-Preview-6.jpg",
+    "source_url": "https://designrevision.com/downloads/shards/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/shards-480-89a52730a8cd.webp",
+        "width": 480,
+        "height": 360,
+        "bytes": 17988,
+        "sha256": "89a52730a8cddba766dff103d5cbd43b60103e9c077d40b8eab0cd51f0547e25"
+      },
+      {
+        "path": "/publisher-media/shards-800-7d3d7a16aedd.webp",
+        "width": 800,
+        "height": 599,
+        "bytes": 39630,
+        "sha256": "7d3d7a16aedd96f5ff6b196bddb968dd3377217e2edeab7a4394f9767a15ca82"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://themesberg.com/templates/free": {
+    "src": "/publisher-media/themesberg-480-92ad734b8f07.webp",
+    "srcset": "/publisher-media/themesberg-480-92ad734b8f07.webp 480w, /publisher-media/themesberg-800-bcf3ff2b1a39.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://themesberg.com/img/thumbnail.jpg",
+    "source_url": "https://themesberg.com/templates/free",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/themesberg-480-92ad734b8f07.webp",
+        "width": 480,
+        "height": 325,
+        "bytes": 12776,
+        "sha256": "92ad734b8f070458e936b21965e8715ab58e007a1a318b7774f81605f7cf5de6"
+      },
+      {
+        "path": "/publisher-media/themesberg-800-bcf3ff2b1a39.webp",
+        "width": 800,
+        "height": 542,
+        "bytes": 25112,
+        "sha256": "bcf3ff2b1a3912a48a1f4ece12ea920c5ce495ea25ecec16a547b5e85b26ffd3"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://www.creative-tim.com": {
+    "src": "/publisher-media/creative-tim-480-ef413f8b9e96.webp",
+    "srcset": "/publisher-media/creative-tim-480-ef413f8b9e96.webp 480w, /publisher-media/creative-tim-800-6a1371c976dc.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://raw.githubusercontent.com/creativetimofficial/public-assets/refs/heads/master/creative-ai/admin-collection-thumbnail.jpg",
+    "source_url": "https://www.creative-tim.com/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/creative-tim-480-ef413f8b9e96.webp",
+        "width": 480,
+        "height": 240,
+        "bytes": 10140,
+        "sha256": "ef413f8b9e96ca21b54ee58b1439636c3a058920fe3ec60c92b423824e6ebf5f"
+      },
+      {
+        "path": "/publisher-media/creative-tim-800-6a1371c976dc.webp",
+        "width": 800,
+        "height": 400,
+        "bytes": 21808,
+        "sha256": "6a1371c976dc21806534a9409b932d897876b4ed993f79d314ce471bbbe31ac3"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://adminlte.io": {
+    "src": "/publisher-media/adminlte-480-a39ed190d0f5.webp",
+    "srcset": "/publisher-media/adminlte-480-a39ed190d0f5.webp 480w, /publisher-media/adminlte-800-841042826d2b.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://adminlte.io/wp-content/uploads/2021/04/hero-pic.png",
+    "source_url": "https://adminlte.io/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/adminlte-480-a39ed190d0f5.webp",
+        "width": 480,
+        "height": 141,
+        "bytes": 9206,
+        "sha256": "a39ed190d0f50bb9fa770fb9d894ea619aaf08b91d051bb30208f377d580f17e"
+      },
+      {
+        "path": "/publisher-media/adminlte-800-841042826d2b.webp",
+        "width": 800,
+        "height": 236,
+        "bytes": 17186,
+        "sha256": "841042826d2bae2cbc0b1c37d5ce5f230509259677f5a67a903979f6308e498e"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://uiverse.io": {
+    "src": "/publisher-media/uiverse-480-6600732586e8.webp",
+    "srcset": "/publisher-media/uiverse-480-6600732586e8.webp 480w, /publisher-media/uiverse-800-364c5cb45152.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://imagedelivery.net/KMb5EadhEKC1gAE0LkjL1g/c802e23e-4d13-44ef-a2fe-46c467571900/public",
+    "source_url": "https://uiverse.io/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/uiverse-480-6600732586e8.webp",
+        "width": 480,
+        "height": 287,
+        "bytes": 9198,
+        "sha256": "6600732586e8a48295ba8fb66f4363a425053137fd3d8719485857029a07678e"
+      },
+      {
+        "path": "/publisher-media/uiverse-800-364c5cb45152.webp",
+        "width": 800,
+        "height": 479,
+        "bytes": 17388,
+        "sha256": "364c5cb451520ba59793f0cd63795182e2c1be423ba5009707fa592dd7a27d2b"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://skiper-ui.com": {
+    "src": "/publisher-media/skiper-ui-480-84330edbcc14.webp",
+    "srcset": "/publisher-media/skiper-ui-480-84330edbcc14.webp 480w, /publisher-media/skiper-ui-800-37a27aef2a8b.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://skiper-ui.com/og-main.png",
+    "source_url": "https://skiper-ui.com/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/skiper-ui-480-84330edbcc14.webp",
+        "width": 480,
+        "height": 267,
+        "bytes": 9496,
+        "sha256": "84330edbcc1422fc32543b635b0f4d36595dfcdb512399e655791f96ab523983"
+      },
+      {
+        "path": "/publisher-media/skiper-ui-800-37a27aef2a8b.webp",
+        "width": 800,
+        "height": 444,
+        "bytes": 18832,
+        "sha256": "37a27aef2a8babed7fd809be8246a3d8a4cd2eb4f4c79673d0e09d83b8eb6cf6"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://www.heroui.com": {
+    "src": "/publisher-media/heroui-480-2f63f937e0ec.webp",
+    "srcset": "/publisher-media/heroui-480-2f63f937e0ec.webp 480w, /publisher-media/heroui-800-f6336a821955.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://heroui.com/images/share-card.jpg",
+    "source_url": "https://heroui.com/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/heroui-480-2f63f937e0ec.webp",
+        "width": 480,
+        "height": 252,
+        "bytes": 8012,
+        "sha256": "2f63f937e0ecf85a4153cd1b3a2e429d4697174761de1528bac0070cb71df3ce"
+      },
+      {
+        "path": "/publisher-media/heroui-800-f6336a821955.webp",
+        "width": 800,
+        "height": 420,
+        "bytes": 14348,
+        "sha256": "f6336a8219558da4da2a8fec13da242a62eda937166b776ea5bc83cb38984b0e"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://flowbite.com": {
+    "src": "/publisher-media/flowbite-480-314e72983f5a.webp",
+    "srcset": "/publisher-media/flowbite-480-314e72983f5a.webp 480w, /publisher-media/flowbite-800-1c4502d5fdd3.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://raw.githubusercontent.com/themesberg/flowbite/main/static/images/github/cards.jpg",
+    "source_url": "https://github.com/themesberg/flowbite/blob/main/README.md",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/flowbite-480-314e72983f5a.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 1064,
+        "sha256": "314e72983f5a6661ded42de0ffab9af5832754af2272956220c2de52f17617a7"
+      },
+      {
+        "path": "/publisher-media/flowbite-800-1c4502d5fdd3.webp",
+        "width": 800,
+        "height": 533,
+        "bytes": 2168,
+        "sha256": "1c4502d5fdd3bc0c6be1d3fc85d36c27ac64d9c76c2e813d2b8b56423ae44797"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://daisyui.com": {
+    "src": "/publisher-media/daisyui-480-8c884d996cce.webp",
+    "srcset": "/publisher-media/daisyui-480-8c884d996cce.webp 480w, /publisher-media/daisyui-800-b1ca20ba8606.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://img.daisyui.com/images/default.webp",
+    "source_url": "https://daisyui.com/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/daisyui-480-8c884d996cce.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 11848,
+        "sha256": "8c884d996ccea776819301792d59e54ead3f822a2633601b5367f00478179776"
+      },
+      {
+        "path": "/publisher-media/daisyui-800-b1ca20ba8606.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 23500,
+        "sha256": "b1ca20ba860628dbc1ffea095917951d755c98902a545b94e4f9603d2319e3be"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://headlessui.dev": {
+    "src": "/publisher-media/headless-ui-480-f24f43bd1269.webp",
+    "srcset": "/publisher-media/headless-ui-480-f24f43bd1269.webp 480w, /publisher-media/headless-ui-800-f3efe14e2ced.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://headlessui.com/_next/static/media/social-card.46834755.jpg",
+    "source_url": "https://headlessui.com/",
+    "checked_on": "2026-11-15",
+    "variants": [
+      {
+        "path": "/publisher-media/headless-ui-480-f24f43bd1269.webp",
+        "width": 480,
+        "height": 240,
+        "bytes": 5458,
+        "sha256": "f24f43bd12694454f3820b03e6d91d5a17f64d3302ffbcec6d81f64cd0c53d55"
+      },
+      {
+        "path": "/publisher-media/headless-ui-800-f3efe14e2ced.webp",
+        "width": 800,
+        "height": 400,
+        "bytes": 13410,
+        "sha256": "f3efe14e2ced49fee4de365b2e1e582ce54be7bd12c9e49ee07c454271f663f8"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://brumm.af/shadows": {
+    "unavailable": true,
+    "source_url": "https://brumm.af/shadows",
+    "checked_on": "2026-11-15",
+    "notice": "The original address no longer serves this tool. Source checked 2026-11-15."
+  },
+  "https://shotcut.org": {
+    "src": "/publisher-media/home-shotcut-480-a5cd63e2e91f.webp",
+    "srcset": "/publisher-media/home-shotcut-480-a5cd63e2e91f.webp 480w, /publisher-media/home-shotcut-800-ae5ed815ecb0.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/shotcut/Shotcut/6740996b9caf645b4d2d71211d68fd3f/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.shotcut.Shotcut",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-shotcut-480-a5cd63e2e91f.webp",
+        "width": 480,
+        "height": 297,
+        "bytes": 31954,
+        "sha256": "a5cd63e2e91f77585de6fb670866e0f06aa5984a66353ffec292811262991506"
+      },
+      {
+        "path": "/publisher-media/home-shotcut-800-ae5ed815ecb0.webp",
+        "width": 800,
+        "height": 494,
+        "bytes": 59082,
+        "sha256": "ae5ed815ecb085ee91057ae849b47d2a7c8283111b5370810fb364655c5295f0"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://krita.org": {
+    "src": "/publisher-media/home-krita-480-e29e4ed3c32a.webp",
+    "srcset": "/publisher-media/home-krita-480-e29e4ed3c32a.webp 480w, /publisher-media/home-krita-800-61f1ab1ea524.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/kde/krita/1348962dcc0842250c4ce6876acc36cc/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.kde.krita",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-krita-480-e29e4ed3c32a.webp",
+        "width": 480,
+        "height": 261,
+        "bytes": 31924,
+        "sha256": "e29e4ed3c32a4794602eb5ac133a853216bdf8256a0252361c21c30684185f7e"
+      },
+      {
+        "path": "/publisher-media/home-krita-800-61f1ab1ea524.webp",
+        "width": 800,
+        "height": 435,
+        "bytes": 67458,
+        "sha256": "61f1ab1ea52473ad101ed905e98911e1fc36abca7fbe0238171d1a5cfa8ae10c"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/OpenShot/openshot-qt": {
+    "src": "/publisher-media/home-openshot-480-29a936b624ad.webp",
+    "srcset": "/publisher-media/home-openshot-480-29a936b624ad.webp 480w, /publisher-media/home-openshot-800-c4ab1aae2a0f.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/openshot/OpenShot/70e490a97108be7b86e11ffcf7674bfa/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.openshot.OpenShot",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-openshot-480-29a936b624ad.webp",
+        "width": 480,
+        "height": 314,
+        "bytes": 17770,
+        "sha256": "29a936b624adebb28c70e6b83c08e610a80ea37452a818c2d12e4b196c9c1bcf"
+      },
+      {
+        "path": "/publisher-media/home-openshot-800-c4ab1aae2a0f.webp",
+        "width": 800,
+        "height": 523,
+        "bytes": 36148,
+        "sha256": "c4ab1aae2a0f450c9c08d266f581e189cc50ce6b5e26212853ad597459b8382d"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://kdenlive.org": {
+    "src": "/publisher-media/home-kdenlive-480-408a405fc75a.webp",
+    "srcset": "/publisher-media/home-kdenlive-480-408a405fc75a.webp 480w, /publisher-media/home-kdenlive-800-c022ff894c5e.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/kde/kdenlive.desktop/43ea1daa3a961b305292f8cd7ccae60f/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.kde.kdenlive.desktop",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-kdenlive-480-408a405fc75a.webp",
+        "width": 480,
+        "height": 284,
+        "bytes": 24844,
+        "sha256": "408a405fc75a6ace3d149a57ccbf11918258675e1ae71595ca52735704e9719d"
+      },
+      {
+        "path": "/publisher-media/home-kdenlive-800-c022ff894c5e.webp",
+        "width": 800,
+        "height": 474,
+        "bytes": 54084,
+        "sha256": "c022ff894c5e9183896e764424018754e8501d9eadc68c5854a5380404473034"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://joplinapp.org": {
+    "src": "/publisher-media/home-joplin-480-043f6a54ea72.webp",
+    "srcset": "/publisher-media/home-joplin-480-043f6a54ea72.webp 480w, /publisher-media/home-joplin-800-b1f086ee4203.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/net/cozic/joplin_desktop/0400efd10f68aa1b55f521ff7c205f74/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/net.cozic.joplin_desktop",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-joplin-480-043f6a54ea72.webp",
+        "width": 480,
+        "height": 292,
+        "bytes": 16076,
+        "sha256": "043f6a54ea72332015aba619909ba0b7f0bfbe45726252e271b10ddbacdd483a"
+      },
+      {
+        "path": "/publisher-media/home-joplin-800-b1f086ee4203.webp",
+        "width": 800,
+        "height": 487,
+        "bytes": 34406,
+        "sha256": "b1f086ee42033c31e331dbd36a8db5c74f894f921eca6131af7d8294794eda30"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://obsidian.md": {
+    "src": "/publisher-media/home-obsidian-480-565dc92ce2f0.webp",
+    "srcset": "/publisher-media/home-obsidian-480-565dc92ce2f0.webp 480w, /publisher-media/home-obsidian-800-d8f66dc38255.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/md/obsidian/Obsidian/cf7bc04e771397dee717a90628eeba9d/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/md.obsidian.Obsidian",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-obsidian-480-565dc92ce2f0.webp",
+        "width": 480,
+        "height": 254,
+        "bytes": 18206,
+        "sha256": "565dc92ce2f035652ff82befbb84a0ca9e2dc7dd9bf4df264511adc7217ede88"
+      },
+      {
+        "path": "/publisher-media/home-obsidian-800-d8f66dc38255.webp",
+        "width": 800,
+        "height": 424,
+        "bytes": 48326,
+        "sha256": "d8f66dc382553adf4ea5415c29b134daf8656d8c723887bb3dbc5b52a8b912f9"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://www.audacityteam.org": {
+    "src": "/publisher-media/home-audacity-480-558ada7a7890.webp",
+    "srcset": "/publisher-media/home-audacity-480-558ada7a7890.webp 480w, /publisher-media/home-audacity-800-ffee73581b3e.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/audacityteam/Audacity/0ad4a24524b6c06220649dc83a08ae81/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.audacityteam.Audacity",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-audacity-480-558ada7a7890.webp",
+        "width": 480,
+        "height": 302,
+        "bytes": 21668,
+        "sha256": "558ada7a78903f9f04022a0655e3eb990b30383ef524dda8594680f4f74ff749"
+      },
+      {
+        "path": "/publisher-media/home-audacity-800-ffee73581b3e.webp",
+        "width": 800,
+        "height": 504,
+        "bytes": 44484,
+        "sha256": "ffee73581b3ee77bff2b1fd04152180ac55b731246537109f6f4304b127f12b1"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/node-red/node-red": {
+    "src": "/publisher-media/home-node-red-480-dae375872aea.webp",
+    "srcset": "/publisher-media/home-node-red-480-dae375872aea.webp 480w, /publisher-media/home-node-red-800-dd8692d262f5.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://repository-images.githubusercontent.com/12618379/33692d8a-01f5-4144-ab44-eb2bb9f6089c",
+    "source_url": "https://github.com/node-red/node-red",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-node-red-480-dae375872aea.webp",
+        "width": 480,
+        "height": 240,
+        "bytes": 6896,
+        "sha256": "dae375872aeaa1be498eda9c1216e37bd8a48d8056f34c27a8b85075a6c71784"
+      },
+      {
+        "path": "/publisher-media/home-node-red-800-dd8692d262f5.webp",
+        "width": 800,
+        "height": 400,
+        "bytes": 12462,
+        "sha256": "dd8692d262f539581644ad0b81088cce905c6e48baa1a21a4fe409a1c6fd8532"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://www.freecodecamp.org": {
+    "src": "/publisher-media/home-freecodecamp-480-931cb5118518.webp",
+    "srcset": "/publisher-media/home-freecodecamp-480-931cb5118518.webp 480w, /publisher-media/home-freecodecamp-800-f951b279b3f4.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png",
+    "source_url": "https://www.freecodecamp.org",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-freecodecamp-480-931cb5118518.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 2390,
+        "sha256": "931cb5118518c6cba6901d90e74f570667e187d9e13292a46c6bf85e6575e0dd"
+      },
+      {
+        "path": "/publisher-media/home-freecodecamp-800-f951b279b3f4.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 4300,
+        "sha256": "f951b279b3f49294416e904f1681231abe01cc4b18c8d1374fc3a23ad2ee37ff"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://huggingface.co": {
+    "src": "/publisher-media/home-hugging-face-480-f870482a4088.webp",
+    "srcset": "/publisher-media/home-hugging-face-480-f870482a4088.webp 480w, /publisher-media/home-hugging-face-800-6dba15da4701.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://huggingface.co/front/thumbnails/v2-2.png",
+    "source_url": "https://huggingface.co",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-hugging-face-480-f870482a4088.webp",
+        "width": 480,
+        "height": 259,
+        "bytes": 7298,
+        "sha256": "f870482a40880bc2bab5d995243f7b7f963c7c90698328b53d5390c31b14f42d"
+      },
+      {
+        "path": "/publisher-media/home-hugging-face-800-6dba15da4701.webp",
+        "width": 800,
+        "height": 432,
+        "bytes": 11962,
+        "sha256": "6dba15da470125edea1c375f29e6c3f1a1ed8a4c9d8ba01915fd4cba77c5f140"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://portswigger.net/web-security": {
+    "src": "/publisher-media/home-portswigger-web-security-academy-480-517aacb054ab.webp",
+    "srcset": "/publisher-media/home-portswigger-web-security-academy-480-517aacb054ab.webp 480w, /publisher-media/home-portswigger-web-security-academy-800-fecfa4456c54.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://portswigger.net/content/images/logos/academy-twittercard.png",
+    "source_url": "https://portswigger.net/web-security",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-portswigger-web-security-academy-480-517aacb054ab.webp",
+        "width": 480,
+        "height": 241,
+        "bytes": 9222,
+        "sha256": "517aacb054ab0ea734ad976829bef97346155902e2b7bf95eb7a406180c43d03"
+      },
+      {
+        "path": "/publisher-media/home-portswigger-web-security-academy-800-fecfa4456c54.webp",
+        "width": 800,
+        "height": 402,
+        "bytes": 15692,
+        "sha256": "fecfa4456c54f2c36d61640a8ee1215df51c1bd0ca63d1620097780934fc3667"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/ollama/ollama": {
+    "src": "/publisher-media/home-ollama-480-806533bd229e.webp",
+    "srcset": "/publisher-media/home-ollama-480-806533bd229e.webp 480w, /publisher-media/home-ollama-800-6f80daad063f.webp 800w",
+    "image_kind": "logo",
+    "image_url": "https://ollama.com/public/og.png",
+    "source_url": "https://ollama.com/",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-ollama-480-806533bd229e.webp",
+        "width": 480,
+        "height": 252,
+        "bytes": 3462,
+        "sha256": "806533bd229e416c2a2cc62df0e8b1a6b3339cc57ce978d2b64e5be148651952"
+      },
+      {
+        "path": "/publisher-media/home-ollama-800-6f80daad063f.webp",
+        "width": 800,
+        "height": 420,
+        "bytes": 5726,
+        "sha256": "6f80daad063f4c451a24d5ae7202449d95c250f53769125055cd4351f5bee31d"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/openai/whisper": {
+    "src": "/publisher-media/home-whisper-480-21e733c56164.webp",
+    "srcset": "/publisher-media/home-whisper-480-21e733c56164.webp 480w, /publisher-media/home-whisper-800-61b6f4869e45.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://raw.githubusercontent.com/openai/whisper/main/approach.png",
+    "source_url": "https://github.com/openai/whisper/blob/main/README.md",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-whisper-480-21e733c56164.webp",
+        "width": 480,
+        "height": 364,
+        "bytes": 27334,
+        "sha256": "21e733c56164442a40fc4192a3da3bbedf2b35ee77f4eb4167b0b38f65a1d918"
+      },
+      {
+        "path": "/publisher-media/home-whisper-800-61b6f4869e45.webp",
+        "width": 800,
+        "height": 606,
+        "bytes": 58080,
+        "sha256": "61b6f4869e4549b13bf8f08d9c51e801990c224debd27dfc92e576c425b4e59b"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/GoogleChrome/lighthouse": {
+    "src": "/publisher-media/home-lighthouse-480-9d33b84a20b7.webp",
+    "srcset": "/publisher-media/home-lighthouse-480-9d33b84a20b7.webp 480w, /publisher-media/home-lighthouse-800-07aec9a5e16b.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://developer.chrome.com/static/docs/lighthouse/overview/image/lighthouse-report.png",
+    "source_url": "https://developer.chrome.com/docs/lighthouse/overview/",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-lighthouse-480-9d33b84a20b7.webp",
+        "width": 480,
+        "height": 315,
+        "bytes": 16092,
+        "sha256": "9d33b84a20b70f9f1dd492f95b94907f8f8ac735297aea0b05722ce4a8dbd8f3"
+      },
+      {
+        "path": "/publisher-media/home-lighthouse-800-07aec9a5e16b.webp",
+        "width": 800,
+        "height": 524,
+        "bytes": 36100,
+        "sha256": "07aec9a5e16bc73e090658043e09526298ab71038da27af145bc490a6f7d5885"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/penpot/penpot": {
+    "src": "/publisher-media/home-penpot-480-480d32239761.webp",
+    "srcset": "/publisher-media/home-penpot-480-480d32239761.webp 480w, /publisher-media/home-penpot-800-7fe126063aef.webp 800w",
+    "image_kind": "publisher",
+    "image_url": "https://repository-images.githubusercontent.com/48769241/1e3fb75a-13e6-4d77-a658-e70e17fb1c6f",
+    "source_url": "https://github.com/penpot/penpot",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-penpot-480-480d32239761.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 13832,
+        "sha256": "480d32239761a401ee8713dfde8fbebc974def470d391fe6ddaf3809bec5249f"
+      },
+      {
+        "path": "/publisher-media/home-penpot-800-7fe126063aef.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 26576,
+        "sha256": "7fe126063aefba62528ce5368667a0ff88dd97d22dd95a22f1f6b4e0ffa21678"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/keepassxreboot/keepassxc": {
+    "src": "/publisher-media/home-keepassxc-480-a653f392a826.webp",
+    "srcset": "/publisher-media/home-keepassxc-480-a653f392a826.webp 480w, /publisher-media/home-keepassxc-800-ef440c30a56f.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/keepassxc/KeePassXC.desktop/8703bd4e659abcb1dac1d6646881bb00/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.keepassxc.KeePassXC.desktop",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-keepassxc-480-a653f392a826.webp",
+        "width": 480,
+        "height": 365,
+        "bytes": 17448,
+        "sha256": "a653f392a826b2f947678460034eb45afa852b5d87cc5e73d06cef26e03e8140"
+      },
+      {
+        "path": "/publisher-media/home-keepassxc-800-ef440c30a56f.webp",
+        "width": 800,
+        "height": 608,
+        "bytes": 38842,
+        "sha256": "ef440c30a56f6300e820e88da3520264ba6d2c6596045ee61944aa4656b28844"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://github.com/obsproject/obs-studio": {
+    "src": "/publisher-media/home-obs-studio-480-91e155398fdb.webp",
+    "srcset": "/publisher-media/home-obs-studio-480-91e155398fdb.webp 480w, /publisher-media/home-obs-studio-800-5948a684eca4.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/com/obsproject/Studio/eee0a1f453649164008dc9f0913dfe7e/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/com.obsproject.Studio",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-obs-studio-480-91e155398fdb.webp",
+        "width": 480,
+        "height": 336,
+        "bytes": 19188,
+        "sha256": "91e155398fdb24a2b2e932b34e384e0bc5776a74bc1b358fc57b2aa15326c742"
+      },
+      {
+        "path": "/publisher-media/home-obs-studio-800-5948a684eca4.webp",
+        "width": 800,
+        "height": 560,
+        "bytes": 37928,
+        "sha256": "5948a684eca46d2c70e6328b24e173f752d3c487b292c2f1852277a9221e2bd6"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  },
+  "https://www.gimp.org": {
+    "src": "/publisher-media/home-gimp-480-7c08d06f0d08.webp",
+    "srcset": "/publisher-media/home-gimp-480-7c08d06f0d08.webp 480w, /publisher-media/home-gimp-800-53ed0d0adace.webp 800w",
+    "image_kind": "screenshot",
+    "image_url": "https://dl.flathub.org/media/org/gimp/GIMP/800933a572869e1c8daee367dc2287cb/screenshots/image-1_orig.png",
+    "source_url": "https://flathub.org/apps/org.gimp.GIMP",
+    "checked_on": "2026-11-16",
+    "variants": [
+      {
+        "path": "/publisher-media/home-gimp-480-7c08d06f0d08.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 24606,
+        "sha256": "7c08d06f0d08bfdb09e965ed75d2636e90b9369e1eda58d628ce4fa5182a2176"
+      },
+      {
+        "path": "/publisher-media/home-gimp-800-53ed0d0adace.webp",
+        "width": 800,
+        "height": 450,
+        "bytes": 54940,
+        "sha256": "53ed0d0adace64f404fafe042a8548346fb136fa2daa6ee484f3b85c7f223a25"
+      }
+    ],
+    "crop_notes": "Full original frame; aspect ratio preserved.",
+    "rights": "Publisher preview reference; no broader software or artwork redistribution rights are asserted."
+  }
+}

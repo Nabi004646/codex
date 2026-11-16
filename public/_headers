@@ -1,5 +1,4 @@
 /*
-  X-Robots-Tag: noindex, nofollow
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
@@ -18,3 +17,19 @@
 /catalog-notices/*
   Cache-Control: public, max-age=86400
   X-Robots-Tag: noindex
+
+/article-covers/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  X-Robots-Tag: max-image-preview:large
+/previews/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/template-previews/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/brand/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/publisher-media/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: max-image-preview:large
