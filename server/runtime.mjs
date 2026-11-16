@@ -23,7 +23,7 @@ export function createRuntime({render,template,fetcher=fetch,cache=null}){
   if(['/api/submissions','/api/submissions/withdraw'].includes(url.pathname))return submissionResponse(request,{fetcher});
   if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET, HEAD','Cache-Control':'no-store'}});
   const publicDiscovery=env.ATLAS_MODE==='public-discovery'&&url.hostname==='freeresourceatlas.com';
-  if(env.ATLAS_MODE==='public-discovery'&&url.hostname==='www.freeresourceatlas.com')return new Response(null,{status:308,headers:{Location:'https://freeresourceatlas.com'+url.pathname+url.search,'Cache-Control':'public, max-age=3600'}});
+  if(env.ATLAS_MODE==='public-discovery'&&['freeresourceatlas.com','www.freeresourceatlas.com'].includes(url.hostname)&&(url.protocol!=='https:'||url.hostname.startsWith('www.')))return new Response(null,{status:308,headers:{Location:'https://freeresourceatlas.com'+url.pathname+url.search,'Cache-Control':'public, max-age=3600'}});
   if(publicDiscovery&&!privatePath){const canonical=canonicalPathname(url.pathname);if(canonical!==url.pathname)return new Response(null,{status:308,headers:{Location:canonical+url.search,'Cache-Control':'public, max-age=3600'}});}
   const discovery=!production&&env.ATLAS_CATALOG==='discovery';
   const readAsset=async path=>{if(!env.ASSETS)throw Error('Catalog assets unavailable');const response=await env.ASSETS.fetch(new Request(url.origin+path));if(!response.ok)throw Error('Catalog asset unavailable');return response.json();};

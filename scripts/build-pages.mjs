@@ -1,7 +1,7 @@
 import {build} from 'vite';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {PUBLIC_ASSET_DIRECTORIES} from '../server/public-assets.mjs';
+import {PUBLIC_ASSET_DIRECTORIES,PUBLIC_ASSET_FILES} from '../server/public-assets.mjs';
 
 const assets=await fs.readdir('dist/assets');
 const js=assets.find(f=>/^index-.*\.js$/.test(f)),css=assets.find(f=>/^index-.*\.css$/.test(f));
@@ -19,9 +19,10 @@ for(const directory of PUBLIC_ASSET_DIRECTORIES){
  try{await fs.cp('dist/'+directory,'dist/pages/'+directory,{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 }
 await fs.copyFile('.atlas-pages-worker/_worker.js','dist/pages/_worker.js');
+for(const file of PUBLIC_ASSET_FILES)await fs.copyFile('public/'+file,'dist/pages/'+file);
 await fs.copyFile('public/llms.txt','dist/pages/llms.txt');
 await fs.copyFile('public/_headers','dist/pages/_headers');
-await fs.writeFile('dist/pages/_routes.json',JSON.stringify({version:1,include:['/*'],exclude:PUBLIC_ASSET_DIRECTORIES.map(dir=>'/'+dir+'/*')},null,2)+'\n');
+await fs.writeFile('dist/pages/_routes.json',JSON.stringify({version:1,include:['/*'],exclude:[...PUBLIC_ASSET_DIRECTORIES.map(dir=>'/'+dir+'/*'),...PUBLIC_ASSET_FILES.map(file=>'/'+file)]},null,2)+'\n');
 await fs.mkdir('reports',{recursive:true});
 await fs.writeFile('reports/pages-build-source.json',JSON.stringify({baseline_modules:[...new Set(baselineModules)].sort(),output:'dist/pages',mode:'staging',built_at:new Date().toISOString()},null,2)+'\n');
 console.log('Cloudflare Pages ready: dist/pages; server-rendered routes, live search, template filtering and static assets. Staging stays noindex.');
