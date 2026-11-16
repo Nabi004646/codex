@@ -2,7 +2,7 @@ import {DOWNLOAD_TAG,downloadTitle} from '../src/download-links.mjs';
 import config from '../config/backend.public.json' with {type:'json'};import taxonomy from '../data/taxonomy.json' with {type:'json'};
 const slug=s=>String(s).toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-');
 const names=new Map(taxonomy.map(t=>[slug(t.name),t.name])),prices={unknown:'Check terms',free_forever:'Free',open_source:'Open source',freemium:'Free plan',trial:'Free trial',paid:'Paid'};
-const kind={github_repo:'GitHub repository',mobile_app:'Mobile app',learning:'Learning resource'},types={'GitHub repository':'github_repo','Mobile app':'mobile_app','Learning resource':'learning',Website:'website'};
+const kind={github_repo:'GitHub repository',mobile_app:'Mobile app',learning:'Learning resource',template:'Template'},types={'GitHub repository':'github_repo','Mobile app':'mobile_app','Learning resource':'learning',Website:'website',Template:'template'};
 const priceIds={'Open source':'open_source',Free:'free_forever','Free plan':'freemium',Freemium:'freemium','Free trial':'trial','Check terms':'unknown',Paid:'paid'};
 const statsCache=new Map();
 export async function publicRpc(name,body={},fetcher=fetch){const response=await fetcher(config.url+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:config.publishableKey,'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(15000),redirect:'manual',cache:'no-store'});if(!response.ok)throw Error('Published catalog is temporarily unavailable.');return response.json();}

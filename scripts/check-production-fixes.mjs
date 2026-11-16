@@ -18,7 +18,7 @@ test('reported UI resources use real, pinned responsive previews and changed sou
  for(const [url,p]of entries){assert.match(p.source_url,/^https:\/\//);const candidates=resourceImageCandidates({name:'Publisher resource',url});assert.equal(candidates[0].src,p.src);assert.ok(candidates[0].srcSet.includes('480w'));
   for(const v of p.variants){const file=await fs.readFile('public'+v.path);assert.equal(file.length,v.bytes);assert.equal(createHash('sha256').update(file).digest('hex'),v.sha256);assert.ok(v.bytes<150000);bytes+=v.bytes;}
  }assert.ok(bytes<1500000);const {catalog}=await import('../server/catalog.mjs');assert.ok(catalog.slice(0,24).every(r=>/^\/(?:publisher-media|previews)\//.test(resourceImageCandidates(r)[0]?.src||'')),'Homepage previews must use packaged assets');assert.deepEqual(resourceImageCandidates({name:'Brumm',url:'https://brumm.af/shadows'}),[]);
- assert.ok(resourceImageCandidates({name:'Example',url:'https://provider.org/'}).every(p=>p.kind==='icon'));
+ assert.deepEqual(resourceImageCandidates({name:'Example',url:'https://provider.org/'}),[],'Unknown publisher artwork must not become an enlarged generic favicon');
  assert.equal(resourceImageCandidates({name:'File',url:'https://drive.google.com/file/d/example/view'}).length,0);
 });
 test('media fetches are restricted to public approved hosts and exact icon requests',()=>{
