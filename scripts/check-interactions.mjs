@@ -1,3 +1,5 @@
+import {readPageBootstrap} from '../src/page-bootstrap.mjs';
+import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {boundedFetch,RequestTimeoutError,assertCurrentSession,safeAuthError,revokeProviderSession,leavesAdminDocument} from '../src/network.mjs';
@@ -82,4 +84,13 @@ test('missing ResizeObserver does not crash the page and cleanup cancels pending
 test('pages without directory headers do not register scroll work',()=>{
  const v=viewport();v.doc.querySelector=()=>null;const stop=observeSidebarPosition(v.win,v.doc);
  assert.equal(v.listeners.size,0);assert.equal(v.frames.size,0);stop();
+});
+
+test('browser startup reads inert page JSON without an inline window assignment',async()=>{
+ const page={kind:'admin',path:'/admin',params:{q:"$' $& $` <script>fictional</script>"}},fixture={getElementById:id=>id==='atlas-page-data'?{getAttribute:name=>name==='type'?'application/json':null,textContent:JSON.stringify(page)}:null};
+ assert.deepEqual(readPageBootstrap(fixture),page);
+ assert.throws(()=>readPageBootstrap({getElementById:()=>null}),/unavailable/);
+ assert.throws(()=>readPageBootstrap({getElementById:()=>({getAttribute:()=> 'application/json',textContent:'{}'})}),/incomplete/);
+ const html=await fs.readFile('index.html','utf8');assert.match(html,/<script id="atlas-page-data" type="application\/json">/);assert.ok(!html.includes('window.__ATLAS_PAGE__='));
+ const client=await fs.readFile('src/main.tsx','utf8');assert.ok(client.includes('readPageBootstrap(document)'));
 });
